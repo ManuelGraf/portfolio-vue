@@ -1,0 +1,110 @@
+
+
+/** COLORS **/
+$white: #ffffff;
+$black: #000000;
+
+$color-petrol: #026064;
+$color-blue: #617D8B;
+$color-magenta: #CC145D;
+$color-yellow: #FCC010;
+$color-green: #ACC913;
+
+$color-petrol-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
+$color-petrol-lighter:  lighten(  desaturate( $color-petrol, 15%) ,15%);
+$color-petrol-lightest: lighten(  desaturate( $color-petrol, 20%) ,20%);
+$color-petrol-dark:     darken(   saturate(   $color-petrol, 10%) ,10%);
+$color-petrol-darker:   darken(   saturate(   $color-petrol, 15%) ,15%);
+$color-petrol-darkest:  darken(   saturate(   $color-petrol, 20%) ,20%);
+
+$color-magenta-light:    lighten(  desaturate( $color-magenta, 10%) ,10%);
+$color-magenta-lighter:  lighten(  desaturate( $color-magenta, 15%) ,15%);
+$color-magenta-lightest: lighten(  desaturate( $color-magenta, 20%) ,20%);
+$color-magenta-dark:     darken(   saturate(   $color-magenta, 10%) ,10%);
+$color-magenta-darker:   darken(   saturate(   $color-magenta, 15%) ,15%);
+$color-magenta-darkest:  darken(   saturate(   $color-magenta, 20%) ,20%);
+
+$color-yellow-light:    lighten(  desaturate( $color-yellow, 10%) ,10%);
+$color-yellow-lighter:  lighten(  desaturate( $color-yellow, 15%) ,15%);
+$color-yellow-lightest: lighten(  desaturate( $color-yellow, 20%) ,20%);
+$color-yellow-dark:     darken(   saturate(   $color-yellow, 10%) ,10%);
+$color-yellow-darker:   darken(   saturate(   $color-yellow, 15%) ,15%);
+$color-yellow-darkest:  darken(   saturate(   $color-yellow, 20%) ,20%);
+
+$color-blue-light:    lighten(  desaturate( $color-blue, 10%) ,10%);
+$color-blue-lighter:  lighten(  desaturate( $color-blue, 15%) ,15%);
+$color-blue-lightest: lighten(  desaturate( $color-blue, 20%) ,20%);
+$color-blue-dark:     darken(   saturate(   $color-blue, 10%) ,10%);
+$color-blue-darker:   darken(   saturate(   $color-blue, 15%) ,15%);
+$color-blue-darkest:  darken(   saturate(   $color-blue, 20%) ,20%);
+
+$color-green-light:    lighten(  desaturate( $color-green, 10%) ,10%);
+$color-green-lighter:  lighten(  desaturate( $color-green, 15%) ,15%);
+$color-green-lightest: lighten(  desaturate( $color-green, 20%) ,20%);
+$color-green-dark:     darken(   saturate(   $color-green, 10%) ,10%);
+$color-green-darker:   darken(   saturate(   $color-green, 15%) ,15%);
+$color-green-darkest:  darken(   saturate(   $color-green, 20%) ,20%);
+
+$scrollbar-crop: 35px;
+
+$fontsize-base: 12px;
+$fontsize-text: $fontsize-base;
+$fontsize-m: $fontsize-base * 1.2;
+$fontsize-s: $fontsize-base * 0.8;
+$fontsize-xs: $fontsize-s * 0.8;
+$fontsize-l: $fontsize-m * 1.2;
+$fontsize-xl: $fontsize-l * 1.2;
+$fontsize-xxl: $fontsize-xl * 1.2;
+
+// DIMENSIONS
+$min-tap: 44px;
+$height-divider:60px;
+$width-logo-full: 90vw;
+$width-logo: 40%;
+$width-logo-full-tablet: 700px;
+$width-logo-tablet: $min-tap + 100px;
+
+@mixin alphaColorBackground($color, $alpha){
+  background-color: rgba($color,$alpha); 
+}
+
+/// LINEAR GRADIENT 
+/// EX: @include linear-gradient('to top right' | '42deg'..., color1, color2,color3...)
+/// https://www.sitepoint.com/building-linear-gradient-mixin-sass/
+
+@mixin linear-gradient($direction, $color-stops...) {
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+
+
+%gradient-petrol{
+  @include linear-gradient(to bottom right, $color-petrol-light, $color-petrol, $color-petrol-dark);
+}
+%gradient-petrol-inverted{
+  @include linear-gradient(to bottom right, $color-petrol-dark, $color-petrol, $color-petrol-light);
+}
+%gradient-yellow{
+  @include linear-gradient(to bottom right, $color-yellow-light, $color-yellow, $color-yellow-dark);
+}
+%gradient-yellow-inverted{
+  @include linear-gradient(to bottom right, $color-yellow-dark, $color-yellow, $color-yellow-light);
+}
+%gradient-magenta{
+  @include linear-gradient(to bottom right, $color-magenta-light, $color-magenta, $color-magenta-dark);
+}
+%gradient-magenta-inverted{
+  @include linear-gradient(to bottom right, $color-magenta-dark, $color-magenta, $color-magenta-light);
+}
+
+
+
+
