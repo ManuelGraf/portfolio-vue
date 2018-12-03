@@ -1,13 +1,14 @@
 
 
 /** COLORS **/
-$white: #ffffff;
-$black: #000000;
+$white: #f6f6f6;
+$black: #111111;
 
-$color-petrol: #026064;
-$color-blue: #617D8B;
+$color-cyan: #1DB8D1;
 $color-magenta: #CC145D;
 $color-yellow: #FCC010;
+$color-petrol: #026064;
+$color-bluegrey: #617D8B;
 $color-green: #ACC913;
 
 $color-petrol-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
@@ -16,6 +17,13 @@ $color-petrol-lightest: lighten(  desaturate( $color-petrol, 20%) ,20%);
 $color-petrol-dark:     darken(   saturate(   $color-petrol, 10%) ,10%);
 $color-petrol-darker:   darken(   saturate(   $color-petrol, 15%) ,15%);
 $color-petrol-darkest:  darken(   saturate(   $color-petrol, 20%) ,20%);
+
+$color-cyan-light:    lighten(  desaturate( $color-cyan, 10%) ,10%);
+$color-cyan-lighter:  lighten(  desaturate( $color-cyan, 15%) ,15%);
+$color-cyan-lightest: lighten(  desaturate( $color-cyan, 20%) ,20%);
+$color-cyan-dark:     darken(   saturate(   $color-cyan, 10%) ,10%);
+$color-cyan-darker:   darken(   saturate(   $color-cyan, 15%) ,15%);
+$color-cyan-darkest:  darken(   saturate(   $color-cyan, 20%) ,20%);
 
 $color-magenta-light:    lighten(  desaturate( $color-magenta, 10%) ,10%);
 $color-magenta-lighter:  lighten(  desaturate( $color-magenta, 15%) ,15%);
@@ -31,12 +39,12 @@ $color-yellow-dark:     darken(   saturate(   $color-yellow, 10%) ,10%);
 $color-yellow-darker:   darken(   saturate(   $color-yellow, 15%) ,15%);
 $color-yellow-darkest:  darken(   saturate(   $color-yellow, 20%) ,20%);
 
-$color-blue-light:    lighten(  desaturate( $color-blue, 10%) ,10%);
-$color-blue-lighter:  lighten(  desaturate( $color-blue, 15%) ,15%);
-$color-blue-lightest: lighten(  desaturate( $color-blue, 20%) ,20%);
-$color-blue-dark:     darken(   saturate(   $color-blue, 10%) ,10%);
-$color-blue-darker:   darken(   saturate(   $color-blue, 15%) ,15%);
-$color-blue-darkest:  darken(   saturate(   $color-blue, 20%) ,20%);
+$color-blue-light:    lighten(  desaturate( $color-bluegrey, 10%) ,10%);
+$color-blue-lighter:  lighten(  desaturate( $color-bluegrey, 15%) ,15%);
+$color-blue-lightest: lighten(  desaturate( $color-bluegrey, 20%) ,20%);
+$color-blue-dark:     darken(   saturate(   $color-bluegrey, 10%) ,10%);
+$color-blue-darker:   darken(   saturate(   $color-bluegrey, 15%) ,15%);
+$color-blue-darkest:  darken(   saturate(   $color-bluegrey, 20%) ,20%);
 
 $color-green-light:    lighten(  desaturate( $color-green, 10%) ,10%);
 $color-green-lighter:  lighten(  desaturate( $color-green, 15%) ,15%);
