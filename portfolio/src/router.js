@@ -1,11 +1,48 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// https://www.npmjs.com/package/vue2-scrollspy
+import Scrollspy, { Easing }  from 'vue2-scrollspy'
+
 import HomeScreen from './views/Home.vue'
 import AboutScreen from './views/About.vue'   
 import WorkScreen from './views/Gallery.vue'   
 import ContactScreen from './views/Contact.vue'   
+import CV from './components/Cv.vue'   
 
 Vue.use(Router)
+Vue.use(Scrollspy, {
+  easing: Easing.Cubic.In
+})
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeScreen,
+    meta: { scrollToTop: true } 
+  },
+  {
+    path: '/about',
+    name: 'about',
+    hash:'#about',
+    component: AboutScreen
+  },
+  {
+    path: '/gallery',
+    name: 'gallery',
+    component: WorkScreen
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactScreen
+  },
+  {
+    path: '/curriculum-vitae',
+    name: 'cv',
+    component: CV
+  }
+]
 
 const scrollBehavior = function (to, from, savedPosition) {
   if (savedPosition) {
@@ -13,18 +50,21 @@ const scrollBehavior = function (to, from, savedPosition) {
     return savedPosition
   } else {
     const position = {}
-
+    
     // scroll to anchor by returning the selector
-    if (to.hash) {
-      position.selector = to.hash
+    if (to.matched) {
+      position.selector = '#'+to.matched[0].name;
+      let el = document.querySelector(position.selector);
 
-      // specify offset of the element
-      if (to.hash === '#anchor2') {
-        position.offset = { y: 100 }
-      }
-
-      if (document.querySelector(to.hash)) {
-        return position
+      // console.log(to.matched[0]);
+      if (el) {
+        // position.y = el.getClientBoundingRect().top;
+        this.app.$root.$once('triggerScroll', () => {
+          // if the resolved position is falsy or an empty object,
+          // will retain current scroll position.
+          return position
+        })
+          // return position
       }
 
       // if the returned position is falsy or an empty object,
@@ -54,27 +94,6 @@ const scrollBehavior = function (to, from, savedPosition) {
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeScreen
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: AboutScreen
-    },
-    {
-      path: '/gallery',
-      name: 'gallery',
-      component: WorkScreen
-    },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: ContactScreen
-    }
-  ],
+  routes: routes,
   scrollBehavior
 })

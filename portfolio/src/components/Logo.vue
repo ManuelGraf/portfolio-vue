@@ -88,6 +88,7 @@
   .logo{
     position:fixed;
     width:$width-logo-full;
+    z-index:49
   }
 </style>
 

@@ -36,7 +36,7 @@
 
 <style lang="scss" scoped>
   .cv{
-    
+
   }
   .tech-icon{
     height: $min-tap /2;

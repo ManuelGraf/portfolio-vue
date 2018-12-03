@@ -13,7 +13,7 @@
       </li>
       <li class="nav-item">
         <router-link to="/gallery">  
-          Home
+          Work
         </router-link>
       </li>
       <li class="nav-item">
@@ -32,9 +32,9 @@
     position:fixed;
     display:flex;
     flex-direction: column;
-    position:absolute;
     right: 1rem;
     top: 1rem;
+    z-index: 50;
 
     .nav-item{
       color: rgb(random($limit: 255),random($limit: 255),random($limit: 255))

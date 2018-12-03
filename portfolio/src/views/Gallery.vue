@@ -1,3 +1,3 @@
 <template>
-  <div class="view view--gallery"></div>
+  <div id="gallery" class="view view--gallery"></div>
 </template>
