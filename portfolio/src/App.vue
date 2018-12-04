@@ -1,33 +1,20 @@
-<template>
-<div id="container">
-  <MainNav></MainNav>
-  <Logo></Logo>
-  <Home></Home>
-  <About></About>
-  <Gallery></Gallery>
-  <Contact></Contact>    
-</div>
-</template>
-
-
 <script>
 // @ is an alias to /src
-import MainNav from '@/components/MainNav.vue'
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import Gallery from '@/views/Gallery.vue'
-import Contact from '@/views/Contact.vue'
-import Logo from '@/components/Logo.vue'
+import Vue from 'vue'
+import ViewContainer from '@/views/ViewContainer.vue'
 
+import MainNav from '@/components/MainNav.vue'
+import Logo from '@/components/Logo.vue'
+import InViewPortDirective from 'vue-in-viewport-directive'
+
+Vue.directive('in-viewport', InViewPortDirective)
 export default {
     name: 'app',
     components: {
+      ViewContainer,
       MainNav,
-      Home,
-      About,
-      Gallery,
-      Contact,
-      Logo
+      Logo,
+      InViewPortDirective
     },
     data:function(){
       return{
@@ -40,12 +27,23 @@ export default {
           ? this.$router.go(-1)
           : this.$router.push('/')
       },
-      afterLeave () {
-        this.$root.$emit('triggerScroll')
+      setLocation (route) {
+          this.$router.push(route)
       }
   }
 }
 </script>
+
+
+<template>
+<div id="app">
+  <MainNav></MainNav>
+  <Logo></Logo>
+  <ViewContainer></ViewContainer>
+</div>
+</template>
+
+
 
 <style lang="scss" >
 

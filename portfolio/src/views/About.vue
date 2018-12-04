@@ -1,6 +1,9 @@
 <template>
-  <div id='about' class="about">
+  <div id='about' class="view view--about" v-scroll-spy>
     <h1>Hello World!</h1>
+    <section>
+
+    </section>
     <h2>Welcome to my page</h2>
     <h3>Curriculum Vitae</h3>
     <cv> </cv>
@@ -17,6 +20,11 @@ import cv from '@/components/Cv.vue';
   }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  $bgcolor-about: $color-petrol;
+  $color-about: $color-bluegrey;
+  .view--about{
+    @include diagonal-end($color-green,up);
+    background: $bgcolor-about;
+  }
 </style>

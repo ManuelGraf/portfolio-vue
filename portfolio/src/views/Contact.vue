@@ -26,12 +26,9 @@
 <script>
 // @ is an alias to /src
 export default {
-  name: "home",
+  name: "contact",
   data: function() {
     return {
-      $route:{
-        name:'/CV'
-      }
     };
   },
   methods: {
@@ -42,7 +39,7 @@ export default {
 
 <style lang="scss">
 .view--contact {
-  background: $color-blue;
+  background: $color-bluegrey;
 }
 </style>
 

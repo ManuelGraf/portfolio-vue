@@ -13,6 +13,7 @@
     "three": "^0.99.0",
     "vue": "^2.5.17",
     "vue-dragscroll": "^1.8.1",
+    "vue-in-viewport-directive": "^1.2.1",
     "vue-router": "^3.0.1",
     "vue2-scrollspy": "^2.3.1"
   },

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Bootstrap from 'bootstrap-vue'
 // https://www.npmjs.com/package/vue2-scrollspy
 import Scrollspy, { Easing }  from 'vue2-scrollspy'
 
@@ -10,6 +11,7 @@ import ContactScreen from './views/Contact.vue'
 import CV from './components/Cv.vue'   
 
 Vue.use(Router)
+Vue.use(Bootstrap)
 Vue.use(Scrollspy, {
   easing: Easing.Cubic.In
 })
@@ -18,8 +20,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeScreen,
-    meta: { scrollToTop: true } 
+    component: HomeScreen
   },
   {
     path: '/about',
@@ -59,11 +60,6 @@ const scrollBehavior = function (to, from, savedPosition) {
       // console.log(to.matched[0]);
       if (el) {
         // position.y = el.getClientBoundingRect().top;
-        this.app.$root.$once('triggerScroll', () => {
-          // if the resolved position is falsy or an empty object,
-          // will retain current scroll position.
-          return position
-        })
           // return position
       }
 
@@ -94,6 +90,6 @@ const scrollBehavior = function (to, from, savedPosition) {
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: routes,
-  scrollBehavior
+  routes: routes
+
 })

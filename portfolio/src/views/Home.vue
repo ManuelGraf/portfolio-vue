@@ -1,5 +1,5 @@
 <template>
-  <div class="view view--home">
+  <div class="view view--home" id="Home">
     <particle-background></particle-background>
   </div>
 </template>
@@ -15,3 +15,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.view--home{
+  background:white;
+  @include diagonal-end($color-petrol,up);
+}
+  
+</style>
+                    

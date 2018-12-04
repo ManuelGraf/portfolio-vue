@@ -1,9 +1,12 @@
 <template lang="de">
-  <div class="main-nav">
-    <ul class="nav-items">
+  <div class="main-nav" >
+    <ul class="nav-items" 
+      v-scroll-spy-link 
+      v-scroll-spy-active="{class: 'nav-item--active'}"
+    >
       <li class="nav-item">
-        <router-link to="/">  
-          Home
+        <router-link to="/">
+          Home  
         </router-link>
       </li>
       <li class="nav-item">
@@ -28,16 +31,29 @@
 
 
 <style lang="scss">
+  .router-link{
+  }
   .main-nav{
     position:fixed;
     display:flex;
     flex-direction: column;
-    right: 1rem;
-    top: 1rem;
+    right: 3rem;
+    bottom: 3rem;
     z-index: 50;
+    transition: $duration-noticeable; 
+    text-align:right;
+    
 
     .nav-item{
-      color: rgb(random($limit: 255),random($limit: 255),random($limit: 255))
+      list-style-type:none;
+      color: $black;
+      font-size:$fontsize-m;  
+      height: $min-tap;
+
+      &--active{
+        color: $color-green;
+        font-size: $fontsize-l;
+      }
     }
     &--left{
       left:0;
@@ -45,3 +61,14 @@
     }
   }
 </style>
+
+<script>
+export default {
+   data:function(){
+      return{
+        section: 0
+      }
+    },
+}
+</script>
+
