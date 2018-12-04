@@ -101,10 +101,10 @@
 // Add your SVG code here:
 @function border-factory($fill-color,$direction) {
   @if($direction == up){
-    @return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><path fill="' + $fill-color + '"  d="M0 50h100V0z"/></svg>';
+    @return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="' + $fill-color + '"  d="M0 100 Q 100 50 100 0 l100 100z"/></svg>';
   }
   @else{
-    @return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><path fill="' + $fill-color + '" d="M0 0h100V50z"/></svg>';
+    @return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="' + $fill-color + '" d="M0 0 Q 100 0 100 100 l100 0z"/></svg>';
   }
 }
 
@@ -293,29 +293,31 @@ $encoding-reference: (
 
 
 
-@mixin diagonal-end($to,$direction){
+@mixin curved-border($to,$direction){
   $borderup: border-factory($to,$direction);
   $borderdown: border-factory($to,$direction);
   position:relative;
 
   @if ($direction==up) {
-    &:after{
+    &:before{
       background-image: url(svg-encode($borderup));
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: 100% 100%;
+      transform: translate(0,-100%);
       content: "";
       height: 50px;
       position: absolute;
-      bottom: 0;
+      top: 0;
       left:0;
       width: 100%;
       z-index: 1;
     }
   }
   @if ($direction==down) {
-    &:after{
+    &:before{
 
+    transform: translate(0,-100%);
     background-image: url(svg-encode($borderdown));
     background-position: 50%;
     background-repeat: no-repeat;

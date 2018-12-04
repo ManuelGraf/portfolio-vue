@@ -40,6 +40,7 @@ export default {
 <style lang="scss">
 .view--contact {
   background: $color-bluegrey;
+  @include curved-border($color-bluegrey,up)
 }
 </style>
 

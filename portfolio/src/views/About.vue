@@ -24,7 +24,7 @@ import cv from '@/components/Cv.vue';
   $bgcolor-about: $color-petrol;
   $color-about: $color-bluegrey;
   .view--about{
-    @include diagonal-end($color-green,up);
+    @include curved-border($bgcolor-about,up);
     background: $bgcolor-about;
   }
 </style>

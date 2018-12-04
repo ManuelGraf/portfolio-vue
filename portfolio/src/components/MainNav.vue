@@ -42,15 +42,28 @@
     z-index: 50;
     transition: $duration-noticeable; 
     text-align:right;
-    
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing:.1rem;
+    transition: all $duration-complex ease;
+
+
 
     .nav-item{
       list-style-type:none;
-      color: $black;
       font-size:$fontsize-m;  
       height: $min-tap;
+      a{
+        text-decoration:none;
+        color:inherit;
+        a:hover, a:visible{
+          color:white;
+          color: $color-black-lightest;
+        }
+      }
 
       &--active{
+        color: $color-black-lightest;
         color: $color-green;
         font-size: $fontsize-l;
       }

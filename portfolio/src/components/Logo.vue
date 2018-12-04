@@ -110,7 +110,7 @@
 		c0,0.5,0.2,0.801,0.5,1.2c0.7-0.399,1.1-0.7,1.1-1.3c0-0.4-0.2-0.9-0.8-0.9C226.9,263.1,226.6,263.6,226.6,264.1z"
             ></path>
             <path
-              class="subline"
+              class="subline-graf"
               d="M240.3,262.6c0,0.5-0.1,1-0.1,1.9v3.9c0,1.6-0.3,2.5-1,3.1c-0.7,0.6-1.6,0.8-2.5,0.8
 		c-0.8,0-1.7-0.2-2.3-0.6l0.3-0.9c0.4,0.3,1.1,0.5,2,0.5c1.3,0,2.2-0.7,2.2-2.399V268.1l0,0c-0.4,0.601-1.1,1.101-2.2,1.101
 		c-1.7,0-2.9-1.4-2.9-3.3c0-2.301,1.5-3.601,3.1-3.601c1.2,0,1.8,0.601,2.1,1.2l0,0l0.1-1h1.2V262.6z M239,265.2
@@ -118,28 +118,28 @@
 		c0.1-0.2,0.1-0.4,0.1-0.7V265.2z"
             ></path>
             <path
-              class="subline"
+              class="subline-graf"
               d="M242.2,264.7c0-0.8,0-1.5-0.1-2.101h1.1v1.301h0.1c0.3-0.9,1.1-1.5,1.9-1.5c0.1,0,0.2,0,0.4,0v1.199
 		c-0.1,0-0.3,0-0.4,0c-0.9,0-1.5,0.7-1.7,1.601c0,0.2-0.1,0.399-0.1,0.6v3.601h-1.2V264.7z"
             ></path>
             <path
-              class="subline"
+              class="subline-graf"
               d="M250.5,269.3l-0.1-0.899l0,0c-0.4,0.5-1.1,1-2.1,1c-1.4,0-2.1-1-2.1-1.9c0-1.6,1.5-2.5,4.1-2.5v-0.1
 		c0-0.601-0.2-1.601-1.5-1.601c-0.6,0-1.3,0.2-1.8,0.5l-0.3-0.8c0.6-0.4,1.4-0.6,2.2-0.6c2.1,0,2.6,1.399,2.6,2.8v2.5
 		c0,0.6,0,1.2,0.1,1.6H250.5z M250.3,265.9c-1.3,0-2.9,0.199-2.9,1.5c0,0.8,0.5,1.199,1.2,1.199c0.9,0,1.4-0.6,1.6-1.1
 		c0-0.1,0.1-0.3,0.1-0.4V265.9L250.3,265.9z"
             ></path>
             <path
-              class="subline"
+              class="subline-graf"
               d="M253.6,270.9v-11.2h2.601v0.8H254.6v9.6h1.601v0.801H253.6L253.6,270.9z"
             ></path>
             <path
-              class="subline"
+              class="subline-graf"
               d="M257.6,269.3v-5.8h-1v-0.9h1v-0.3c0-1,0.2-1.8,0.801-2.399c0.5-0.4,1.1-0.601,1.699-0.601
 		c0.4,0,0.801,0.101,1.101,0.2l-0.2,1c-0.2-0.1-0.4-0.2-0.8-0.2c-1.101,0-1.3,0.9-1.3,2v0.4h1.6v0.899h-1.6v5.801H257.6V269.3z"
             ></path>
             <path
-              class="subline"
+              class="subline-graf"
               d="M264.8,259.7v11.2h-2.6V270.1h1.6v-9.6h-1.6v-0.8H264.8L264.8,259.7z"
             ></path>
             <path
@@ -209,18 +209,18 @@
       transform: scale(0.4);
     }
     .subline {
-      fill: $white;
+      fill: $color-white;
       height: 0;
       opacity: 0;
     }
     .first-name {
-      fill: $white;
+      fill: $color-white;
     }
     .last-name {
-      fill: $white;
+      fill: $color-white;
     }
     .eye {
-      fill: $white;
+      fill: $color-white;
     }
   }
 }
@@ -228,6 +228,13 @@
   display: inline-block;
   // margin:0 auto;
   .subline {
+    fill: $color-black;
+    transition: width, height $duration-noticeable;
+    opacity: 1;
+    position: relative;
+    top: 100px;
+  }
+  .subline-graf {
     fill: $color-petrol;
     transition: width, height $duration-noticeable;
     opacity: 1;
@@ -235,7 +242,7 @@
     top: 100px;
   }
   .first-name {
-    fill: $black;
+    fill: $color-black;
     transition: fill $duration-complex;
   }
   .last-name {
@@ -243,7 +250,7 @@
     transition: fill $duration-complex;
   }
   .eye {
-    fill: $black;
+    fill: $color-black;
     transition: fill $duration-complex;
   }
 }

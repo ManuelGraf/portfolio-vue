@@ -1,8 +1,8 @@
 
 
 /** COLORS **/
-$white: #f6f6f6;
-$black: #111111;
+$color-white: #f6f6f6;
+$color-black: #111111;
 
 $color-cyan: #1DB8D1;
 $color-magenta: #CC145D;
@@ -10,6 +10,14 @@ $color-yellow: #FCC010;
 $color-petrol: #026064;
 $color-bluegrey: #617D8B;
 $color-green: #ACC913;
+
+$color-white-dark:     darken(   saturate(   $color-petrol, 10%) ,10%);
+$color-white-darker:   darken(   saturate(   $color-petrol, 15%) ,15%);
+$color-white-darkest:  darken(   saturate(   $color-petrol, 20%) ,20%);
+$color-black-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
+$color-black-lighter:  lighten(  desaturate( $color-petrol, 15%) ,15%);
+$color-black-lightest: lighten(  desaturate( $color-petrol, 20%) ,20%);
+
 
 $color-petrol-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
 $color-petrol-lighter:  lighten(  desaturate( $color-petrol, 15%) ,15%);
@@ -75,6 +83,15 @@ $height-logo-tablet: $min-tap;
 $duration-instant: .1s;
 $duration-noticeable: .3s;
 $duration-complex: .7s;
+
+$gs-ap: 61.8%;
+$gs-bp: 38.2%;
+
+$gs-a: 0.618;
+$gs-b: 0.382;
+
+$gn: 1.618;
+
 
 
 @mixin alphaColorBackground($color, $alpha){

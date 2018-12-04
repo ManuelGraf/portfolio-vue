@@ -6,7 +6,7 @@
   $bgcolor-gallery: $color-green;
   $color-gallery: $color-bluegrey;
   .view--gallery{
-    @include diagonal-end($color-bluegrey,up);
+    @include curved-border($color-bluegrey,up);
     background: $bgcolor-gallery;
   }
 </style>
