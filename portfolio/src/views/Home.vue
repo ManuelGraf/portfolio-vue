@@ -23,7 +23,12 @@ export default {
 $color-home: $color-petrol;
 .view--home{
   background:white;
+
   #portrait{
+    @include viewport-tablet{
+        width:auto;
+        height:$gs-bp;
+    }
     width: $gs-ap;
     position:absolute;
     bottom:0;
@@ -32,6 +37,9 @@ $color-home: $color-petrol;
     }
 
   }
+}
+@include viewport-print{
+
 }
 
 

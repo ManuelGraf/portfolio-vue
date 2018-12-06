@@ -14,7 +14,7 @@
       </li>
       <li class="nav-item">
         <router-link to="/about" class="nav-item-flex">  
-         <span  class="nav-item__icon fa fa-home"></span> 
+         <span  class="nav-item__icon fa fa-info"></span> 
           <transition name="collapse">
             <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">About</span>
           </transition>  
@@ -22,7 +22,7 @@
       </li>
       <li class="nav-item">
         <router-link to="/gallery" class="nav-item-flex">  
-          <span  class="nav-item__icon fa fa-home"></span> 
+          <span  class="nav-item__icon fa fa-briefcase"></span> 
           <transition name="collapse">
             <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Gallery</span>
           </transition>  
@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item">
         <router-link to="/contact" class="nav-item-flex">  
-          <span class="nav-item__icon fa fa-home"></span> 
+          <span class="nav-item__icon fa fa-at"></span> 
           <transition name="collapse">
             <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Contact</span>
           </transition>  
@@ -54,7 +54,7 @@
 }
 .collapse-enter-active,
 .collapse-leave-active {
-  transition: max-width 1s ease;
+  transition: max-width $duration-noticeable ease;
 }
 
 .main-nav {
@@ -65,7 +65,6 @@
 
   position: fixed;
   bottom: 3rem;
-  padding-right: 1rem;
   display: flex;
   flex-direction: column;
   right: 0;
@@ -75,21 +74,26 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   transition: all $duration-complex ease;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: $min-tap /2;
+  border-bottom-left-radius: $min-tap /2;
+  margin:0;
+  padding: 0 1rem 0 1rem;
+
   .nav-items {
-    @extend %is-gooey;
+    padding: 0;
+    margin:0;
   }
   .nav-item {
     list-style-type: none;
     font-size: $fontsize-m;
     height: $min-tap;
 
-    .nav-item-flex {
+    &-flex {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      color: $color-white-darkest;
     }
 
     &__label {
@@ -97,42 +101,42 @@
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
+      color: $color-black-lightest;
     }
 
     &__icon {
       width: $min-tap;
       transition: all $duration-complex ease;
+      display: none;
     }
     a {
-      padding: 5px 10px;
+      $color: $color-white;
       text-decoration: none;
-      color: inherit;
       transition: all $duration-noticeable ease;
     }
-
-    &--active {
-      color: $color-black-lightest;
-      color: $color-green;
-      font-size: $fontsize-l;
+  }
+  .nav-item--active {
+    color: $color-petrol;
+    font-size: $fontsize-l;
+    .nav-item-flex{
+      color: $color-white;
     }
   }
-  &--left {
-    left: 0;
-    right: auto;
-  }
-
-  &.is-collapsed {
-    color: $color-white;
-
-    .nav-item {
-      a {
-        border-radius: 50%;
-        border-bottom-left-radius: 20px;
-        width: 44px;
-        height: 44px;
-        filter: url(#goo);
-        background: rgba($color-black, 0.7);
-      }
+}
+.main-nav.is-collapsed {
+  background: $color-black-light;
+  border-top-left-radius: $min-tap /2;
+  border-bottom-left-radius: $min-tap /2;
+  padding:0;
+  .nav-item {
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-item-flex {
+      width: 44px;
+      height: 44px;
     }
     .nav-item--is-active {
       a {
