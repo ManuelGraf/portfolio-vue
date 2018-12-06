@@ -72,13 +72,13 @@
     font-size: $fontsize-s;
   }
   .subline-graf {
-    color: $color-petrol;
+    color: $color-green;
   }
   .first-name {
     color: $color-black-light;
   }
   .last-name {
-    color: $color-petrol;
+    color: $color-green;
   }
 
   .logo-icon {

@@ -1,12 +1,26 @@
 <template>
   <div id='about' class="view view--about" v-scroll-spy>
-    <h1>Hello World!</h1>
-    <section>
-
-    </section>
-    <h2>Welcome to my page</h2>
-    <h3>Curriculum Vitae</h3>
-    <cv> </cv>
+    <div class="view__content">
+      <section class="about-info" id="info">
+        <div class="about-info__row row">
+          <div class="">
+            Manuel Graf
+          </div>
+        </div>
+        <div class="about-info__row row">
+          <div class="">
+            <PhoneNumber></PhoneNumber>
+          </div>
+        </div>
+        <div class="about-info__row row">
+          <div class="">
+            M.Sc. Medieninformatik
+          </div>
+        </div>
+      </section>
+      <h3>Curriculum Vitae</h3>
+      <cv> </cv>
+    </div>
   </div>
 </template>
 
@@ -15,16 +29,17 @@
 import cv from '@/components/Cv.vue';
   export default {
     components:{
-      cv
+      cv,
     }
   }
 </script>
 
 <style lang="scss">
-  $bgcolor-about: $color-petrol;
-  $color-about: $color-bluegrey;
+  $bgcolor-about: $color-green;
+  $color-about: $color-green-darkest;
   .view--about{
     @include curved-border($bgcolor-about,up);
     background: $bgcolor-about;
+    color: $color-green-darkest;
   }
 </style>

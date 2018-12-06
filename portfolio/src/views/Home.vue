@@ -20,9 +20,14 @@ export default {
 </script>
 
 <style lang="scss">
-$color-home: $color-petrol;
+$color-home: $color-green;
 .view--home{
   background:white;
+  @include viewport-print{
+    #particle-background{
+      display:none;
+    }
+  }
 
   #portrait{
     @include viewport-tablet{
@@ -35,15 +40,8 @@ $color-home: $color-petrol;
     .logo-color-1{
       fill:$color-home
     }
-
   }
 }
-@include viewport-print{
-
-}
-
-
-
   
 </style>
                     

@@ -2,5 +2,8 @@
   display:block;
   position:relative;
   min-height: 100vh;
-  font-family:'Open Sans'
+  font-family:'Open Sans';
+  &__content{
+    padding: 16.18%;
+  }
 }
