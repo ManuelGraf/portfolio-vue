@@ -20,7 +20,20 @@ export default {
 </script>
 
 <style lang="scss">
-$color-home: $color-green;
+
+$bgcolor: $color-white;
+$color: $color-black-lighter;
+$color-spot: $color-green;
+.view--home{
+  @include curved-border($bgcolor,up);
+  background: $bgcolor;
+  color: $color-green-darkest;
+
+  a, a:visited, a:hover{
+    color: $color-spot;
+  }
+}
+
 .view--home{
   background:white;
   @include viewport-print{
@@ -38,7 +51,7 @@ $color-home: $color-green;
     position:absolute;
     bottom:0;
     .logo-color-1{
-      fill:$color-home
+      fill: $color-spot
     }
   }
 }

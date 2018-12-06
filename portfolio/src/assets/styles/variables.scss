@@ -56,7 +56,7 @@ $color-blue-darkest:  darken(   saturate(   $color-bluegrey, 20%) ,20%);
 
 $color-green-light:    lighten(  desaturate( $color-green, 10%) ,10%);
 $color-green-lighter:  lighten(  desaturate( $color-green, 15%) ,15%);
-$color-green-lightest: lighten(  desaturate( $color-green, 20%) ,20%);
+$color-green-lightest: lighten(  desaturate( $color-green, 20%) ,45%);
 $color-green-dark:     darken(   saturate(   $color-green, 10%) ,10%);
 $color-green-darker:   darken(   saturate(   $color-green, 15%) ,15%);
 $color-green-darkest:  darken(   saturate(   $color-green, 20%) ,20%);
