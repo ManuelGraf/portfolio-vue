@@ -45,16 +45,16 @@ import cv from '@/components/Cv.vue';
 </script>
 
 <style lang="scss">
-  $bgcolor-about: $color-green;
-  $color-about: $color-green-darkest;
-  $color-about-spot: $color-black;
+  $bgcolor: $color-green;
+  $color: $color-green-darkest;
+  $color-spot: $color-black;
   .view--about{
-    @include curved-border($bgcolor-about,up);
-    background: $bgcolor-about;
+    @include curved-border($bgcolor,up);
+    background: $bgcolor;
     color: $color-green-darkest;
 
     a, a:visited, a:hover{
-      color: $color-about-spot;
+      color: $color-spot;
     }
   }
 
