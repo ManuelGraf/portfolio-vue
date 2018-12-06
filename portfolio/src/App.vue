@@ -5,16 +5,17 @@ import ViewContainer from '@/views/ViewContainer.vue'
 
 import MainNav from '@/components/MainNav.vue'
 import Logo from '@/components/Logo.vue'
-import InViewPortDirective from 'vue-in-viewport-directive'
 
+import InViewPortDirective from 'vue-in-viewport-directive'
 Vue.directive('in-viewport', InViewPortDirective)
+
 export default {
     name: 'app',
     components: {
       ViewContainer,
       MainNav,
-      Logo,
-      InViewPortDirective
+      InViewPortDirective,
+      Logo
     },
     data:function(){
       return{

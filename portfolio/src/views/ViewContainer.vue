@@ -24,6 +24,19 @@ import Contact from '@/views/Contact.vue'
             About,
             Gallery,
             Contact
+        },
+        render(){
+            vh = document.documentElement.clientHeight;
+            vw = document.documentElement.clientWidth;
+            this.$state.commit('updateViewPort',{height:vh,width:w})
+        },
+        computed:{
+            vh: function(){
+                return this.$state.viewport.height;
+            },
+            vw: function(){
+                return this.$state.viewport.width;
+            }
         }
     }
 </script>

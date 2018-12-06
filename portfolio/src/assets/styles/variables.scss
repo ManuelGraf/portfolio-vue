@@ -11,12 +11,12 @@ $color-petrol: #026064;
 $color-bluegrey: #617D8B;
 $color-green: #ACC913;
 
-$color-white-dark:     darken(   saturate(   $color-petrol, 10%) ,10%);
-$color-white-darker:   darken(   saturate(   $color-petrol, 15%) ,15%);
-$color-white-darkest:  darken(   saturate(   $color-petrol, 20%) ,20%);
-$color-black-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
-$color-black-lighter:  lighten(  desaturate( $color-petrol, 15%) ,15%);
-$color-black-lightest: lighten(  desaturate( $color-petrol, 20%) ,20%);
+$color-white-dark:     darken(  $color-white ,15%);
+$color-white-darker:   darken(  $color-white ,30%);
+$color-white-darkest:  darken(  $color-white ,45%);
+$color-black-light:    lighten( $color-black ,15%);
+$color-black-lighter:  lighten( $color-black ,30%);
+$color-black-lightest: lighten( $color-black ,45%);
 
 
 $color-petrol-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
@@ -63,14 +63,13 @@ $color-green-darkest:  darken(   saturate(   $color-green, 20%) ,20%);
 
 $scrollbar-crop: 35px;
 
-$fontsize-base: 12px;
-$fontsize-text: $fontsize-base;
-$fontsize-m: $fontsize-base * 1.2;
-$fontsize-s: $fontsize-base * 0.8;
-$fontsize-xs: $fontsize-s * 0.8;
-$fontsize-l: $fontsize-m * 1.2;
-$fontsize-xl: $fontsize-l * 1.2;
-$fontsize-xxl: $fontsize-xl * 1.2;
+$fontsize-base: 16px;
+$fontsize-m: $fontsize-base;
+$fontsize-s: $fontsize-m * 0.618;
+$fontsize-xs: $fontsize-s * 0.618;
+$fontsize-l: $fontsize-m * 1.618;
+$fontsize-xl: $fontsize-l * 1.618;
+$fontsize-xxl: $fontsize-xl * 1.1618;
 
 // DIMENSIONS
 $min-tap: 44px;

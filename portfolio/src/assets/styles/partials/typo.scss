@@ -6,3 +6,23 @@ a:visited{
     color: $color-cyan;
     ;
 }
+
+body{
+    h1{
+        font-size:$fontsize-xxl;
+    }
+    h2{
+        font-size:$fontsize-xl;
+    }
+    h3{
+        font-size:$fontsize-l;
+    }
+    h4{
+        font-size:$fontsize-m;
+        font-weight:500;
+    }
+    h5{
+        font-size:$fontsize-xl;
+    }
+
+}

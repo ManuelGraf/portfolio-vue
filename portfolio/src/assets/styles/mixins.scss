@@ -4,7 +4,6 @@
   margin: 0;
 }
 
-
 @mixin gradient ($color1, $color2, $height:90px, $width:100vw) {
   width: 0;
   height: 0;
@@ -81,11 +80,22 @@
     @content;
   }
 }
+
 @mixin viewport-print(){
   @media only print {
     @content;
   }
 }
+
+
+@function goo-factory() {
+  @return '<svg xmlns="http://www.w3.org/2000/svg" version="1.1">  <defs>    <filter id="goo">      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />      <feBlend in="SourceGraphic" in2="goo" />    </filter>  </defs></svg>';
+}
+%is-gooey{
+  filter: url(svg-encode(goo-factory()));
+}
+
+
 
 
 /**
