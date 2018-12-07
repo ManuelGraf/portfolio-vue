@@ -1,7 +1,9 @@
 <template>
   <div class="view view--home" id="Home">
     <particle-background></particle-background>
-    <Portrait></Portrait>
+    <div class="view__content">
+      <Portrait></Portrait>
+    </div>
   </div>
 </template>
 
@@ -35,13 +37,16 @@ $color-spot: $color-green;
 }
 
 .view--home{
+
   background:white;
   @include viewport-print{
     #particle-background{
       display:none;
     }
   }
-
+  .view__cotainer{
+    justify-content: flex-end;
+  }
   #portrait{
     @include viewport-tablet{
         width:auto;
