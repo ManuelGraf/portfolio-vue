@@ -74,7 +74,7 @@
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  transition: all $duration-complex ease;
+  transition: all $duration-noticeable ease;
   border-top-left-radius: $min-tap /2;
   border-bottom-left-radius: $min-tap /2;
   margin:0;
@@ -109,8 +109,10 @@
 
     &__icon {
       width: $min-tap;
-      transition: all $duration-complex ease;
+      transition: all $duration-noticeable ease;
       display: none;
+      border-radius: 50%;
+
     }
     a {
       $color: $color-white;
@@ -126,29 +128,34 @@
   }
 }
 .main-nav.is-collapsed {
-  background: $color-black-light;
-  border-top-left-radius: $min-tap /2;
-  border-bottom-left-radius: $min-tap /2;
   padding:0;
-  right:22px;
+  right:$min-tap * $gs-a;
+
   .nav-item {
     &__icon {
       display: flex;
       justify-content: center;
       align-items: center;
+      width: $min-tap;
+      height: $min-tap;
     }
     .nav-item-flex {
-      width: 44px;
-      height: 44px;
+      width: $min-tap;
+      height: $min-tap;
     }
     &--active {
-      font-size: $fontsize-l;
       .nav-item__icon{
+        transition: all $duration-noticeable ease;
+        border-radius: 50%;
+        color: $color-white;
+        background: rgba($color-black-light,.8);
+        font-size: $fontsize-xl;
+        width: $min-tap * 1.1;
+        height: $min-tap * 1.1;
+        flex-grow:0;
+        flex-shrink:0;
+
         font-size: 1.382em;
-      }
-      a {
-        width: 66px;
-        height: 66px;
       }
     }
   }
