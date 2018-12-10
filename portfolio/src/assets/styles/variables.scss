@@ -47,12 +47,12 @@ $color-yellow-dark:     darken(   saturate(   $color-yellow, 10%) ,10%);
 $color-yellow-darker:   darken(   saturate(   $color-yellow, 15%) ,15%);
 $color-yellow-darkest:  darken(   saturate(   $color-yellow, 20%) ,20%);
 
-$color-blue-light:    lighten(  desaturate( $color-bluegrey, 10%) ,10%);
-$color-blue-lighter:  lighten(  desaturate( $color-bluegrey, 15%) ,15%);
-$color-blue-lightest: lighten(  desaturate( $color-bluegrey, 20%) ,20%);
-$color-blue-dark:     darken(   saturate(   $color-bluegrey, 10%) ,10%);
-$color-blue-darker:   darken(   saturate(   $color-bluegrey, 15%) ,15%);
-$color-blue-darkest:  darken(   saturate(   $color-bluegrey, 20%) ,20%);
+$color-bluegrey-light:    lighten(  desaturate( $color-bluegrey, 10%) ,10%);
+$color-bluegrey-lighter:  lighten(  desaturate( $color-bluegrey, 15%) ,15%);
+$color-bluegrey-lightest: lighten(  desaturate( $color-bluegrey, 20%) ,20%);
+$color-bluegrey-dark:     darken(   saturate(   $color-bluegrey, 10%) ,10%);
+$color-bluegrey-darker:   darken(   saturate(   $color-bluegrey, 15%) ,15%);
+$color-bluegrey-darkest:  darken(   saturate(   $color-bluegrey, 20%) ,20%);
 
 $color-green-light:    lighten(  desaturate( $color-green, 10%) ,10%);
 $color-green-lighter:  lighten(  desaturate( $color-green, 15%) ,15%);
