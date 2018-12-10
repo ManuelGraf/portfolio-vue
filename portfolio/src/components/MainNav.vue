@@ -64,20 +64,22 @@
   }
 
   position: fixed;
-  bottom: 3rem;
+  top: $gs-ap;
   display: flex;
   flex-direction: column;
-  right: 0;
+  right: 50%;
+  transform: translate3D(50%,0,0);
   z-index: 50;
   text-align: left;
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  transition: all $duration-complex ease;
+  transition: all $duration-noticeable ease;
   border-top-left-radius: $min-tap /2;
   border-bottom-left-radius: $min-tap /2;
   margin:0;
   padding: 0 1rem 0 1rem;
+    mix-blend-mode: multiply;
 
   .nav-items {
     padding: 0;
@@ -87,6 +89,7 @@
     list-style-type: none;
     font-size: $fontsize-m;
     height: $min-tap;
+
 
     &-flex {
       display: flex;
@@ -106,8 +109,10 @@
 
     &__icon {
       width: $min-tap;
-      transition: all $duration-complex ease;
+      transition: all $duration-noticeable ease;
       display: none;
+      border-radius: 50%;
+
     }
     a {
       $color: $color-white;
@@ -117,36 +122,40 @@
   }
   .nav-item--active {
     color: $color-petrol;
-    font-size: $fontsize-l;
     .nav-item-flex{
       color: $color-white;
     }
   }
 }
 .main-nav.is-collapsed {
-  background: $color-black-light;
-  border-top-left-radius: $min-tap /2;
-  border-bottom-left-radius: $min-tap /2;
   padding:0;
+  right:$min-tap * $gs-a;
+
   .nav-item {
     &__icon {
       display: flex;
       justify-content: center;
       align-items: center;
+      width: $min-tap;
+      height: $min-tap;
     }
     .nav-item-flex {
-      width: 44px;
-      height: 44px;
+      width: $min-tap;
+      height: $min-tap;
     }
-    .nav-item--is-active {
-      a {
+    &--active {
+      .nav-item__icon{
+        transition: all $duration-noticeable ease;
         border-radius: 50%;
-        border-bottom-left-radius: 20px;
-        width: 66px;
-        height: 66px;
-        font-size: $fontsize-l;
-        filter: url(#goo);
-        background: rgba($color-black, 0.7);
+        color: $color-white;
+        background: rgba($color-black-light,.8);
+        font-size: $fontsize-xl;
+        width: $min-tap * 1.1;
+        height: $min-tap * 1.1;
+        flex-grow:0;
+        flex-shrink:0;
+
+        font-size: 1.382em;
       }
     }
   }

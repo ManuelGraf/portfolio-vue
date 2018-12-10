@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" v-in-viewport='-300'>
+  <div class="logo" v-in-viewport='-500'>
     <div class="logo-flex">
       <router-link to="/">
         <div class="logo-icon">
@@ -148,6 +148,9 @@ export default {
     return {};
   },
   computed: {
+    viewPortHeight:function(){
+      // return this.$state.viewport.width;
+    },
     notCollapsed: function() {
       return this.$element.hasClass("in-viewport");
     }

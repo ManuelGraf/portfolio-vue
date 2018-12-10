@@ -3,7 +3,18 @@
   position:relative;
   min-height: 100vh;
   font-family:'Open Sans';
-  &__content{
-    padding: 16.18%;
+  padding-right:$min-tap + 20;
+}
+
+.view__content{
+  @include viewport-tablet{
+    width: $width-content-tablet;
+    flex-direction:row;
   }
+  flex-direction:column;
+  display:flex;
+  justify-content:space-around;
+  height:100%;
+  width:100%;
+  position:relative;
 }
