@@ -41,7 +41,7 @@ import Contact from '@/views/Contact.vue'
     }
 </script>
 
-<style scoped>
+<style>
 .over{
     position:fixed;
 }

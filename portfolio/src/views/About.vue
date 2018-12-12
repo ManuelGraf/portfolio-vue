@@ -1,6 +1,9 @@
 <template>
   <div id='about' class="view view--about" v-scroll-spy>
     <div class="view__content">
+      <section class="about-portrait">
+        <Portrait></Portrait>
+      </section>
       <section class="about-info" id="info">
         <div class="about-info__row row" 
           v-for="i in info" 
@@ -21,11 +24,12 @@
 
 
 <script>
-
 import cv from '@/components/Cv.vue';
+import Portrait from '@/components/Portrait.vue';
   export default {
     components:{
-      cv      
+      cv,
+      Portrait
     },
     data: function(){
       return {
@@ -45,16 +49,31 @@ import cv from '@/components/Cv.vue';
 </script>
 
 <style lang="scss">
-  $bgcolor: $color-green;
-  $color: $color-green-darkest;
+  $bg-about: $color-green;
+  $color-about: $color-green-darkest;
   $color-spot: $color-black;
   .view--about{
-    @include curved-border($bgcolor,up);
-    background: $bgcolor;
-    color: $color-green-darkest;
+    @include curved-border($bg-about,up);
+    background: $bg-about;
+    color: $color-about;
 
     a, a:visited, a:hover{
       color: $color-spot;
+    }
+  }
+  .about-portrait{
+    background: $color-white;
+    border-radius: 50%;
+    padding:10px;
+    width:250px;
+    height:250px;
+    overflow: hidden;
+
+    #portrait{
+      height:100%;
+      position:relative;
+      bottom:-20px;
+      left: -20px;
     }
   }
 

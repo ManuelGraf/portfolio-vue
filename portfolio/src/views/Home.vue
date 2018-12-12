@@ -1,22 +1,39 @@
 <template>
   <div class="view view--home" id="Home">
-    <particle-background></particle-background>
-    <div class="view__content">
-      <Portrait></Portrait>
-    </div>
+    <vue-particles
+        v-show="height"
+        color="#dedede"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#dedede"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="2"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+      >
+      </vue-particles>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ParticleBackground from '@/components/ParticleBackground.vue'
-import Portrait from '@/components/Portrait.vue'
 
 export default {
   name: 'home',
   components: {
-    ParticleBackground,
-    Portrait
+
+  },
+  computed:{
+    height(){
+      return window.clientHeight;
+    }
   }
 }
 </script>
@@ -39,13 +56,11 @@ $color-spot: $color-green;
 .view--home{
 
   background:white;
+  height:100vh;
   @include viewport-print{
     #particle-background{
       display:none;
     }
-  }
-  .view__cotainer{
-    justify-content: flex-end;
   }
   #portrait{
     @include viewport-tablet{

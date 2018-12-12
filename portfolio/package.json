@@ -16,6 +16,7 @@
     "screen-orientation": "^1.0.3",
     "three": "^0.99.0",
     "three-orbitcontrols": "^2.99.1",
+    "viewport-size": "0.0.1",
     "vue": "^2.5.17",
     "vue-dragscroll": "^1.8.1",
     "vue-in-viewport-directive": "^1.2.1",
@@ -38,6 +39,7 @@
     "sass-loader": "^7.1.0",
     "sharp": "^0.21.0",
     "style-loader": "^0.23.1",
+    "vue-particles": "^1.0.9",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {

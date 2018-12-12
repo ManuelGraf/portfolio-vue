@@ -10,6 +10,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import store from './store'
 
+import VueParticles from 'vue-particles';
+Vue.use(VueParticles);
+
 
 
 Vue.config.productionTip = false

@@ -1,4 +1,4 @@
-import THREE from 'three';
+import * as THREE from 'three';
 import vector from '@/modules/VectorStore.js'
 import OrbitControls from 'three-orbitcontrols'
 import TWEEN from '@tweenjs/tween.js'
@@ -568,7 +568,7 @@ const GlobeComponentController = class {
           });
         }
       }
-    };
+    }
   }
 
   /**
@@ -651,7 +651,7 @@ const GlobeComponentController = class {
   
       
       // we assume the data to be flattened already as it is bound with flatten filter
-      angular.forEach(markersArray, cluster => {
+      for(let cluster of markersArray) {
         if(typeof(cluster) === 'object'){ // IE11 angular.foreach also iterates over unique id, which is a number.
           self.placeMarker(this.markers, {
             longitude: cluster.location.x,
@@ -667,7 +667,7 @@ const GlobeComponentController = class {
             name: cluster.label
           })
         }
-      });
+      }
     }
   }
 

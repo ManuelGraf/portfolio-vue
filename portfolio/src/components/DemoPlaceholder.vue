@@ -5,11 +5,11 @@
   </div>
   <div  
     v-show="isCollapsed"
-    @click="toggle" 
-    slot="text">
+    @click="toggle" >
+    <slot name="placeholder"></slot>
   </div>
-  <div slot="demo">
-  </div>
+  <slot name="demo">
+  </slot>
 </div>
 </template>
 

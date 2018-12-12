@@ -108,7 +108,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: function(){
+    return {}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -119,7 +123,7 @@ export default {};
         height:100%;
     }
     .logo-color-1{
-        fill: $color-white;
+        fill: $color-green;
     }
 }
 </style>
