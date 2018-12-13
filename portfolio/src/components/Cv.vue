@@ -1,11 +1,12 @@
 <template>
 <div class="cv">
+  total months: {{totalWorkMonths}}
   <ul class="cv__jobs">
     <li class="job" 
       v-for="job in jobs" 
       :key="job.id"
     >
-      <span class="job__date">from {{job.end_date_month}}/{{job.end_date_year}} to {{job.start_date_month}}/{{job.start_date_year}}</span>
+      <span class="job__date">{{calcDuration(job)}}</span>
       <span class="job__company">
         <a v-bind:href="job.company_url">
           {{job.company_name}}
@@ -35,20 +36,66 @@
 </template>
 
 <style lang="scss" scoped>
-  .cv{
-
+  $bubblebasesize: 50px;
+  $bubblemaxsize: 100px;
+  .cv__jobs{
+    display: flex;
+    flex-direction: column;
+    list-style:none;
+    padding-left: ($bubblebasesize * 1.2);
+  }  
+  .job{
+    position:relative;
+    transition: all $duration-noticeable ease;
+    &__date{
+      border-radius:50%;
+      background: $color-white;
+      width: $bubblebasesize;
+      height: $bubblebasesize;
+      position:absolute;
+      left: - $bubblebasesize;
+    }
   }
   .tech-icon{
     height: $min-tap /2;
     width: auto;
-    
   }
 
 </style>
 
 <script>
+import moment from 'moment';
   export default {
     name:'cv',
+    methods:{
+      calcSize(job){
+        return {
+
+        }
+      },
+      calcDuration(job){
+        let begin = new Date();
+        let end = new Date();
+
+        begin.setFullYear(job.begin_date_year);
+        begin.setMonth(job.begin_date_month);
+        if(job.end_date_year){
+          end.setFullYear(job.end_date_year);
+          end.setMonth(job.end_date_month);
+        }
+
+
+      }
+    },
+    filters:{
+
+    },
+    computed:{
+      totalWorkMonths: function(){
+        let first = this.jobs[this.jobs.length-1];
+        return moment().year(first.begin_date_year).month(first.begin_date_month).fromNow();
+      }
+    },
     data: function(){
       return {
         jobs: [
@@ -119,6 +166,29 @@
             "current_company": false,
             "discipline_id": 1011,
             "techstack": ['html5','scss','angularjs','jenkins','php','java','spring','hibernate']
+          },
+          {
+            "id": 12160791,
+            "company_city": null,
+            "company_country": null,
+            "company_logo": "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
+            "company_name": "SnipClip GmbH",
+            "company_notes": "Web and Flash Freelancer",
+            "company_size_id": 3,
+            "company_url": "http://www.snipclip.com",
+            "job_title": "Flash Developer",
+            "level_id": 2,
+            "org_type_id": 4,
+            "primary_job": false,
+            "status_id": 1,
+            "industry_id": 110300,
+            "begin_date_year": 2011,
+            "begin_date_month": 5,
+            "end_date_year": 2012,
+            "end_date_month": 5,
+            "current_company": false,
+            "discipline_id": null,
+            "techstack": ['flash','css','jquery','php']
           },
           {
             "id": 12160791,
