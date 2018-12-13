@@ -1,5 +1,5 @@
 <template>
-  <div class="view view--home" id="Home">
+  <div class="view view--home" id="Home" v-in-viewport>
     <vue-particles
         v-show="height"
         color="#dedede"
@@ -54,9 +54,14 @@ $color-spot: $color-green;
 }
 
 .view--home{
-
+  transition:all $duration-complex eaase;
   background:white;
-  height:100vh;
+  min-height:38vh;
+  height: 100vh;
+  &.above-viewport{
+    height: 38vh;
+  }
+
   @include viewport-print{
     #particle-background{
       display:none;

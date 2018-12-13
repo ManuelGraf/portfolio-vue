@@ -72,12 +72,10 @@
   }
 }
 
-@mixin viewport-tablet($orientation:landscape){
-  @media only screen and (orientation: portrait) and (min-width: 768px) and (min-height: 1024px) {
-    @content;
-  }
-  @media only screen and (orientation: landscape) and (min-width: 1024px) and (min-height: 768px) {
-    @content;
+@mixin viewport-tablet{
+  @media screen and (orientation: portrait) and (min-height: 751px),
+  screen and (min-width: 751px){
+    @content
   }
 }
 

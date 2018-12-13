@@ -1,21 +1,23 @@
 <template>
   <div id='about' class="view view--about" v-scroll-spy>
     <div class="view__content">
-      <section class="about-portrait">
-        <Portrait></Portrait>
-      </section>
-      <section class="about-info" id="info">
-        <div class="about-info__row row" 
-          v-for="i in info" 
-          :key="i.label"
-        >
-          <div :class="'about-info__'+i.icon">
-            <span :class="'about-info__icon fas fa-'+i.icon"></span>                
-            <span class="about-info__content" v-html="i.content"></span>                
-          </div>
+      <div class="about__header">
+        <div class="about__portrait">
+          <Portrait></Portrait>
         </div>
-       
-      </section>
+        <section class="about__info" id="info">
+          <div class="about__info__row row" 
+            v-for="i in info" 
+            :key="i.label"
+          >
+            <div :class="'about__info__'+i.icon">
+              <span :class="'about__info__icon fas fa-'+i.icon"></span>                
+              <span class="about__info__content" v-html="i.content"></span>                
+            </div>
+          </div>
+        
+        </section>
+      </div>
       <h3>Curriculum Vitae</h3>
       <cv> </cv>
     </div>
@@ -52,8 +54,38 @@ import Portrait from '@/components/Portrait.vue';
   $bg-about: $color-green;
   $color-about: $color-green-darkest;
   $color-spot: $color-black;
+
+  .about__header{
+    @include viewport-tablet{
+      flex-direction: row        
+    }
+    flex-direction: column;        
+    display:flex;
+    align-items: center;
+    justify-content: center
+  }
+
+  .about__info{
+    margin: 2rem 2rem 2rem 10%;
+
+    &__row{
+      position:relative;
+      margin:5px;
+      display:flex;
+    }
+    &__icon{
+      position:absolute;
+      left: 0px;
+      top:5px;
+      transform:translate3d(-150%,0,0)
+    }
+
+  }
   .view--about{
     @include curved-border($bg-about,up);
+    @include viewport-tablet{
+      flex-direction: column;
+    }
     background: $bg-about;
     color: $color-about;
 
@@ -61,19 +93,17 @@ import Portrait from '@/components/Portrait.vue';
       color: $color-spot;
     }
   }
-  .about-portrait{
+  .about__portrait{
     background: $color-white;
     border-radius: 50%;
-    padding:10px;
-    width:250px;
-    height:250px;
+    width: $gs-bp;
     overflow: hidden;
+    float:left;
 
     #portrait{
       height:100%;
       position:relative;
-      bottom:-20px;
-      left: -20px;
+      transform:translate3D(0, 0, 0)
     }
   }
 

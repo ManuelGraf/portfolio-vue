@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Bootstrap from 'bootstrap-vue'
 // https://www.npmjs.com/package/vue2-scrollspy
 import Scrollspy, { Easing }  from 'vue2-scrollspy'
 
@@ -11,7 +10,6 @@ import ContactScreen from './views/Contact.vue'
 import CV from './components/Cv.vue'   
 
 Vue.use(Router)
-Vue.use(Bootstrap)
 Vue.use(Scrollspy, {
   easing: Easing.Cubic.In
 })

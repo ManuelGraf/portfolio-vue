@@ -102,12 +102,13 @@
     position: fixed;
     z-index: 49;
     top: 0;
-    height: 30px;
+    height: 45px;
     // padding:10px;
-    background-color: rgba($color-black-light,1);
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF'  d='M0 0 Q 50 100 100 0 L 0 0z'/%3E%3C/svg%3E");
     height: 30px;
     flex-direction: row;
     justify-content: center;
+    padding-bottom:30px;
   }
 
   .subline {
@@ -132,9 +133,6 @@
       height: 12px;
       padding:0;
       margin:0;
-      path {
-        fill: white;
-      }
     }
   }
 }

@@ -6,11 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     viewport:{
-      breakpoint:String,
-      height:Number,
-      orientation:{direction:String,version:String},
-      sections:Array,
-      width:Number,
+      breakpoint: String,
+      height: Number,
+      orientation:{direction: String,version: String},
+      sections: Array,
+      width: Number,
     },
     currentSection:String
   },
@@ -23,8 +23,5 @@ export default new Vuex.Store({
     setCurrentView(state, sectionId){
       state = sectionId;
     }
-  },
-  actions: {
-
   }
 })
