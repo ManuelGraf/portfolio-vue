@@ -97,6 +97,7 @@ export default {
 
 
 <style lang="scss" >
-
+@import 'src/assets/styles/partials/view';
+@import 'src/assets/styles/partials/typo';
 </style>
 
