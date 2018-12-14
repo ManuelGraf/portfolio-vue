@@ -5,29 +5,35 @@
 
 a{
     color:$color-petrol;
+    text-decoration:none;
 }
 
 a:visited{
     color: $color-cyan;
-    ;
+    text-decoration:none;
 }
 
 body{
     h1{
         font-size:$fontsize-xxl;
+        font-family: $font-condensed;
     }
     h2{
         font-size:$fontsize-xl;
+        font-family: $font-condensed;
     }
     h3{
         font-size:$fontsize-l;
+        font-family: $font-condensed;
     }
     h4{
         font-size:$fontsize-m;
         font-weight:500;
+        font-family: $font-condensed;
     }
     h5{
         font-size:$fontsize-xl;
+        font-family: $font-condensed;
     }
 
 }

@@ -63,6 +63,10 @@ $color-green-darkest:  darken(   saturate(   $color-green, 20%) ,20%);
 
 $scrollbar-crop: 35px;
 
+$font-base: 'Open Sans';
+$font-condensed: 'Oswald';
+$font-serif: 'Cookie';
+
 $fontsize-base: 16px;
 $fontsize-m: $fontsize-base;
 $fontsize-s: $fontsize-m * 0.618;

@@ -1,21 +1,32 @@
 <template>
   <div class="cv">
-    total months: {{totalWorkMonths}}
+    I worked a total of {{totalWorkMonths}} months since {{since }}
     <ul class="cv__jobs">
       <li class="job" v-for="(job, index) in jobs" :key="index">
-        <span class="job__date">{{calcDuration(job)}} mo</span>
+        <div class="job__duration" :style="calcSize(job)">
+          <div class="job__duration-months">
+            {{job.end_date_month + calcDuration(job)}}
+          </div>
+          <div class="job__duration-unit">
+            months
+          </div> 
+        </div>
         <a v-bind:href="job.company_url">
           <h4 class="job__company">{{job.company_name}}</h4>
         </a>
         <div class="job__description">
-          <div class="job__teaser">{{job.company_notes}}</div>
+          <div class="job__teaser">
+            {{job.company_notes}}
+          </div>
           <div class="job__tech">
+            <strong v-if="job.techstack">Genutzte Technologie:</strong>    
             <ul class="tech-list">
-              <li>
+              <li
+                v-for="tech in job.techstack"
+                :key="tech"
+              >
                 <img
                   class="tech-list__tech"
-                  v-for="tech in job.techstack"
-                  :key="tech"
                   v-bind:src="`/img/icons/skills/${tech}.png`"
                   :alt="tech"
                   :title="`My work at ${job.company_name} involved ${tech}`"
@@ -42,16 +53,16 @@ $bubblemaxsize: 100px;
   position: relative;
   transition: all $duration-noticeable ease;
   padding-left: 20%;
-  padding-top: 20px;
   padding-bottom: 20px;
   border-left: 3px solid $color-white;
   margin: 0;
   list-style-type: none;
-
-  &__date {
-    display:flex;
-    align-content: center;
-    justify-content: center;
+  &__description{
+    margin: 0.5em 0 1.5em 0;
+  }
+  &__duration {
+    text-align: center;
+    font-weight:bold;
     border-radius: 50%;
     background: $color-white;
     width: $bubblebasesize;
@@ -60,18 +71,44 @@ $bubblemaxsize: 100px;
     left: 0;
     transform: translate(-50%, 0);
     color: $color-green;
+    font-family: $font-serif;
+    flex-direction: column;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+
+    &-months{
+      display:inline-block;
+      font-size: $fontsize-l;
+      font-family: $font-serif;
+      line-height:1em;
+      padding:0;
+    }
+    &-unit{
+      line-height:0.5em;
+      display:inline-block;
+      font-size: $fontsize-m;
+      font-family: $font-serif;
+    }
   }
   &__teaser {
-    font-size: $fontsize-s;
+    font-size: $fontsize-m;
   }
   &__company {
-    font-size: $fontsize-m;
+    font-size: $fontsize-l;
+    color: $color-green-darkest;
     text-decoration: none;
   }
 }
 .tech-list {
   list-style-type: none;
+  margin-top: 1.5em;
+  display:flex;
+  justify-content: flex-start;
+  flex-wrap:wrap;
+  align-items: flex-start;
   &__tech{
+    margin:5px;
     height: $min-tap / 2;
     width: auto;
   }
@@ -84,23 +121,24 @@ export default {
   name: "cv",
   methods: {
     calcSize(job) {
-      console.log(moment([job.begin_date_year, job.begin_date_month,1]))
-      let months = 
-        moment([job.begin_date_year, job.begin_date_month,1])
-        .diff([job.end_date_year, job.end_date_month,1]);
-        let share = months/this.totalWorkMonths;
-      return {
-        width: 50+ share * 300,
-        height: 50+ share * 300
+      let months = this.calcDuration(job);
+      let share = months/this.totalWorkMonths;
+      let size = Math.floor(50+ share * 100);
+      let style = {
+        width: size+'px',
+        height: size+'px'
       };
+      console.log(style);
+      return style;
     },
     calcDuration(job) {
       if(job.end_date_year){
-        return moment([job.end_date_year, job.end_date_month])
-        .diff(moment([job.begin_date_year, job.begin_date_month]),'months',true)
+        return moment([job.end_date_year, job.end_date_month-1])
+        .diff(moment([job.begin_date_year, job.begin_date_month-1]),'months',true);
+
       }else{
-        return moment([job.begin_date_year, job.begin_date_month,1])
-          .fromNow(true);
+        return moment()
+          .diff(moment([job.begin_date_year, job.begin_date_month-1,1]),'months');
 
       }
 
@@ -111,15 +149,14 @@ export default {
     totalWorkMonths: function() {
       let months = 0;
       for (const job of this.jobs) {
-        months += 
-          moment([job.begin_date_year, job.begin_date_month,0])
-          .diff([job.end_date_year, job.end_date_month,0]);
+        let m = this.calcDuration(job);
+        months += m;
       }
       return months
     },
     since: function() {
       let first = this.jobs[this.jobs.length - 1];
-      return moment([first.begin_date_year,first.begin_date_month, 1]).fromNow();
+      return moment([first.begin_date_year,first.begin_date_month-1]).fromNow();
     }
   },
   data: function() {
@@ -131,7 +168,7 @@ export default {
           company_country: null,
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
-          company_name: "Baro Pfannenstein GmbH",
+          company_name: "Baro & Pfannenstein GmbH",
           company_notes:
             "Konzeption, Gestaltung, Umsetzung und Leitung einzelner Projekte und Koordination von Entwicklerteams. Pflege von Projektmanagementsoftware, Knowledge base und Code base.\r\nVerantwortlich für die Entwicklung von Innovationsprojekten (VR sowie Industrie 4.0) für die Fabrikplanung eines namhaften deutschen Immobilienherstellers.",
           company_size_id: 2,
