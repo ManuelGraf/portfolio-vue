@@ -95,6 +95,9 @@ $bubblemaxsize: 100px;
     font-size: $fontsize-m;
   }
   &__company {
+    @include viewport-tablet{
+
+    }
     font-size: $fontsize-l;
     color: $color-green-darkest;
     text-decoration: none;
