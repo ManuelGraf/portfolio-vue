@@ -104,7 +104,7 @@
     top: 0;
     height: 45px;
     // padding:10px;
-    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF'  d='M0 0 Q 50 100 100 0 L 0 0z'/%3E%3C/svg%3E");
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF'  d='M0 0 Q 50 100 100 0 L 0 0z'/%3E%3Cpath stroke='%23222222' fill='none' d='M0 0 Q 50 100 100 0'/%3E%3C/svg%3E");
     height: 30px;
     flex-direction: row;
     justify-content: center;
