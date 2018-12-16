@@ -11,13 +11,7 @@
         <a href target="_blank" class="fas fa-lastfm-square">Last.fm</a>
       </li>
       <li class="contact-item">
-        <a href target="_blank" class="fas fa-music">freesound</a>
-      </li>
-      <li class="contact-item">
-        <a href target="_blank" class="fas fa-deviantart">Deviantart</a>
-      </li>
-      <li class="contact-item">
-        <a href target="_blank" class="fas fa-envelope"></a>
+        <a href target="_blank" class="fas fa-envelope">Email</a>
       </li>
     </ul>
   </div>
@@ -38,9 +32,14 @@ export default {
 </script>
 
 <style lang="scss">
+$background-contact: $color-yellow;
+$color-contact: $color-yellow-darkest;
 .view--contact {
-  background: $color-bluegrey;
-  @include curved-border($color-bluegrey,up)
+  a{
+    color: $color-yellow-darkest
+  }
+  background: $background-contact;
+  @include curved-border($background-contact,up)
 }
 </style>
 

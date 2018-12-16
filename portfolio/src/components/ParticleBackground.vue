@@ -66,7 +66,6 @@ export default {
     this.heightScale = 4;
     this.asParticles = true;
     this.rotate = true;
-    console.log(this);
     render();
 
     function createParticleSystem(geom) {

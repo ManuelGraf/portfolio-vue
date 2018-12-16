@@ -10,6 +10,7 @@ import Offset  from 'document-offset'
 import ViewportSize  from 'viewport-size'
 
 
+
 import InViewPortDirective from 'vue-in-viewport-directive'
 Vue.directive('in-viewport', InViewPortDirective)
 

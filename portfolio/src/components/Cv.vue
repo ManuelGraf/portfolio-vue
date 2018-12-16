@@ -1,11 +1,10 @@
 <template>
   <div class="cv">
-    I worked a total of {{totalWorkMonths}} months since {{since }}
     <ul class="cv__jobs">
       <li class="job" v-for="(job, index) in jobs" :key="index">
         <div class="job__duration" :style="calcSize(job)">
           <div class="job__duration-months">
-            {{job.end_date_month + calcDuration(job)}}
+            {{calcDuration(job)}}
           </div>
           <div class="job__duration-unit">
             months
@@ -16,6 +15,9 @@
         </a>
         <div class="job__description">
           <div class="job__teaser">
+            <p class="fromto">
+              {{job.begin_date_month}}/{{job.begin_date_year}} &mdash; {{(job.end_date_month ? (job.end_date_month+'/'+job.end_date_year) : 'heute')}}
+            </p>
             {{job.company_notes}}
           </div>
           <div class="job__tech">
@@ -25,7 +27,7 @@
                 v-for="tech in job.techstack"
                 :key="tech"
               >
-                <img
+                <img 
                   class="tech-list__tech"
                   v-bind:src="`/img/icons/skills/${tech}.png`"
                   :alt="tech"
@@ -120,6 +122,7 @@ $bubblemaxsize: 100px;
 
 <script>
 import moment from "moment";
+
 export default {
   name: "cv",
   methods: {
@@ -131,13 +134,15 @@ export default {
         width: size+'px',
         height: size+'px'
       };
-      console.log(style);
       return style;
     },
     calcDuration(job) {
       if(job.end_date_year){
-        return moment([job.end_date_year, job.end_date_month-1])
-        .diff(moment([job.begin_date_year, job.begin_date_month-1]),'months',true);
+        let start = moment([job.begin_date_year, job.begin_date_month-1]);
+        let end = moment([job.end_date_year, job.end_date_month-1]);
+        let diff = end.diff(start,'months',true);
+        console.log(start._d,end._d,diff)
+        return diff;
 
       }else{
         return moment()

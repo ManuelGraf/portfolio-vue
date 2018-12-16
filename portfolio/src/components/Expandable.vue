@@ -9,7 +9,6 @@
   export default {
     methods:{
       onClick:function(event){
-        console.log('clicked')
       }
     }  
   }

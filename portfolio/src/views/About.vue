@@ -1,5 +1,6 @@
 <template>
   <div id='about' class="view view--about" v-scroll-spy>
+
     <div class="view__content">
       <div class="about__header">
         <div class="about__portrait">
@@ -18,7 +19,7 @@
         
         </section>
       </div>
-      <h3>Curriculum Vitae</h3>
+        <h2 class="view__headline">Curriculum Vitae</h2>
       <cv> </cv>
     </div>
   </div>
@@ -57,7 +58,8 @@ import Portrait from '@/components/Portrait.vue';
 
   .about__header{
     @include viewport-tablet{
-      flex-direction: row        
+      flex-direction: row;
+      width:100%;       
     }
     flex-direction: column;        
     display:flex;
@@ -89,14 +91,21 @@ import Portrait from '@/components/Portrait.vue';
     background: $bg-about;
     color: $color-about;
 
+    .view__content{
+      flex-direction:column;
+    }
+
     a, a:visited, a:hover{
       color: $color-spot;
     }
   }
   .about__portrait{
+    @include viewport-tablet{
+      width: $gs-bp;
+    }
     background: $color-white;
     border-radius: 50%;
-    width: $gs-bp;
+    width: $gs-ap;
     overflow: hidden;
     float:left;
 

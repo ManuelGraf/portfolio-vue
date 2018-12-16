@@ -12,10 +12,32 @@
     flex-direction:row;
   }
   flex-direction:column;
+  flex-wrap:wrap;
   display:flex;
   justify-content:space-around;
   height:100%;
   width:100%;
   position:relative;
   padding: 20px 0 20px 20px;
+}
+.view__headline{
+  @include viewport-tablet{
+    padding: 3rem 0 3rem 3rem;
+  }
+  padding: 20px 0 20px 20px;
+}
+.col-8{
+  width:66%;
+}
+.col-4{
+  width:33%;
+}
+.col-12{
+  width:100%
+}
+.col-6{
+  width:50%;
+}
+.col-1{
+  width: 12/100%;
 }

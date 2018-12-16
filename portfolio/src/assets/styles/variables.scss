@@ -69,11 +69,11 @@ $font-serif: 'Cookie';
 
 $fontsize-base: 16px;
 $fontsize-m: $fontsize-base;
-$fontsize-s: $fontsize-m * 0.618;
-$fontsize-xs: $fontsize-s * 0.618;
-$fontsize-l: $fontsize-m * 1.618;
-$fontsize-xl: $fontsize-l * 1.618;
-$fontsize-xxl: $fontsize-xl * 1.1618;
+$fontsize-s: round($fontsize-m * 0.618);
+$fontsize-xs: round($fontsize-s * 0.618);
+$fontsize-l: round($fontsize-m * 1.618);
+$fontsize-xl: round($fontsize-l * 1.618);
+$fontsize-xxl: round($fontsize-xl * 1.1618);
 
 // DIMENSIONS
 $min-tap: 44px;

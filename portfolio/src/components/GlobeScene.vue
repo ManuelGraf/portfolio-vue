@@ -143,7 +143,6 @@ import GlobeComponentController from "@/modules/GlobeController.js";
 export default {
   mounted: function() {
     this.globeCtrl = new GlobeComponentController();
-    console.log(globeCtrl);
     this.globeCtrl.init();
   },
   data: function() {
