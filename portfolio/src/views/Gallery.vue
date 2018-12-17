@@ -3,7 +3,7 @@
     <h3 class="view__headline">What I do</h3>
     <div class="view__content">
       <p class="col-8">
-        I am still trying to integrate some components I built to this web site. Please wait. <br/>
+        This section still has a lot of placeholders, I will gather whats left of my work and present it here soon!<br/>
         For now, please visit one of my web profiles, which contain some things I made like Logos, Videos, Sound Effects etc:
       </p>
       <ul class="col-4 profiles">
@@ -22,59 +22,87 @@
         <globe-scene slot="demo"></globe-scene>
       </demo-placeholder>-->
     <div class="col-12">
-      <h3 class="view__headline">Digital Stufff I make</h3>
+      <h3 class="view__headline">Digital Stuff I made:</h3>
     </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>Simple Browser Paint</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
-    </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>3D Interactive Globe</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
-    </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>Virtual Reality</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
-    </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>programming 3D Graphics :)</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
+    <div class="demos">
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Video Exergame: MagiKart</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Video Game: Underlord</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>YARA - Yet Another Running App</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Akabanga.de</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Joachimgraf.com</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Simple Browser Paint</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Virtual Reality Demo</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Coding 3D Graphics :)</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
     </div>
     <div class="col-12">
-      <h3 class="view__headline">Print Stufff I made</h3>
+      <h3 class="view__headline">Print Stuff I made</h3>
     </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>Logo Design</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
+    <div class="demos">
+
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Logo Design</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
     </div>
-    <div class="col-12">
-      <h3 class="view__headline">Artsy Stuff I make</h3>
+    <div class="demos">
+      <div class="col-12">
+        <h3 class="view__headline">Artsy Stuff I make</h3>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Lasers + Wood = Love!</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
+      <div class="demo col-4">
+        <a href="/demos/drawer/index.html" target="_blank">
+          <h4>Sketching Scenarios, Game Art.</h4>
+          <img src="https://via.placeholder.com/150" alt="">
+        </a>
+      </div>
     </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>Lasers + Wood = Love!</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
-    </div>
-    <div class="col-4">
-      <a href="/demos/drawer/index.html" target="_blank">
-        <h4>Sketching Scenarios, Game Art.</h4>
-        <img src="https://via.placeholder.com/150" alt="">
-      </a>
-    </div>
-    </div>
-  
-    
   </div>
 </template>
 
@@ -85,6 +113,20 @@ $color-gallery: $color-petrol-lightest;
   @include curved-border($bgcolor-gallery, up);
   background: $bgcolor-gallery;
   color: $color-gallery;
+
+  .demos{
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    .demo{
+      display:inline-block;
+      text-align:center;
+    }
+  }
+
   a{
     color: $color-gallery;
   }
