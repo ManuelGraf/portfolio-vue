@@ -24,61 +24,63 @@
     <div class="col-12">
       <h3 class="view__headline">Digital Stuff I made:</h3>
     </div>
+
     <div class="demos">
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Video Exergame: MagiKart</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Video Game: Underlord</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>YARA - Yet Another Running App</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Akabanga.de</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
-        <a href="/demos/drawer/index.html" target="_blank">
+        <a href="/demo/paint/index.html" target="_blank">
           <h4>Joachimgraf.com</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
-        <a href="/demos/drawer/index.html" target="_blank">
+        <a href="/demo/paint/index.html" target="_blank">
           <h4>Simple Browser Paint</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="/demo/paint/sample.png" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Virtual Reality Demo</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Coding 3D Graphics :)</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/150" alt=""/>
         </a>
       </div>
     </div>
+
     <div class="col-12">
       <h3 class="view__headline">Print Stuff I made</h3>
     </div>
-    <div class="demos">
 
+    <div class="demos">
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Logo Design</h4>
@@ -86,10 +88,10 @@
         </a>
       </div>
     </div>
+    <div class="col-12">
+      <h3 class="view__headline">Artsy Stuff I make</h3>
+    </div>
     <div class="demos">
-      <div class="col-12">
-        <h3 class="view__headline">Artsy Stuff I make</h3>
-      </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Lasers + Wood = Love!</h4>
@@ -103,6 +105,7 @@
         </a>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -121,9 +124,21 @@ $color-gallery: $color-petrol-lightest;
     display:flex;
     flex-direction: row;
     flex-wrap:wrap;
+    overflow:hidden;
     .demo{
       display:inline-block;
       text-align:center;
+      transition: all $duration-complex ease;
+      overflow:hidden;
+      height:150px;
+      position:relative;
+      img{
+        transform: translate(-50%,0);
+        position:absolute;
+        left:50%;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
