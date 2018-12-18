@@ -13,24 +13,33 @@
         <li class="profile-item fab fa-deviantart">
           <a href="https://www.deviantart.com/yummieee" target="_blank" class="">Deviantart</a>
         </li>
-        <li class="profile-item fab fa-deviantart">
+        <li class="profile-item fas fa-pencil-alt">
           <a href="https://logopond.com/yummie/profile/17039" target="_blank" class="">Logopond</a>
         </li>
       </ul>
-      <!-- <demo-placeholder>
-        <h4 slot="placeholder">3D Data Visualization </h4>
-        <globe-scene slot="demo"></globe-scene>
-      </demo-placeholder>-->
     <div class="col-12">
       <h3 class="view__headline">Digital Stuff I made:</h3>
     </div>
-
     <div class="demos">
       <div class="demo col-4">
-        <a href="/demos/drawer/index.html" target="_blank">
-          <h4>Video Exergame: MagiKart</h4>
-          <img src="https://via.placeholder.com/150" alt=""/>
-        </a>
+        <demo-placeholder>
+          <div slot="placeholder">
+            <h4>
+              Simple Browser Paint
+            </h4>
+          </div>
+          <img slot="demo" src="/demo/paint/sample.png" alt="Simple Paint Program in Browser"/>
+        </demo-placeholder>
+      </div>
+      <div class="demo col-4">
+        <demo-placeholder>
+          <div slot="placeholder">
+            <h4>
+              Video Exergame: MagiKart 
+            </h4>
+          </div>
+          <img slot="demo" src="https://via.placeholder.com/150" alt=""/>
+        </demo-placeholder>
       </div>
       <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
@@ -57,12 +66,6 @@
         </a>
       </div>
       <div class="demo col-4">
-        <a href="/demo/paint/index.html" target="_blank">
-          <h4>Simple Browser Paint</h4>
-          <img src="/demo/paint/sample.png" alt=""/>
-        </a>
-      </div>
-      <div class="demo col-4">
         <a href="/demos/drawer/index.html" target="_blank">
           <h4>Virtual Reality Demo</h4>
           <img src="https://via.placeholder.com/150" alt=""/>
@@ -82,7 +85,7 @@
 
     <div class="demos">
       <div class="demo col-4">
-        <a href="/demos/drawer/index.html" target="_blank">
+        <a target="_blank">
           <h4>Logo Design</h4>
           <img src="https://via.placeholder.com/150" alt="">
         </a>
@@ -92,16 +95,10 @@
       <h3 class="view__headline">Artsy Stuff I make</h3>
     </div>
     <div class="demos">
-      <div class="demo col-4">
-        <a href="/demos/drawer/index.html" target="_blank">
-          <h4>Lasers + Wood = Love!</h4>
-          <img src="https://via.placeholder.com/150" alt="">
-        </a>
-      </div>
-      <div class="demo col-4">
-        <a href="/demos/drawer/index.html" target="_blank">
-          <h4>Sketching Scenarios, Game Art.</h4>
-          <img src="https://via.placeholder.com/150" alt="">
+      <div class="demo col-4" v-for="(index,item) in demos" :key="item">
+        <a :href="item.link" target="_blank">
+          <h4>{{ item.title }}</h4>
+          <img :src="item.placeHolderImage" *:alt="item.title">
         </a>
       </div>
     </div>
@@ -117,6 +114,10 @@ $color-gallery: $color-petrol-lightest;
   background: $bgcolor-gallery;
   color: $color-gallery;
 
+  .view__content{
+    flex-direction: row;
+  }
+
   .demos{
     justify-content: flex-start;
     align-items: center;
@@ -125,6 +126,8 @@ $color-gallery: $color-petrol-lightest;
     flex-direction: row;
     flex-wrap:wrap;
     overflow:hidden;
+    padding:10px;
+
     .demo{
       display:inline-block;
       text-align:center;
@@ -132,12 +135,15 @@ $color-gallery: $color-petrol-lightest;
       overflow:hidden;
       height:150px;
       position:relative;
+      box-sizing: border-box;
+      padding:20px;
+      min-height:150px;
+      transition: all $duration-complex ease;
       img{
         transform: translate(-50%,0);
         position:absolute;
         left:50%;
         width: 100%;
-        height: 100%;
       }
     }
   }
@@ -162,11 +168,24 @@ $color-gallery: $color-petrol-lightest;
 
 <script>
 import DemoPlaceholder from "@/components/DemoPlaceholder";
+import Vue from 'vue'
 // import GlobeScene from '@/components/GlobeScene'
 export default {
   components: {
     DemoPlaceholder
     // GlobeScene
+  },
+  data: function(){
+    return {
+      demos:[
+        {
+          title:'Simple Paint',
+          placeHolderImage: '/demo/paint/sample.png',
+          link: '/demo/paint/index.html',
+          content: Vue.partial('<a class="yeah"></a>')
+        }
+      ]
+    }
   }
 };
 </script>

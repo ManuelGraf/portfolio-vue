@@ -1,6 +1,5 @@
 <template>
   <div id='about' class="view view--about" v-scroll-spy>
-
     <div class="view__content">
       <div class="about__header">
         <div class="about__portrait">
@@ -16,15 +15,13 @@
               <span class="about__info__content" v-html="i.content"></span>                
             </div>
           </div>
-        
         </section>
       </div>
         <h2 class="view__headline">Curriculum Vitae</h2>
-      <cv> </cv>
+        <cv> </cv>
     </div>
   </div>
 </template>
-
 
 <script>
 import cv from '@/components/Cv.vue';
@@ -44,7 +41,7 @@ import Portrait from '@/components/Portrait.vue';
           {"label": "phone", "content":"+49 176 65 88 28 56", "icon": "phone" },
           {"label": "web", "content":"<a href='manuelgraf.com'>Website</a>", "icon": "link" },
           {"label": "marital", "content":"ledig", "icon": "ring" },
-          {"label": "nationality", "content":"deutsch", "icon": "globe" },
+          {"label": "nationality", "content":"deutsch", "icon": "globe" }
         ]
       }
     }
@@ -64,7 +61,7 @@ import Portrait from '@/components/Portrait.vue';
     flex-direction: column;        
     display:flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
   }
 
   .about__info{
@@ -81,9 +78,8 @@ import Portrait from '@/components/Portrait.vue';
       top:5px;
       transform:translate3d(-150%,0,0)
     }
-
   }
-  .view--about{
+  .view--about {
     @include curved-border($bg-about,up);
     @include viewport-tablet{
       flex-direction: column;

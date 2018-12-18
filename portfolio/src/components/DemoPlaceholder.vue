@@ -5,11 +5,15 @@
   </div>
   <div  
     v-show="isCollapsed"
-    @click="toggle" >
+    @click="toggle"
+    class="demo__placeholder"
+     >
     <slot name="placeholder"></slot>
   </div>
-  <slot name="demo">
-  </slot>
+  <div class="demo__content">
+    <slot name="demo">
+    </slot> 
+  </div>
 </div>
 </template>
 
@@ -28,8 +32,9 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
 demo-collapse{
-  width:100%
+  width:100%;
+  transition: all $duration-complex ease;
 }
 </style>

@@ -39,11 +39,7 @@ function Drawer(canvasid,controlsid) {
     //apply standard settings
     this.updateSettings();
 
-
-
 }
-
-
 
 Drawer.prototype.setupControls = function(){
 
