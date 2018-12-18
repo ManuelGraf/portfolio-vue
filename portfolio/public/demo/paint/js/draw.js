@@ -26,6 +26,8 @@ function Drawer(canvasid,controlsid) {
     this.dragging = false;
 
     this.canvas = document.getElementById(canvasid);
+    this.canvas.width = document.querySelectorAll('body')[0].clientWidth;
+    this.canvas.height = document.querySelectorAll('body')[0].clientHeight;
     this.ctx = this.canvas.getContext("2D");
     this.controls = document.getElementById(controlsid);
     this.setupCanvas();
