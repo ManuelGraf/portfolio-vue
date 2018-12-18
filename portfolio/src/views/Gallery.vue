@@ -8,7 +8,7 @@
       </p>
       <ul class="col-4 profiles">
         <li class="profile-item fas fa-music">
-          <a href target="_blank" class="">freesound.org</a>
+          <a href="https://freesound.org/people/yummie/" target="_blank" class="">freesound.org</a>
         </li>
         <li class="profile-item fab fa-deviantart">
           <a href="https://www.deviantart.com/yummieee" target="_blank" class="">Deviantart</a>
