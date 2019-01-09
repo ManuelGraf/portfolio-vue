@@ -9,6 +9,10 @@ import Orientation  from 'screen-orientation'
 import Offset  from 'document-offset'
 import ViewportSize  from 'viewport-size'
 
+import vClickOutside from 'v-click-outside'
+ 
+Vue.use(vClickOutside)
+
 
 
 import InViewPortDirective from 'vue-in-viewport-directive'
