@@ -2,16 +2,23 @@
     font-family: 'Open Sans';
     line-height:1.5em;
 }
-
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+.jumbo{
+    font-size:$fontsize-xxl;
+    text-align:center;
+    color: white;
+    opacity:.8;
+}
 a{
     color:$color-petrol;
     text-decoration:none;
 }
 
-a:visited{
-    color: $color-cyan;
-    text-decoration:none;
-}
 
 body{
     h1{

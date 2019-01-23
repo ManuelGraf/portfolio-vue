@@ -3,12 +3,15 @@
     <h3 class="view__headline">What I do</h3>
     <div class="view__content">
       <p class="col-8">
-        This section still has a lot of placeholders, I will gather whats left of my work and present it here soon!<br/>
+        This section still has a lot of thumbs, I will gather whats left of my work and present it here soon!<br/>
         For now, please visit one of my web profiles, which contain some things I made like Logos, Videos, Sound Effects etc:
       </p>
       <ul class="col-4 profiles">
+        <li class="profile-item fab fa-youtube">
+          <a href="https://www.youtube.com/user/yumyumyummieee/" target="_blank" class="">youtube</a>
+        </li>
         <li class="profile-item fas fa-music">
-          <a href="https://freesound.org/people/yummie/" target="_blank" class="">freesound.org</a>
+          <a href="https://freesound.org/people/yummie/" target="_blank" class="">freesound</a>
         </li>
         <li class="profile-item fab fa-deviantart">
           <a href="https://www.deviantart.com/yummieee" target="_blank" class="">Deviantart</a>
@@ -22,16 +25,16 @@
     </div>
     <div class="demos">
       <demo-placeholder v-for="(item,index) in demos" :key="index">
-          <div slot="placeholder">
-            <h4>{{ item.title }}</h4>
-            <img :src="item.placeHolderImage" :alt="item.title">
+          <h4 slot="headline">{{ item.title }}</h4>
+          <div slot="thumb">
+            <img :src="item.thumbImage" :alt="item.title">
           </div>
-          <div class="demo__content" slot="demo">
+          <div slot="demo">
             <div class="demo__preview col-a" v-if="!item.yt">
-              <img :src="item.placeHolderImage" :alt="item.title">
+              <img :src="item.thumbImage" width="100%" :alt="item.title">
             </div>
             <div class="demo__preview col-a" v-if="item.yt">
-              <iframe width="100%" height="100%" :src="item.yt" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <youtube :video-id="item.yt" :ref="item.yt"></youtube>
             </div>
             <div class="demo__description col-b" v-html="item.description">
               <p  v-html="item.description">
@@ -51,12 +54,25 @@
       </demo-placeholder>
     </div>
   </div>
+    <div class="col-12">
+      <h3 class="view__headline">Analog Stuff I made:</h3>
+    </div>
+    <p class="empty">
+      I also like all kinds of traditional art. And laser cutters. Pictures of this are scattered everywhere and I didnt find the time to collect everything yet.
+    </p>
   </div>
 </template>
 
 <style lang="scss">
 $bgcolor-gallery: $color-petrol;
 $color-gallery: $color-petrol-lightest;
+.empty{
+  font-size: $fontsize-m;
+  text-align:center;
+  opacity:.8;
+  color:$color-gallery;
+  padding-bottom: 100px;
+}
 .view--gallery {
   @include curved-border($bgcolor-gallery, up);
   background: $bgcolor-gallery;
@@ -65,6 +81,7 @@ $color-gallery: $color-petrol-lightest;
   .view__content{
     flex-direction: row;
   }
+  
 
   .demos{
     justify-content: flex-start;
@@ -73,32 +90,7 @@ $color-gallery: $color-petrol-lightest;
     display:flex;
     flex-direction: row;
     flex-wrap:wrap;
-    overflow:hidden;
     padding:10px;
-  }
-
-  .demo__content{
-    @include viewport-tablet{
-      flex-direction: row;
-    }
-    display:flex; 
-    flex-direction: column;
-    .demo__description{
-      padding: 1.618%;
-      @include viewport-tablet{
-        width: $gs-bp;
-        min-height:300px;
-      }
-      text-align:left;
-      width:100%;
-    }
-    .demo__preview{
-      @include viewport-tablet{
-        width: $gs-ap;
-        min-height:300px;
-      }
-      width:100%;
-    }
   }
 
   a{
@@ -133,12 +125,12 @@ export default {
       demos:[
         {
           title:'Virtual Reality',
-          placeHolderImage: '/demo/paint/sample.png',
+          thumbImage: '/demo/paint/sample.png',
           description:'Ever since last year of university, I design user interaction in virtual 3D WebGL environments.'
         },
         {
           title:'Simple Browser Paint',
-          placeHolderImage: '/demo/paint/sample.png',
+          thumbImage: '/demo/paint/sample.png',
           links:[
             {
              text: 'watch it in action',
@@ -148,8 +140,15 @@ export default {
           description:'A very basic painting app for browsers. It was build 2015 with jquery and html5 canvas'
         },
         {
+          title:'Vizualise Clusters on Globe',
+          thumbImage: '/demo/paint/sample.png',
+          yt:'qUQUSjc5jAA',
+          playing:false,
+          description:'A very basic painting app for browsers. It was build 2015 with jquery and html5 canvas'
+        },
+        {
           title:'Video Exergame: MagiKart',
-          placeHolderImage: 'https://via.placeholder.com/150',
+          thumbImage: '/demo/magikart.png',
           links:[
             {
              text: 'Watch a test run on youtube',
@@ -160,12 +159,13 @@ export default {
              href: '/dl/Bachelor_Thesis_Manuel_Graf_Biofeedback_Exergame_2014.pdf'
             }
           ],
-          yt: 'https://www.youtube.com/embed/4_fhHUCZjbk',
+          yt: '4_fhHUCZjbk',
+          playing:false,
           description:'<p>A Multiplayer "Serious Game" or "ExerGame" that was controlled by riding an ergometer and leaning from left to right for rehabilitation purposes. It was created by Manuel Graf and Michael Prummer under the supervision of Dr. Alejandro Mendoza Garcia. It´s intended use was to offer a playful  and appealing motivator for children to pursue cardio training.</p><p>The topic of Manuel F. Graf´s Bachelor Thesis included developing an enticing multi player serious game (incl. game design, sport theory...) by using Dr. Mendoza Garcias MDC Connector for receiving Input from medical  and non medical periphery devices (ergometers, motion sensors, heart rate monitors...).The main topic for the thesis was ho to create an engaging and motivating experience by combining motivation theory (sdt,...) and comparing Multi- vs single player games effects on exhaustion and cardio training success. </p><p>The Game Design featured a game similar to popular battle racing games like Super Mario Kart that is controlled by the users body instead of input devices like gamepads.Acceleration was controlledd by cycling the ergometer and users were able to steer by physically leaning to the side. The closer the user got to their optimal heart rate (adjusted to fitness level, age, condition) the better upgrades, easier steering and higher maximum speed. A complete Game Design Document can be found at Manuel Grafs Bachelor Thesis: www.manuelgraf.com/dl/Bachelor_Thesis_Manuel_Graf_Biofeedback_Game</p><p>For Information on the architecture of the Server-Client structure of the Game, please refer to Michael Prummer: https://www.xing.com/profile/Michael_Prummer <p>'
         },
         {
           title:'Video Game: Underlord',
-          placeHolderImage: '/demo/paint/sample.png',
+          thumbImage: '/demo/underlord.png',
           links:[
             {
              text: 'watch trailer on youtube',
@@ -176,12 +176,13 @@ export default {
              href: 'https://www.refit-systems.com/de/gamo/'
             },
           ],
-          yt: 'https://www.youtube.com/embed/ZotusbvVtDs',
-          description:'<p>The poor Goblins fell under the Spell of a giant Rainbow laze Care Bear. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p>Underlord is a game which concept is like "Lemmings". To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the Intel Realsense Camera for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
+          yt: 'P9EKf6Z_g5Y',
+            playing:false,
+        description:'<p>The poor Goblins fell under the Spell of a giant Rainbow laze Care Bear. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p>Underlord is a game which concept is like "Lemmings". To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the Intel Realsense Camera for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
         },
         {
           title:'Video Game: Rise',
-          placeHolderImage: '/demo/rise.png',
+          thumbImage: '/demo/rise.png',
           links:[
             {
              text: 'watch trailer on youtube',
@@ -192,24 +193,27 @@ export default {
              href: 'https://www.refit-systems.com/de/gamo/'
             },
           ],
-          yt: 'https://www.youtube.com/embed/ZotusbvVtDs',
+          yt: 'iWHyW_PW3To',
+          playing:false,
+
           description:'<p>The poor Goblins fell under the Spell of a Giant Rainbow Laser Care Bear. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p>Underlord is a game which concept is like "Lemmings". To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the Intel Realsense Camera for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
         },
         {
           title:'YARA: Yet Aother Running App ',
-          placeHolderImage: '/demo/yara.png',
+          thumbImage: '/demo/yara.png',
           links:[
             {
              text: 'watch video on youtube',
              href: 'https://www.youtube.com/watch?v=0vG63Cnq-Ro'
             }
           ],
-          yt:'https://www.youtube.com/embed/0vG63Cnq-Ro',
-          description:'Android App build for University. This App calculates the users current step frequency and polls an online API to match local music bpm. Playlists are generated accordingly.'
+          yt:'0vG63Cnq-Ro',
+             playing:false,
+       description:'Android App build for University. This App calculates the users current step frequency and polls an online API to match local music bpm. Playlists are generated accordingly.'
         },
         {
           title:'Fat Ninja: iOS Sidescroller Game ',
-          placeHolderImage: '/demo/fatninja.png',
+          thumbImage: '/demo/fatninja.png',
           links:[
             {
              text: 'Watch the final presentation',
@@ -228,7 +232,7 @@ export default {
         },
         {
           title:'Akabanga.de',
-          placeHolderImage: '/demo/akabanga.jpg',
+          thumbImage: '/demo/akabanga.jpg',
           links:[
             {
              text: 'Visit Website',
@@ -240,7 +244,7 @@ export default {
         },
         {
           title:'Joachimgraf.com',
-          placeHolderImage: '/demo/joachimgraf.jpg',
+          thumbImage: '/demo/joachimgraf.jpg',
           links:[
             {
              text: 'Visit Website',

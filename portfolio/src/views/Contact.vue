@@ -1,17 +1,38 @@
 <template>
   <div id="contact" class="view view--contact">
-    <ul>
+
+    <ul class="contact-items">
+
       <li class="contact-item">
-        <a href target="_blank" class="fas fa-twitter">Twitter</a>
+        <a href="mailto:mg@apfelkuh.de" target="_blank">
+          <span class="fas fa-envelope"></span>
+          Email
+        </a>
       </li>
       <li class="contact-item">
-        <a href target="_blank" class="fas fa-facebook-square">Facebook</a>
+        <a href="https://www.facebook.com/manuel.f.graf" target="_blank">
+          <span class="fab fa-facebook"></span>
+          Facebook
+        </a>
       </li>
       <li class="contact-item">
-        <a href target="_blank" class="fas fa-lastfm-square">Last.fm</a>
+        <a href="https://www.linkedin.com/in/manuel-graf-70186a15/" target="_blank">
+          <span class="fab fa-linkedin-in"></span>
+          LinkedIn
+        </a>
+      </li>
+
+      <li class="contact-item">
+        <a href="https://twitter.com/Manuel_Graf" target="_blank">
+          <span class="fab fa-twitter"></span>
+          Twitter
+        </a>
       </li>
       <li class="contact-item">
-        <a href target="_blank" class="fas fa-envelope">Email</a>
+        <a href="https://www.xing.com/profile/Manuel_Graf4/" target="_blank">
+          <span class="fab fa-xing"></span>
+          Xing
+        </a>
       </li>
     </ul>
   </div>
@@ -35,11 +56,46 @@ export default {
 $background-contact: $color-yellow;
 $color-contact: $color-yellow-darkest;
 .view--contact {
+  padding-top:16%;
+  padding-left: 64px;
   a{
     color: $color-yellow-darkest
   }
+
   background: $background-contact;
   @include curved-border($background-contact,up)
+}
+.contact-items{
+  display:flex;
+  flex-flow: row wrap;
+}
+.contact-item{
+  font-size: $fontsize-l;
+  color: $color-contact;
+  display:flex;
+  padding-top:20px;
+  padding-bottom:20px;
+  width:50%;
+  & a{
+    flex-direction: column;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-contact;
+    flex: 1 1 50%;
+  }
+  & span::before{
+    border-radius:50%;
+    color: $background-contact;
+    background: $color-contact;
+    padding:5px;
+    width:1.3em;
+    height:1.3em;
+    display:block;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
 

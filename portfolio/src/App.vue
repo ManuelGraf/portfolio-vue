@@ -13,6 +13,10 @@ import vClickOutside from 'v-click-outside'
  
 Vue.use(vClickOutside)
 
+import VueYoutube from "vue-youtube";
+Vue.use(VueYoutube);
+
+
 
 
 import InViewPortDirective from 'vue-in-viewport-directive'
