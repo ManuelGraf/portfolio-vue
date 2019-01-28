@@ -4,7 +4,7 @@
     <ul class="contact-items">
 
       <li class="contact-item">
-        <a href="mailto:mg@apfelkuh.de" target="_blank">
+        <a href="mailto:mail@manuelgraf.com" target="_blank">
           <span class="fas fa-envelope"></span>
           Email
         </a>
@@ -56,6 +56,10 @@ export default {
 $background-contact: $color-yellow;
 $color-contact: $color-yellow-darkest;
 .view--contact {
+  @include curved-border($background-contact,up);
+  @include viewport-print{
+    display:none;
+  }
   padding-top:16%;
   padding-left: 64px;
   a{
@@ -63,7 +67,6 @@ $color-contact: $color-yellow-darkest;
   }
 
   background: $background-contact;
-  @include curved-border($background-contact,up)
 }
 .contact-items{
   display:flex;

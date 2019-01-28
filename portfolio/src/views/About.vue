@@ -39,7 +39,7 @@ import Portrait from '@/components/Portrait.vue';
           {"label": "address", "content":"Forstenrieder Allee 63 <br /> 81476 M&uuml;nchen", "icon": "envelope" },
           {"label": "mail", "content":"mg@apfelkuh.de", "icon": "at" },
           {"label": "phone", "content":"+49 176 65 88 28 56", "icon": "phone" },
-          {"label": "web", "content":"<a href='manuelgraf.com'>Website</a>", "icon": "link" },
+          {"label": "web", "content":"<a href='https://manuelgraf.com'>Website</a>", "icon": "link" },
           {"label": "marital", "content":"ledig", "icon": "ring" },
           {"label": "nationality", "content":"deutsch", "icon": "globe" }
         ]

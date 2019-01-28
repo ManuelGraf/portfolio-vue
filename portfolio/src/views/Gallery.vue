@@ -126,7 +126,7 @@ export default {
         {
           title:'Virtual Reality',
           thumbImage: '/demo/paint/sample.png',
-          description:'Ever since last year of university, I design user interaction in virtual 3D WebGL environments.'
+          description:'Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments.'
         },
         {
           title:'Simple Browser Paint',

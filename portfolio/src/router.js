@@ -88,6 +88,7 @@ const scrollBehavior = function (to, from, savedPosition) {
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: routes
+  routes: routes,
+  scrollBehavior
 
 })
