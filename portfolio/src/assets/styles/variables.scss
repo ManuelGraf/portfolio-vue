@@ -1,71 +1,68 @@
-
-
 /** COLORS **/
 $color-white: #f6f6f6;
 $color-black: #111111;
 
-$color-cyan: #1DB8D1;
-$color-magenta: #CC145D;
-$color-yellow: #FCC010;
+$color-cyan: #1db8d1;
+$color-magenta: #cc145d;
+$color-yellow: #fcc010;
 $color-petrol: #026064;
-$color-bluegrey: #617D8B;
-$color-green: #ACC913;
+$color-bluegrey: #617d8b;
+$color-green: #acc913;
 
-$color-white-dark:     darken(  $color-white ,15%);
-$color-white-darker:   darken(  $color-white ,30%);
-$color-white-darkest:  darken(  $color-white ,45%);
-$color-black-light:    lighten( $color-black ,15%);
-$color-black-lighter:  lighten( $color-black ,30%);
-$color-black-lightest: lighten( $color-black ,45%);
+$color-white-dark: darken($color-white, 15%);
+$color-white-darker: darken($color-white, 30%);
+$color-white-darkest: darken($color-white, 45%);
+$color-black-light: lighten($color-black, 15%);
+$color-black-lighter: lighten($color-black, 30%);
+$color-black-lightest: lighten($color-black, 45%);
 
+$color-petrol-light: lighten(desaturate($color-petrol, 10%), 10%);
+$color-petrol-lighter: lighten(desaturate($color-petrol, 15%), 15%);
+$color-petrol-lightest: lighten(desaturate($color-petrol, 20%), 20%);
+$color-petrol-dark: darken(saturate($color-petrol, 10%), 10%);
+$color-petrol-darker: darken(saturate($color-petrol, 15%), 15%);
+$color-petrol-darkest: darken(saturate($color-petrol, 20%), 20%);
 
-$color-petrol-light:    lighten(  desaturate( $color-petrol, 10%) ,10%);
-$color-petrol-lighter:  lighten(  desaturate( $color-petrol, 15%) ,15%);
-$color-petrol-lightest: lighten(  desaturate( $color-petrol, 20%) ,20%);
-$color-petrol-dark:     darken(   saturate(   $color-petrol, 10%) ,10%);
-$color-petrol-darker:   darken(   saturate(   $color-petrol, 15%) ,15%);
-$color-petrol-darkest:  darken(   saturate(   $color-petrol, 20%) ,20%);
+$color-cyan-light: lighten(desaturate($color-cyan, 10%), 10%);
+$color-cyan-lighter: lighten(desaturate($color-cyan, 15%), 15%);
+$color-cyan-lightest: lighten(desaturate($color-cyan, 20%), 20%);
+$color-cyan-dark: darken(saturate($color-cyan, 10%), 10%);
+$color-cyan-darker: darken(saturate($color-cyan, 15%), 15%);
+$color-cyan-darkest: darken(saturate($color-cyan, 20%), 20%);
 
-$color-cyan-light:    lighten(  desaturate( $color-cyan, 10%) ,10%);
-$color-cyan-lighter:  lighten(  desaturate( $color-cyan, 15%) ,15%);
-$color-cyan-lightest: lighten(  desaturate( $color-cyan, 20%) ,20%);
-$color-cyan-dark:     darken(   saturate(   $color-cyan, 10%) ,10%);
-$color-cyan-darker:   darken(   saturate(   $color-cyan, 15%) ,15%);
-$color-cyan-darkest:  darken(   saturate(   $color-cyan, 20%) ,20%);
+$color-magenta-light: lighten(desaturate($color-magenta, 10%), 10%);
+$color-magenta-lighter: lighten(desaturate($color-magenta, 15%), 15%);
+$color-magenta-lightest: lighten(desaturate($color-magenta, 20%), 20%);
+$color-magenta-dark: darken(saturate($color-magenta, 10%), 10%);
+$color-magenta-darker: darken(saturate($color-magenta, 15%), 15%);
+$color-magenta-darkest: darken(saturate($color-magenta, 20%), 20%);
 
-$color-magenta-light:    lighten(  desaturate( $color-magenta, 10%) ,10%);
-$color-magenta-lighter:  lighten(  desaturate( $color-magenta, 15%) ,15%);
-$color-magenta-lightest: lighten(  desaturate( $color-magenta, 20%) ,20%);
-$color-magenta-dark:     darken(   saturate(   $color-magenta, 10%) ,10%);
-$color-magenta-darker:   darken(   saturate(   $color-magenta, 15%) ,15%);
-$color-magenta-darkest:  darken(   saturate(   $color-magenta, 20%) ,20%);
+$color-yellow-light: lighten(desaturate($color-yellow, 10%), 10%);
+$color-yellow-lighter: lighten(desaturate($color-yellow, 15%), 15%);
+$color-yellow-lightest: lighten(desaturate($color-yellow, 20%), 20%);
+$color-yellow-dark: darken(saturate($color-yellow, 10%), 10%);
+$color-yellow-darker: darken(saturate($color-yellow, 15%), 15%);
+$color-yellow-darkest: darken(saturate($color-yellow, 20%), 20%);
 
-$color-yellow-light:    lighten(  desaturate( $color-yellow, 10%) ,10%);
-$color-yellow-lighter:  lighten(  desaturate( $color-yellow, 15%) ,15%);
-$color-yellow-lightest: lighten(  desaturate( $color-yellow, 20%) ,20%);
-$color-yellow-dark:     darken(   saturate(   $color-yellow, 10%) ,10%);
-$color-yellow-darker:   darken(   saturate(   $color-yellow, 15%) ,15%);
-$color-yellow-darkest:  darken(   saturate(   $color-yellow, 20%) ,20%);
+$color-bluegrey-light: lighten(desaturate($color-bluegrey, 10%), 10%);
+$color-bluegrey-lighter: lighten(desaturate($color-bluegrey, 15%), 15%);
+$color-bluegrey-lightest: lighten(desaturate($color-bluegrey, 20%), 20%);
+$color-bluegrey-dark: darken(saturate($color-bluegrey, 10%), 10%);
+$color-bluegrey-darker: darken(saturate($color-bluegrey, 15%), 15%);
+$color-bluegrey-darkest: darken(saturate($color-bluegrey, 20%), 20%);
 
-$color-bluegrey-light:    lighten(  desaturate( $color-bluegrey, 10%) ,10%);
-$color-bluegrey-lighter:  lighten(  desaturate( $color-bluegrey, 15%) ,15%);
-$color-bluegrey-lightest: lighten(  desaturate( $color-bluegrey, 20%) ,20%);
-$color-bluegrey-dark:     darken(   saturate(   $color-bluegrey, 10%) ,10%);
-$color-bluegrey-darker:   darken(   saturate(   $color-bluegrey, 15%) ,15%);
-$color-bluegrey-darkest:  darken(   saturate(   $color-bluegrey, 20%) ,20%);
-
-$color-green-light:    lighten(  desaturate( $color-green, 10%) ,10%);
-$color-green-lighter:  lighten(  desaturate( $color-green, 15%) ,15%);
-$color-green-lightest: lighten(  desaturate( $color-green, 20%) ,45%);
-$color-green-dark:     darken(   saturate(   $color-green, 10%) ,10%);
-$color-green-darker:   darken(   saturate(   $color-green, 15%) ,15%);
-$color-green-darkest:  darken(   saturate(   $color-green, 20%) ,20%);
+$color-green-light: lighten(desaturate($color-green, 10%), 10%);
+$color-green-lighter: lighten(desaturate($color-green, 15%), 15%);
+$color-green-lightest: lighten(desaturate($color-green, 20%), 45%);
+$color-green-dark: darken(saturate($color-green, 10%), 10%);
+$color-green-darker: darken(saturate($color-green, 15%), 15%);
+$color-green-darkest: darken(saturate($color-green, 20%), 20%);
 
 $scrollbar-crop: 35px;
 
-$font-base: 'Open Sans';
-$font-condensed: 'Oswald';
-$font-serif: 'Cookie';
+$font-base: "Open Sans";
+$font-condensed: "Oswald";
+$font-serif: "Cookie";
 
 $fontsize-base: 16px;
 $fontsize-m: $fontsize-base;
@@ -77,16 +74,16 @@ $fontsize-xxl: round($fontsize-xl * 1.1618);
 
 // DIMENSIONS
 $min-tap: 44px;
-$height-divider:60px;
+$height-divider: 60px;
 $height-logo-full: 70px;
 $height-logo: 20px;
 $height-logo-full-tablet: 100px;
 $height-logo-tablet: $min-tap;
 $width-content-tablet: 100%;
 
-$duration-instant: .1s;
-$duration-noticeable: .3s;
-$duration-complex: .7s;
+$duration-instant: 0.1s;
+$duration-noticeable: 0.3s;
+$duration-complex: 0.7s;
 
 $gs-ap: 61.8%;
 $gs-bp: 38.2%;
@@ -96,13 +93,14 @@ $gs-b: 0.382;
 
 $gn: 1.618;
 
+$font: "Open Sans";
+$font-alt: "Oswald";
 
-
-@mixin alphaColorBackground($color, $alpha){
-  background-color: rgba($color,$alpha); 
+@mixin alphaColorBackground($color, $alpha) {
+  background-color: rgba($color, $alpha);
 }
 
-/// LINEAR GRADIENT 
+/// LINEAR GRADIENT
 /// EX: @include linear-gradient('to top right' | '42deg'..., color1, color2,color3...)
 /// https://www.sitepoint.com/building-linear-gradient-mixin-sass/
 
@@ -114,31 +112,58 @@ $gn: 1.618;
   }
 
   background: nth(nth($color-stops, 1), 1);
-  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: -webkit-linear-gradient(
+    legacy-direction($direction),
+    $color-stops
+  );
   background: linear-gradient($direction, $color-stops);
 }
 
-
-
-%gradient-petrol{
-  @include linear-gradient(to bottom right, $color-petrol-light, $color-petrol, $color-petrol-dark);
+%gradient-petrol {
+  @include linear-gradient(
+    to bottom right,
+    $color-petrol-light,
+    $color-petrol,
+    $color-petrol-dark
+  );
 }
-%gradient-petrol-inverted{
-  @include linear-gradient(to bottom right, $color-petrol-dark, $color-petrol, $color-petrol-light);
+%gradient-petrol-inverted {
+  @include linear-gradient(
+    to bottom right,
+    $color-petrol-dark,
+    $color-petrol,
+    $color-petrol-light
+  );
 }
-%gradient-yellow{
-  @include linear-gradient(to bottom right, $color-yellow-light, $color-yellow, $color-yellow-dark);
+%gradient-yellow {
+  @include linear-gradient(
+    to bottom right,
+    $color-yellow-light,
+    $color-yellow,
+    $color-yellow-dark
+  );
 }
-%gradient-yellow-inverted{
-  @include linear-gradient(to bottom right, $color-yellow-dark, $color-yellow, $color-yellow-light);
+%gradient-yellow-inverted {
+  @include linear-gradient(
+    to bottom right,
+    $color-yellow-dark,
+    $color-yellow,
+    $color-yellow-light
+  );
 }
-%gradient-magenta{
-  @include linear-gradient(to bottom right, $color-magenta-light, $color-magenta, $color-magenta-dark);
+%gradient-magenta {
+  @include linear-gradient(
+    to bottom right,
+    $color-magenta-light,
+    $color-magenta,
+    $color-magenta-dark
+  );
 }
-%gradient-magenta-inverted{
-  @include linear-gradient(to bottom right, $color-magenta-dark, $color-magenta, $color-magenta-light);
+%gradient-magenta-inverted {
+  @include linear-gradient(
+    to bottom right,
+    $color-magenta-dark,
+    $color-magenta,
+    $color-magenta-light
+  );
 }
-
-
-
-

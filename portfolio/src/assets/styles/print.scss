@@ -1,0 +1,65 @@
+#portrait--print {
+  width: $gs-bp;
+  border-radius: 50%;
+}
+.prinfo {
+  display: none;
+}
+
+@media print {
+  //  REMOVE PAGINA in PRINT
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+  }
+
+  @page {
+    size: auto;
+    margin: 0;
+  }
+  //   #
+  .prinfo {
+    display: inherit;
+  }
+  body {
+    #app {
+      #portrait {
+        display: none;
+      }
+      #portrait--print {
+        display: block;
+      }
+      .about__header {
+        display: flex;
+        flex-direction: row;
+      }
+      #gallery {
+        display: none;
+      }
+      #about {
+        background: white;
+      }
+      #contact {
+        display: none;
+      }
+      .logo-flex {
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        position: static;
+        right: 0;
+        top: 0;
+        display: none;
+      }
+      .main-nav {
+        display: none;
+      }
+      .view--home {
+        display: none !important;
+      }
+    }
+  }
+}
