@@ -194,7 +194,7 @@ export default {
           ],
           company_size_id: 2,
           company_url: "http://baro-pfannenstein.de",
-          job_title: "Lead (3D) Frontend Developer",
+          job_title: "Senior 3D & Frontend Developer",
           level_id: 3,
           org_type_id: 2,
           primary_job: true,

@@ -338,8 +338,7 @@ export default {
               href: "https://joachimgraf.com"
             }
           ],
-          description:
-            "A very basic painting app for browsers. It was build 2015 with jquery and html5 canvas"
+          description: "A Website for the munich-based artist Joachim Graf"
         }
       ]
     };

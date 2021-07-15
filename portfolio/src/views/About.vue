@@ -55,7 +55,8 @@ export default {
         {
           label: "address",
           content: "Forstenrieder Allee 63,<br> 81476 M&uuml;nchen",
-          icon: "envelope"
+          icon: "envelope",
+          hideinWeb: true
         },
         { label: "mail", content: "me\\ät\\manuelgraf.com", icon: "at" },
         // { label: "phone", content: "+49 176 65 88 28 56", icon: "phone" },

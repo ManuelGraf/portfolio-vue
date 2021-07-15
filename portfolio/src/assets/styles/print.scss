@@ -5,7 +5,6 @@
 .prinfo {
   display: none;
 }
-
 @media print {
   .view__headline {
     text-align: left !important;
@@ -17,6 +16,7 @@
     width: 210mm;
     height: 297mm;
     margin: 0 auto;
+    padding: 1rem;
   }
 
   @page {
@@ -29,15 +29,20 @@
   }
   body {
     #app {
+      color: black;
       #portrait {
         display: none;
       }
       #portrait--print {
         display: block;
+        border-radius: 0;
       }
       .about__header {
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 5vh 0 0 16px;
       }
       #gallery {
         display: none;
