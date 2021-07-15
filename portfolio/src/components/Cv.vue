@@ -3,31 +3,28 @@
     <ul class="cv__jobs">
       <li class="job" v-for="(job, index) in jobs" :key="index">
         <div class="job__duration" :style="calcSize(job)">
-          <div class="job__duration-months">
-            {{calcDuration(job)}}
-          </div>
-          <div class="job__duration-unit">
-            months
-          </div> 
+          <div class="job__duration-months">{{calcDuration(job)}}</div>
+          <div class="job__duration-unit">months</div>
         </div>
         <a v-bind:href="job.company_url">
-          <h4 class="job__company">{{job.company_name}}</h4>
+          <h4 class="job__title">{{job.job_title}}</h4>
+          <h4
+            class="job__company"
+          >{{job.company_name}} ({{job.begin_date_month}}/{{job.begin_date_year}} &mdash; {{(job.end_date_month ? (job.end_date_month+'/'+job.end_date_year) : 'heute')}})</h4>
         </a>
         <div class="job__description">
           <div class="job__teaser">
-            <p class="fromto">
-              {{job.begin_date_month}}/{{job.begin_date_year}} &mdash; {{(job.end_date_month ? (job.end_date_month+'/'+job.end_date_year) : 'heute')}}
-            </p>
-            {{job.company_notes}}
+            <ul>
+              <li v-for="note in job.company_notes" :key="job.description">
+                <span id v-html="note"></span>
+              </li>
+            </ul>
           </div>
           <div class="job__tech">
-            <strong v-if="job.techstack">Genutzte Technologie:</strong>    
+            <strong v-if="job.techstack">Genutzte Technologie:</strong>
             <ul class="tech-list">
-              <li
-                v-for="tech in job.techstack"
-                :key="tech"
-              >
-                <img 
+              <li v-for="tech in job.techstack" :key="tech">
+                <img
                   class="tech-list__tech"
                   v-bind:src="`/img/icons/skills/${tech}.png`"
                   :alt="tech"
@@ -45,7 +42,15 @@
 <style lang="scss" scoped>
 $bubblebasesize: 50px;
 $bubblemaxsize: 100px;
+.fromto {
+  font-size: $fontsize-m;
+  color: $color-green-darkest;
+  text-decoration: none;
+}
 .cv__jobs {
+  @include viewport-tablet {
+    padding-left: 19%;
+  }
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -59,12 +64,12 @@ $bubblemaxsize: 100px;
   border-left: 3px solid $color-white;
   margin: 0;
   list-style-type: none;
-  &__description{
+  &__description {
     margin: 0.5em 0 1.5em 0;
   }
   &__duration {
     text-align: center;
-    font-weight:bold;
+    font-weight: bold;
     border-radius: 50%;
     background: $color-white;
     width: $bubblebasesize;
@@ -75,20 +80,20 @@ $bubblemaxsize: 100px;
     color: $color-green;
     font-family: $font-serif;
     flex-direction: column;
-    display:flex;
-    justify-content:center;
+    display: flex;
+    justify-content: center;
     align-items: center;
 
-    &-months{
-      display:inline-block;
+    &-months {
+      display: inline-block;
       font-size: $fontsize-l;
       font-family: $font-serif;
-      line-height:1em;
-      padding:0;
+      line-height: 1em;
+      padding: 0;
     }
-    &-unit{
-      line-height:0.5em;
-      display:inline-block;
+    &-unit {
+      line-height: 0.5em;
+      display: inline-block;
       font-size: $fontsize-m;
       font-family: $font-serif;
     }
@@ -96,11 +101,14 @@ $bubblemaxsize: 100px;
   &__teaser {
     font-size: $fontsize-m;
   }
-  &__company {
-    @include viewport-tablet{
-
-    }
+  &__title {
+    margin-bottom: 1rem;
     font-size: $fontsize-l;
+    color: $color-green-darkest;
+    text-decoration: none;
+  }
+  &__company {
+    font-size: $fontsize-m;
     color: $color-green-darkest;
     text-decoration: none;
   }
@@ -108,12 +116,12 @@ $bubblemaxsize: 100px;
 .tech-list {
   list-style-type: none;
   margin-top: 1.5em;
-  display:flex;
+  display: flex;
   justify-content: flex-start;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   align-items: flex-start;
-  &__tech{
-    margin:5px;
+  &__tech {
+    margin: 5px;
     height: $min-tap / 2;
     width: auto;
   }
@@ -128,28 +136,27 @@ export default {
   methods: {
     calcSize(job) {
       let months = this.calcDuration(job);
-      let share = months/this.totalWorkMonths;
-      let size = Math.floor(50+ share * 100);
+      let share = months / this.totalWorkMonths;
+      let size = Math.floor(50 + share * 100);
+      moment;
       let style = {
-        width: size+'px',
-        height: size+'px'
+        width: size + "px",
+        height: size + "px"
       };
       return style;
     },
     calcDuration(job) {
-      if(job.end_date_year){
-        let start = moment([job.begin_date_year, job.begin_date_month-1]);
-        let end = moment([job.end_date_year, job.end_date_month-1]);
-        let diff = end.diff(start,'months',true);
-        console.log(start._d,end._d,diff)
+      if (job.end_date_year) {
+        let start = moment([job.begin_date_year, job.begin_date_month - 1]);
+        let end = moment([job.end_date_year, job.end_date_month - 1]);
+        let diff = end.diff(start, "months", true);
         return diff;
-
-      }else{
-        return moment()
-          .diff(moment([job.begin_date_year, job.begin_date_month-1,1]),'months');
-
+      } else {
+        return moment().diff(
+          moment([job.begin_date_year, job.begin_date_month - 1, 1]),
+          "months"
+        );
       }
-
     }
   },
   filters: {},
@@ -160,11 +167,14 @@ export default {
         let m = this.calcDuration(job);
         months += m;
       }
-      return months
+      return months;
     },
     since: function() {
       let first = this.jobs[this.jobs.length - 1];
-      return moment([first.begin_date_year,first.begin_date_month-1]).fromNow();
+      return moment([
+        first.begin_date_year,
+        first.begin_date_month - 1
+      ]).fromNow();
     }
   },
   data: function() {
@@ -177,8 +187,11 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "Baro & Pfannenstein GmbH",
-          company_notes:
-            "Konzeption, Gestaltung, Umsetzung und Leitung einzelner Projekte und Koordination von Entwicklerteams. Pflege von Projektmanagementsoftware, Knowledge base und Code base.\r\nVerantwortlich für die Entwicklung von Innovationsprojekten (VR sowie Industrie 4.0) für die Fabrikplanung eines namhaften deutschen Immobilienherstellers.",
+          company_notes: [
+            "Konzeption, Gestaltung, Umsetzung und Technische Leitung einzelner Projekte",
+            "Projektmanagement (JIRA), Knowledge base (Confluence, Wiki) und Code base (git flow).",
+            "Verantwortlich für die Entwicklung von Innovationsprojekten (VR sowie Industrie 4.0) für die Fabrikplanung eines namhaften deutschen Automobilherstellers."
+          ],
           company_size_id: 2,
           company_url: "http://baro-pfannenstein.de",
           job_title: "Lead (3D) Frontend Developer",
@@ -209,12 +222,15 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "Ludwig-Maximilians-Universität München",
-          company_notes:
+          company_notes: [
             "Freiberuflich Tätig (unter anderem als  Phexmedia als Webdesigner und Webentwickler.",
+            "<strong>Bachelor Thesis:</strong> <a href='/0_dl/BA_Manuel_Graf_final.pdf'>'Design of various controls and motivational factors for a biofeedback multiplayer game using Unity3D'</a> @ TU München (English).",
+            "<strong>Master Thesis</strong> <a href='/0_dl/ma_mfg_webvr.pdf'>'User Interaction in Mobile WebVR'</a> @ TU München (German)<br/>"
+          ],
           company_size_id: null,
           company_url: null,
           job_title:
-            "Medieninformatik-Student / freier Web-Developer und Designer",
+            "Medieninformatik-Student / freelancing Web-Developer und Designer",
           level_id: null,
           org_type_id: null,
           primary_job: false,
@@ -283,7 +299,7 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "SnipClip GmbH",
-          company_notes: "Web and Flash Freelancer",
+          company_notes: ["Web and Flash Freelancer"],
           company_size_id: 3,
           company_url: "http://www.snipclip.com",
           job_title: "Flash Developer",
@@ -307,8 +323,11 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "HighText Verlag OHG",
-          company_notes:
-            "Web Developer der Plattform iBusiness.de. Zuständig für technische und gestalterische Optimierung der eigenen Plattform, Print- und Webanzeigenerstellung.",
+          company_notes: [
+            "Web Developer der Plattform iBusiness.de.",
+            "Zuständig für technische und gestalterische Optimierung der eigenen Plattform",
+            "Print- und Webanzeigenerstellung."
+          ],
           company_size_id: 3,
           company_url: "http://www.ibusiness.de",
           job_title: "Digital and Print Media Designer",
@@ -332,8 +351,11 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "HighText Verlag OHG",
-          company_notes:
-            "Auszubildender, Verantwortlich für Webdesign, im team zuständig für CI, CD, Systemadministration und Anwendungsentwicklung",
+          company_notes: [
+            "Auszubildender",
+            "Verantwortlich für Webdesign",
+            "im team zuständig für CI, CD, Systemadministration und Anwendungsentwicklung"
+          ],
           company_size_id: 3,
           company_url: "http://www.ibusiness.de",
           job_title: "Auszubildender",
@@ -357,7 +379,7 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "Creative Illusions",
-          company_notes: "Banner- \u0026 Webdesign",
+          company_notes: ["Banner- \u0026 Webdesign"],
           company_size_id: 3,
           company_url: null,
           job_title: "Grafik/ Banner-Designer",
@@ -404,7 +426,7 @@ export default {
           company_logo:
             "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
           company_name: "Privat",
-          company_notes: "Gründer der free-Webdesign-Community GraphixX.",
+          company_notes: ["Gründer der free-Webdesign-Community GraphixX."],
           company_size_id: 2,
           company_url: null,
           job_title: "GraphixX Design",

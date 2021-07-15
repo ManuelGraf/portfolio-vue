@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" v-in-viewport='-500'>
+  <div class="logo" v-in-viewport="-500">
     <div class="logo-flex">
       <router-link to="/">
         <div class="logo-icon">
@@ -54,7 +54,7 @@
     height: 38.2%;
     padding: 0;
     margin: 0;
-    background-color: rgba($color-black-light,0);
+    background-color: rgba($color-black-light, 0);
     transition: all $duration-noticeable ease;
     display: flex;
     flex-direction: column;
@@ -105,10 +105,10 @@
     height: 45px;
     // padding:10px;
     background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF'  d='M0 0 Q 50 100 100 0 L 0 0z'/%3E%3Cpath stroke='%23222222' fill='none' d='M0 0 Q 50 100 100 0'/%3E%3C/svg%3E");
-    height: 30px;
+    // height: 30px;
     flex-direction: row;
     justify-content: center;
-    padding-bottom:30px;
+    padding-bottom: 30px;
   }
 
   .subline {
@@ -119,20 +119,20 @@
   }
   .logo-name {
     font-size: $fontsize-s;
-    padding:2px 0 0 0;
-    margin:0;
-    .first-name, .last-name{
+    padding: 2px 0 0 0;
+    margin: 0;
+    .first-name,
+    .last-name {
       // font-weight:300;
-      color:$color-white-darkest;
-
+      color: $color-white-darkest;
     }
   }
   .logo-icon {
-    width:45px;
+    width: 45px;
     svg {
       height: 12px;
-      padding:0;
-      margin:0;
+      padding: 0;
+      margin: 0;
     }
   }
 }
@@ -146,7 +146,7 @@ export default {
     return {};
   },
   computed: {
-    viewPortHeight:function(){
+    viewPortHeight: function() {
       // return this.$state.viewport.width;
     },
     notCollapsed: function() {

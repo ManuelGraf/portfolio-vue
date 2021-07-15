@@ -68,28 +68,27 @@
   display: flex;
   flex-direction: column;
   right: 50%;
-  transform: translate3D(50%,0,0);
+  transform: translate3D(50%, 0, 0);
   z-index: 50;
   text-align: left;
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   transition: all $duration-noticeable ease;
-  border-top-left-radius: $min-tap /2;
-  border-bottom-left-radius: $min-tap /2;
-  margin:0;
+  border-top-left-radius: $min-tap / 2;
+  border-bottom-left-radius: $min-tap / 2;
+  margin: 0;
   padding: 0 1rem 0 1rem;
-    mix-blend-mode: multiply;
+  mix-blend-mode: multiply;
 
   .nav-items {
     padding: 0;
-    margin:0;
+    margin: 0;
   }
   .nav-item {
     list-style-type: none;
     font-size: $fontsize-m;
     height: $min-tap;
-
 
     &-flex {
       display: flex;
@@ -112,7 +111,6 @@
       transition: all $duration-noticeable ease;
       display: none;
       border-radius: 50%;
-
     }
     a {
       $color: $color-white;
@@ -122,14 +120,17 @@
   }
   .nav-item--active {
     color: $color-petrol;
-    .nav-item-flex{
+    .nav-item-flex {
       color: $color-white;
     }
   }
 }
 .main-nav.is-collapsed {
-  padding:0;
-  right:$min-tap * $gs-a;
+  padding: 0;
+  right: $min-tap * $gs-a;
+  @include viewport-tablet {
+    right: 10%;
+  }
 
   .nav-item {
     &__icon {
@@ -144,16 +145,16 @@
       height: $min-tap;
     }
     &--active {
-      .nav-item__icon{
+      .nav-item__icon {
         transition: all $duration-noticeable ease;
         border-radius: 50%;
         color: $color-white;
-        background: rgba($color-black-light,.8);
+        background: rgba($color-black-light, 0.8);
         font-size: $fontsize-xl;
         width: $min-tap * 1.1;
         height: $min-tap * 1.1;
-        flex-grow:0;
-        flex-shrink:0;
+        flex-grow: 0;
+        flex-shrink: 0;
 
         font-size: 1.382em;
       }
