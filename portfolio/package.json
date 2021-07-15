@@ -1,0 +1,72 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.2.0",
+    "document-offset": "^1.0.4",
+    "get-size": "^2.0.3",
+    "moment": "^2.23.0",
+    "register-service-worker": "^1.5.2",
+    "screen-orientation": "^1.0.3",
+    "three": "^0.99.0",
+    "three-orbitcontrols": "^2.99.1",
+    "v-click-outside": "^2.1.5",
+    "viewport-size": "0.0.1",
+    "vue": "^2.5.17",
+    "vue-dragscroll": "^1.8.1",
+    "vue-in-viewport-directive": "^1.2.1",
+    "vue-router": "^3.0.1",
+    "vue-youtube": "^1.4.0",
+    "vue2-scrollspy": "^2.3.1",
+    "vuex": "^3.0.1",
+    "webvr-ui": "^0.10.0",
+    "window-size": "^1.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-plugin-pwa": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "babel-eslint": "^10.0.1",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "image-webpack-loader": "^4.6.0",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "sharp": "^0.21.0",
+    "style-loader": "^0.23.1",
+    "vue-particles": "^1.0.9",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

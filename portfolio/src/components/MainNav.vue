@@ -1,0 +1,192 @@
+<template lang="de">
+  <div class="main-nav" v-bind:class="{'is-collapsed': isCollapsedOnMobile}">
+    <ul class="nav-items" 
+      v-scroll-spy-link 
+      v-scroll-spy-active="{class: 'nav-item--active'}"
+    >
+      <li class="nav-item">
+        <router-link to="/" class="nav-item-flex">
+          <span  class="nav-item__icon fa fa-home"></span>
+          <transition name="collapse">
+            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Home</span>
+          </transition>  
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/about" class="nav-item-flex">  
+         <span  class="nav-item__icon fa fa-info"></span> 
+          <transition name="collapse">
+            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">About</span>
+          </transition>  
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/gallery" class="nav-item-flex">  
+          <span  class="nav-item__icon fa fa-briefcase"></span> 
+          <transition name="collapse">
+            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Gallery</span>
+          </transition>  
+        </router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/contact" class="nav-item-flex">  
+          <span class="nav-item__icon fa fa-at"></span> 
+          <transition name="collapse">
+            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Contact</span>
+          </transition>  
+        </router-link>
+      </li>
+    </ul>
+  </div>
+</template>
+
+
+
+<style lang="scss">
+.collapse-enter,
+.collapse-leave-to {
+  max-width: 0;
+  display: none;
+}
+.collapse-enter-to,
+.collapse-leave {
+  max-width: 200px;
+}
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: max-width $duration-noticeable ease;
+}
+
+.main-nav {
+  @include viewport-tablet {
+    max-width: 400px;
+    max-height: 50%;
+  }
+
+  position: fixed;
+  top: $gs-ap;
+  display: flex;
+  flex-direction: column;
+  right: 50%;
+  transform: translate3D(50%, 0, 0);
+  z-index: 50;
+  text-align: left;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all $duration-noticeable ease;
+  border-top-left-radius: $min-tap / 2;
+  border-bottom-left-radius: $min-tap / 2;
+  margin: 0;
+  padding: 0 1rem 0 1rem;
+  mix-blend-mode: multiply;
+
+  .nav-items {
+    padding: 0;
+    margin: 0;
+  }
+  .nav-item {
+    list-style-type: none;
+    font-size: $fontsize-m;
+    height: $min-tap;
+
+    &-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: $color-white-darkest;
+    }
+
+    &__label {
+      opacity: 1;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      color: $color-black-lightest;
+    }
+
+    &__icon {
+      width: $min-tap;
+      transition: all $duration-noticeable ease;
+      display: none;
+      border-radius: 50%;
+    }
+    a {
+      $color: $color-white;
+      text-decoration: none;
+      transition: all $duration-noticeable ease;
+    }
+  }
+  .nav-item--active {
+    color: $color-petrol;
+    .nav-item-flex {
+      color: $color-white;
+    }
+  }
+}
+.main-nav.is-collapsed {
+  padding: 0;
+  right: $min-tap * $gs-a;
+  @include viewport-tablet {
+    right: 10%;
+  }
+
+  .nav-item {
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $min-tap;
+      height: $min-tap;
+    }
+    .nav-item-flex {
+      width: $min-tap;
+      height: $min-tap;
+    }
+    &--active {
+      .nav-item__icon {
+        transition: all $duration-noticeable ease;
+        border-radius: 50%;
+        color: $color-white;
+        background: rgba($color-black-light, 0.8);
+        font-size: $fontsize-xl;
+        width: $min-tap * 1.1;
+        height: $min-tap * 1.1;
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        font-size: 1.382em;
+      }
+    }
+  }
+}
+</style>
+
+<script>
+export default {
+  data: function() {
+    return {
+      scrollPosition: 0
+    };
+  },
+  components: {},
+  computed: {
+    isCollapsedOnMobile: function() {
+      return this.scrollPosition > 50;
+    }
+  },
+  methods: {
+    onScroll(ev) {
+      this.scrollPosition = window.scrollY;
+    }
+  },
+  created: function() {
+    window.addEventListener("scroll", this.onScroll.bind(this), false);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.onScroll.bind(this), false);
+  }
+};
+</script>
+

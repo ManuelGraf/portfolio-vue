@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<script src="jquery-1.9.1.min.js"></script>
+		<script src="jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<link  rel="stylesheet" type="text/css" href="jquery-ui-1.10.3/css/ui-darkness/jquery-ui-1.10.3.custom.min.css">
+		<link  rel="stylesheet" type="text/css" href="css/styles.css">
+		<title>DeCasteljau HTML 5 Interpolator</title>
+
+	</head>
+	<body>
+		<div id ="wrapper">
+			<div id="decastelJauContent" class="contentWrapper">
+				<canvas id="canvas" width="960" height="400">
+					No Html 5 support.
+				</canvas>
+				<div id="info-content" style="display: none">
+					Anleitung:<br /><br />
+					- Punkt löschen: Doppelklick auf Kontrollpunkt.<br />
+					- Punkt verschieben: Drag & Drop<br />
+					- Puknt hinzufügen: Einfacher Mausklick auf Canvas<br /><br />
+					  Von Manuel Graf und Michael Prummer.
+				</div>
+				<div class="sliderWrapper">
+					<p>
+						max. Rekursionstiefe: <span id ="maxDepth">0</span>
+					</p>
+					<div id = "depthSlider"></div>
+				</div>
+				<div class="sliderWrapper">
+					<p>
+						Teilungsverh&auml;ltnis: <span id ="t">0.2 : 0.8</span>
+					</p>
+					<div id = "tSlider"></div>
+				</div>
+				<div class="sliderWrapper">
+					<p>
+						Level of Detail: <span id="lod-value-output">0.1</span>
+					</p>
+					<div id = "detailSlider"></div>
+				</div>
+				<div class="clear"></div>
+				<ul id="side-btns">
+					<li><input type="button" name="reset" value="Reset" id="reset"/></li>
+					<li><input type="button" name="info" value="About" id="info" onclick="showAbout()"/></li>
+				</ul>
+				<ul id="settings">
+					<li class="setting-item">
+						<span>Show Curve</span>
+						<input type="checkbox" name="showCasteljauCurve" id="showCasteljauCurve"/>
+					</li>
+					<li class="setting-item">
+						<span>Show Iterations</span>
+						<input type="checkbox" name="showCasteljauIterations" id="showCasteljauIterations"/>
+					</li>
+					<li class="setting-item">
+						<span>Show Lines</span>
+						<input type="checkbox" name="showCasteljauLine" id="showCasteljauLine"/>
+					</li>
+					<li class="setting-item">
+						<span>Show Casteljau Point</span>
+						<input type="checkbox" name="showCasteljauPoint" id="showCasteljauPoint"/>
+					</li>
+			</div>
+
+			</div id="decastelJauContent">
+		</div>
+
+		<script type="text/javascript">
+			// Teilunsverhältnis der Strecken. Modifizierbar durch JSlider
+			var lod = 0.1;
+			var t = 0.2;
+			// COLORS
+			var inactivePointColor = "#aaaaaa";
+			var inactiveLineColor = "#999999";
+			var activePointColor = "#00aa00";
+			var activeLineColor = "#aa0000";
+
+			// Farbe für den Punkt der die Strecken einteilt
+			var tPointColor = "#dd0000";
+			var casteljauPointColor = "#0000dd";
+
+			var backgroundColor = "#eeeeee";
+
+			var showCasteljauCurve = false;
+			var showCasteljauIterations = false;
+			var showCasteljauLine = false;
+			var showCasteljauPoint = false;
+
+			var pointSize = 10;
+
+			var width = 920;
+			var height = 400;
+
+			var canvas;
+			var c;
+			//Konstruktor Array([]) erzeugt array der länge 1, war das gewollt?
+			var ctrlPoints = new Array();
+			var curvePoints = new Array();
+			// Hier rein kommen die einzelnen Punkte der rekursionen des decasteljau rein
+			var cycles = new Array(new Array());
+			var maxDepth = 0;
+
+			var tSlider;
+			var depthSlider;
+
+			var ctrlPointClicked;
+			var dragMode = false;
+
+			$(document).ready(function() {
+				canvas = document.getElementById("canvas");
+				c = canvas.getContext("2d");
+				jCanvas = $(canvas);
+				jCanvas.attr({
+					"width" : width,
+					"height" : height
+				});
+				jCanvas.css({
+					"width" : width,
+					"height" : height
+				});
+				canvas.width = canvas.width;
+				
+				Array.prototype.remove = function(from, to) {
+					var rest = this.slice((to || from) + 1 || this.length);
+					this.length = from < 0 ? this.length + from : from;
+					return this.push.apply(this, rest);
+				};
+				
+				// Set Point || Start Drag
+				$(jCanvas).mousedown(function(e) {
+					var clickPos = getMousePos(canvas, e);
+					for (var i = 0; i < ctrlPoints.length; i++) {
+						if (Math.abs(ctrlPoints[i].x - clickPos.x) < pointSize && Math.abs(ctrlPoints[i].y - clickPos.y) < pointSize) {
+							dragMode = true;
+							ctrlPointToDrag = i;
+							break;
+						} else {
+							dragMode = false;
+						}
+					}
+
+					if (dragMode == false) {
+						var clickPos = getMousePos(canvas, e);
+						ctrlPoints.push(clickPos);
+						update();
+						updateSlider();
+					}
+				});
+				
+				// Drop
+				$(jCanvas).mouseup(function(e) {
+					if (dragMode) {
+						dragMode = false;
+					}
+				});
+				
+				// Move Drag
+				$(jCanvas).mousemove(function(e) {
+					if (dragMode) {
+						ctrlPoints[ctrlPointToDrag].x = getMousePos(canvas, e).x;
+						ctrlPoints[ctrlPointToDrag].y = getMousePos(canvas, e).y;
+						update();
+						updateSlider();
+					}
+				});
+				
+				// Remove Point
+				$(jCanvas).dblclick(function(e) {
+					var clickPos = getMousePos(canvas, e);
+					for (var i = 0; i < ctrlPoints.length; i++) {
+						if (Math.abs(ctrlPoints[i].x - clickPos.x) < pointSize && Math.abs(ctrlPoints[i].y - clickPos.y) < pointSize) {
+							ctrlPoints.remove(i)
+							update();
+							break;
+						}
+					}
+				});
+
+				depthSlider = $('#depthSlider').slider({
+					animate : 'fast',
+					value : maxDepth,
+					step : 1,
+					min : 0,
+					max : maxDepth,
+					slide : function(e, ui) {
+						maxDepth = ui.value;
+						$('#maxDepth').text(maxDepth);
+						update();
+					}
+				});
+
+				tSlider = $('#tSlider').slider({
+					animate : 'fast',
+					value : t * 100,
+					min : 0,
+					max : 100,
+					slide : function(e, ui) {
+						t = ui.value / 100;
+						$('#t').text(t.toPrecision(2) + ' : ' + (1 - t).toPrecision(2));
+						update();
+					}
+				});
+
+				detailSlider = $('#detailSlider').slider({
+					animate : 'fast',
+					value : t,
+					min : 10,
+					max : 30,
+					slide : function(e, ui) {
+
+						lod = 1 / ui.value;
+						$("#lod-value-output").html(lod.toPrecision(3));
+						update();
+					}
+				});
+
+				$('#showCasteljauPoint').change(function(e) {
+					showCasteljauPoint = this.checked;
+					update();
+				}).attr("checked", showCasteljauPoint);
+
+				$('#showCasteljauCurve').change(function(e) {
+					showCasteljauCurve = this.checked;
+					update();
+				}).attr("checked", showCasteljauCurve);
+
+				$('#showCasteljauLine').change(function(e) {
+					showCasteljauLine = this.checked;
+					update();
+				}).attr("checked", showCasteljauLine);
+
+				$('#showCasteljauIterations').change(function(e) {
+					showCasteljauIterations = this.checked;
+					update();
+				}).attr("checked", showCasteljauIterations);
+
+				$('#reset').click(function(e) {
+					reset();
+				});
+
+				// INIT STAGE
+				update();
+			})
+			function update() {
+
+				evalCasteljau();
+				drawCasteljau();
+			}
+
+			function updateSlider() {
+				depthSlider.slider("option", "max", cycles.length - 1);
+			}
+
+			function drawCasteljau() {
+				canvas.width = canvas.width;
+				c.fillStyle = backgroundColor;
+				c.fillRect(0, 0, width, height);
+				if (curvePoints.length > 0 && showCasteljauCurve) {
+					c.moveTo(curvePoints[0].x, curvePoints[0].y);
+					for (var i = 1; i < curvePoints.length; i++) {
+						c.strokeStyle = activeLineColor;
+						c.lineTo(curvePoints[i].x, curvePoints[i].y);
+						c.stroke();
+					}
+				}
+
+				for (var i = 0; i < ctrlPoints.length; i++) {
+					c.moveTo(ctrlPoints[i].x, ctrlPoints[i].y);
+					if (i < ctrlPoints.length - 1) {
+						if (showCasteljauLine) {
+							// DRAW lines between ctrlpoints
+							console.log(ctrlPoints[i].x + "," + ctrlPoints[i].y + "to" + ctrlPoints[i + 1].x + ", " + ctrlPoints[i + 1].y);
+							c.lineTo(ctrlPoints[i + 1].x, ctrlPoints[i + 1].y);
+							c.strokeStyle = inactiveLineColor;
+							c.stroke();
+						}
+					}
+					//DRAW CONTROLPOINTS
+					c.fillStyle = activePointColor;
+					c.fillRect(ctrlPoints[i].x - pointSize / 2, ctrlPoints[i].y - pointSize / 2, pointSize, pointSize);
+				}
+				//DRAW CASTELJAUPOINT FOR GIVEN T FROM SLIDER
+				//NIEMALS VERSCHIEBEN, LÖSCHEN ODER SO! Das hier befüllt cycles mit dem aktuellen wert. sollte einmal nach evalCasteljau kommen!
+				var point = getCasteljauPoint(1 - t);
+
+				if (showCasteljauPoint && ctrlPoints.length >= 3) {
+					c.fillStyle = casteljauPointColor;
+					c.fillRect(point.x - pointSize / 2, point.y - pointSize / 2, pointSize, pointSize);
+
+				}
+
+				//DRAW HELPLINES
+				if (maxDepth > cycles.length)
+					maxDepth = cycles.length;
+
+				if (showCasteljauIterations) {
+					for (var j = 1; j <= maxDepth; j++) {
+						var cycle = cycles[j] ? cycles[j] : undefined;
+						if (cycle) {
+							for (var k = 0; k < cycles[j].length; k++) {
+								// DRAW point that splits this range
+								var point = cycles[j][k];
+								if (point) {
+									c.fillStyle = tPointColor;
+									c.fillRect(point.x - pointSize / 2, point.y - pointSize / 2, pointSize, pointSize);
+									// DRAW LINES between splitPoints
+									if (k < cycles[j].length - 1) {
+										var nextPoint = cycles[j][k + 1];
+										if (nextPoint) {
+											c.moveTo(point.x, point.y);
+											c.lineTo(nextPoint.x, nextPoint.y);
+											c.stroke();
+										}
+									}
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+			function drawRecursions(maxDepth) {
+				for (var k = 1; k <= n; k++) {
+					for (var i = 0; i <= n - k; i++) {
+						tempPoints[i].x = t * tempPoints[i].x + (1 - t) * tempPoints[i + 1].x;
+						tempPoints[i].y = t * tempPoints[i].y + (1 - t) * tempPoints[i + 1].y;
+					}
+				}
+			}
+
+			function evalCasteljau() {
+				curvePoints = [];
+				if (ctrlPoints.length >= 3) {
+					for (var i = 0.0; i <= 1; i += lod) {
+						curvePoints.push
+						curvePoints.push(getCasteljauPoint(i));
+					}
+				}
+			}
+
+			function getCasteljauPoint(t) {
+				cycles = new Array(new Array())
+				var tempPoints = [];
+				var n = ctrlPoints.length - 1;
+
+				for (var i = 0; i <= n; i++) {
+					tempPoints.push({
+						x : ctrlPoints[i].x,
+						y : ctrlPoints[i].y
+					});
+				}
+				// console.log(ctrlPoints);
+
+				for (var k = 1; k <= n; k++) {
+					var tmp = new Array();
+					for (var i = 0; i <= n - k; i++) {
+						tempPoints[i].x = t * tempPoints[i].x + (1 - t) * tempPoints[i + 1].x;
+						tempPoints[i].y = t * tempPoints[i].y + (1 - t) * tempPoints[i + 1].y;
+						tmp.push({
+							x : tempPoints[i].x,
+							y : tempPoints[i].y
+						})
+					}
+					cycles.push(tmp);
+				}
+				// HIER STEHT ÜBERALL DAS GLEICHE DRIN. WARUM DIE FOR SCHLEIFE WENN WIR EH NUR [0] ZURUECKGEBEN?
+
+				return tempPoints[0];
+				//console.log(tempPoints);
+
+			}
+
+			function getMousePos(canvas, evt) {
+				var rect = canvas.getBoundingClientRect();
+				// console.log(evt);
+				//console.log((evt.clientX - rect.left)+" "+(evt.clientY - rect.top)	);
+				return {
+					x : evt.clientX - rect.left,
+					y : evt.clientY - rect.top
+				};
+
+			}
+
+			function reset() {
+				console.log('reset');
+				canvas.width = canvas.width;
+				ctrlPoints = [];
+				curvePoints = [];
+				update();
+			}
+			function showAbout() {
+				if($("#info-content").is(":visible")){
+					$("#info-content").hide();
+				} else {
+					$("#info-content").show();
+					
+				}
+			}
+		</script>
+	</body>
+</html>

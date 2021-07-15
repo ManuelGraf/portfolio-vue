@@ -1,0 +1,78 @@
+.flex {
+  display: flex;
+}
+.flex---vertical {
+  flex-direction: column;
+}
+.flex---horizontal {
+  flex-direction: row;
+}
+.divider {
+  width: 80%;
+  margin: 2rem 3rem 2.5rem;
+  border: rgba(0, 0, 0, 0.5);
+}
+
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: "Open Sans";
+  line-height: 1.5em;
+  width: 100%;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.jumbo {
+  font-size: $fontsize-xxl;
+  text-align: center;
+  color: white;
+  opacity: 0.8;
+}
+a {
+  color: $color-petrol;
+  text-decoration: none;
+}
+
+body {
+  h1 {
+    font-size: $fontsize-xxl;
+    font-family: $font-condensed;
+  }
+  h2 {
+    font-size: $fontsize-xl;
+    font-family: $font-condensed;
+    line-height: 1.3em;
+    margin: 1.3em 0;
+  }
+  h3 {
+    font-size: $fontsize-l;
+    font-family: $font-condensed;
+    line-height: 1.3em;
+    margin: 1.3em 0;
+  }
+  h4 {
+    font-size: $fontsize-m;
+    font-weight: 500;
+    font-family: $font-condensed;
+    line-height: 1.3em;
+    margin: 1.3em 0;
+  }
+  h5 {
+    font-size: $fontsize-xl;
+    font-family: $font-condensed;
+    margin: 1em 0;
+  }
+}
+
+.divider {
+}
+
+// breset

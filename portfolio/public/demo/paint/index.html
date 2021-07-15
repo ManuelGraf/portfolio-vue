@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script src="js/draw.js"></script>
+    <style>
+        body{
+            height:100%;
+        }
+        * {
+            margin:0;
+            padding:0;
+        }
+        #controls{
+            position: fixed;
+            bottom:0;
+            background: rgba(255,255,255,.8);
+            width:100%;
+            display:flex;
+            margin:0;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrap">
+    <canvas id="myCanvas" width="800" height="450"
+        style="border:1px solid #000000;">
+    </canvas>
+    <div id="controls">
+    </div>
+
+</div>
+
+<script>
+    window.onload = function(evt){
+        console.log('DOM loaded');
+        var canvas = document.getElementById("myCanvas");
+        var drawer = new Drawer("myCanvas","controls");
+    }
+</script>
+</body>
+</html>

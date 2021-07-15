@@ -1,0 +1,65 @@
+#app {
+  overflow: hidden;
+}
+.view {
+  display: block;
+  position: relative;
+  min-height: 100vh;
+
+  font-family: "Open Sans";
+  padding-right: $min-tap + 20;
+}
+
+.view__content {
+  &--vertical {
+    flex-direction: row;
+  }
+  @include viewport-tablet {
+    width: $width-content-tablet;
+    max-width: $width-content-max;
+    flex-direction: row;
+  }
+  flex-direction: column;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 20px 0 20px 20px;
+  margin: 0 auto;
+}
+.view__headline {
+  @include viewport-tablet {
+    padding: 3rem 0 3rem 3rem;
+  }
+  font-family: $font-serif;
+  font-size: $fontsize-xxl;
+  text-align: center;
+  line-height: 1em;
+  padding: 1rem 0 1.3rem 1rem;
+}
+.nowrap {
+  flex-wrap: nowrap;
+}
+// .col-a {
+//   width: $gs-ap;
+// }
+// .col-b {
+//   width: $gs-bp;
+// }
+// .col-8 {
+//   width: 66%;
+// }
+// .col-4 {
+//   width: 33%;
+// }
+// .col-12 {
+//   width: 100%;
+// }
+// .col-6 {
+//   width: 50%;
+// }
+// .col-1 {
+//   width: 12/100%;
+// }
