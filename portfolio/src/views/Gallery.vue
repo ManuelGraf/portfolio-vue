@@ -210,6 +210,7 @@ export default {
               <li>select from all available versions for all dependencies</li>
               <li>GUI for npm audit</li>
               <li>GUI for npm-check-updates</li>
+              <li>Github Changelogs for each update</li>
               </ul>
             `
         },
