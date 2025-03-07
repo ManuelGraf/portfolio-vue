@@ -15,7 +15,6 @@
     "register-service-worker": "^1.5.2",
     "screen-orientation": "^1.0.3",
     "three": "^0.99.0",
-    "three-orbitcontrols": "^2.99.1",
     "v-click-outside": "^2.1.5",
     "viewport-size": "0.0.1",
     "vue": "^2.5.17",
