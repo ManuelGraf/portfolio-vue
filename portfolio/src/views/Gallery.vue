@@ -134,10 +134,15 @@ $color-gallery: $color-petrol-lightest;
       }
       .demo__description {
         @include viewport-tablet {
-          margin-left: 1rem;
+          margin-left:2rem;
+          margin-right:2rem;
           margin-top: 0;
         }
         margin-top: 1rem;
+        .list{
+          list-style-type:circle;
+          margin: 1rem 1.5rem;
+        }
         a {
           // margin-left: 1rem;
           text-decoration: underline;
@@ -195,18 +200,18 @@ export default {
     return {
       demos: [
       {
-          title: "dep.pin",
-          thumbImage: "/demo/dep-pin.jpg",
+          title: "DEP.PIN",
+          thumbImage: "/demo/dep.pin.jpg",
           links: [
             {
               text: "download for Windows",
-              href: "/demo/dep.pin-1.0.0.exe"
+              href: "/0_dl/dep.pin-1.0.0.exe"
             }
           ],
           description:
-            `Tools to keep npm packages updated and fixed to specific versions, which allows for easier security checks, as it eliminates guesswork in semantic versioning. <br>
+            `Cross Platform Native App to keep npm packages updated and fixed to specific versions, which allows for easier security checks and licensing reports. <br> It eliminates guesswork in what npm packages your app <br>actually</br> uses. <br>
              Features: 
-             <ul>
+             <ul class="list">
               <li>select from all available versions for all dependencies</li>
               <li>GUI for npm audit</li>
               <li>GUI for npm-check-updates</li>
