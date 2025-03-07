@@ -194,6 +194,25 @@ export default {
   data: function() {
     return {
       demos: [
+      {
+          title: "dep.pin",
+          thumbImage: "/demo/dep.pin.jpg",
+          links: [
+            {
+              text: "download for Windows",
+              href: "/demo/dep.pin-1.0.0.exe"
+            }
+          ],
+          description:
+            `Tools to keep npm packages updated and fixed to specific versions, which allows for easier security checks, as it eliminates guesswork in semantic versioning. <br>
+             Features: 
+             <ul>
+              <li>select from all available versions for all dependencies</li>
+              <li>GUI for npm audit</li>
+              <li>GUI for npm-check-updates</li>
+              </ul>
+            `
+        },
         {
           title: "Virtual Reality",
           thumbImage: "/demo/BPVR.jpg",
