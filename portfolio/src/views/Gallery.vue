@@ -196,7 +196,7 @@ export default {
       demos: [
       {
           title: "dep.pin",
-          thumbImage: "/demo/dep.pin.jpg",
+          thumbImage: "/demo/dep-pin.jpg",
           links: [
             {
               text: "download for Windows",
