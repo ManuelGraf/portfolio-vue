@@ -129,7 +129,8 @@
   padding: 0;
   right: $min-tap * $gs-a;
   @include viewport-tablet {
-    right: 10%;
+    right: $min-tap * $gs-a + 16px;
+    // right: 10%;
   }
 
   .nav-item {
