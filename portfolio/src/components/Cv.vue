@@ -57,6 +57,11 @@ $bubblemaxsize: 100px;
   padding-left: ($bubblebasesize * 1.2);
 }
 .job {
+  @media print {
+    break-inside: avoid;
+    page-break-inside: avoid; /* For older browsers */
+  }
+  page-break-inside: avoid;
   position: relative;
   transition: all $duration-noticeable ease;
   padding-left: 20%;
