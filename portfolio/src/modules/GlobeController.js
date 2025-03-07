@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import vector from '@/modules/VectorStore.js'
-import OrbitControls from 'three-orbitcontrols'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import TWEEN from '@tweenjs/tween.js'
 
 'use strict';
