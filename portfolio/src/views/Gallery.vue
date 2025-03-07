@@ -201,7 +201,7 @@ export default {
       demos: [
       {
           title: "DEP.PIN",
-          thumbImage: "/demo/dep.pin.jpg",
+          thumbImage: "/img/dep.pin.jpg",
           links: [
             {
               text: "download for Windows",
@@ -221,14 +221,14 @@ export default {
         },
         {
           title: "Virtual Reality",
-          thumbImage: "/demo/BPVR.jpg",
+          thumbImage: "/img/BPVR.jpg",
           description:
             "Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments."
         },
 
         {
           title: "Cluster Data on Globe in Browser",
-          thumbImage: "/demo/globe.jpg",
+          thumbImage: "/img/globe.jpg",
           yt: "qUQUSjc5jAA",
           playing: false,
           description:
@@ -242,7 +242,7 @@ export default {
         },
         {
           title: "Video Exergame: MagiKart",
-          thumbImage: "/demo/magikart.png",
+          thumbImage: "/img/magikart.png",
           links: [
             {
               text: "Watch a test run on youtube",
@@ -264,7 +264,7 @@ export default {
         },
         {
           title: "Video Game: Underlord",
-          thumbImage: "/demo/underlord.png",
+          thumbImage: "/img/underlord.png",
           links: [
             {
               text: "watch trailer on youtube",
@@ -282,7 +282,7 @@ export default {
         },
         {
           title: "Video Game: Rise",
-          thumbImage: "/demo/rise.jpg",
+          thumbImage: "/img/rise.jpg",
           links: [
             {
               text: "watch Intro on youtube",
@@ -296,7 +296,7 @@ export default {
         },
         {
           title: "YARA: Yet Aother Running App ",
-          thumbImage: "/demo/yara.png",
+          thumbImage: "/img/yara.png",
           links: [
             {
               text: "watch video on youtube",
@@ -310,7 +310,7 @@ export default {
         },
         {
           title: "Fat Ninja: iOS Sidescroller Game ",
-          thumbImage: "/demo/fatninja.png",
+          thumbImage: "/img/fatninja.png",
           links: [
             {
               text: "Watch the final presentation",
@@ -331,7 +331,7 @@ export default {
         },
         {
           title: "Simple Browser Paint",
-          thumbImage: "/demo/paint/sample.png",
+          thumbImage: "/img/paint/sample.png",
           links: [
             {
               text: "watch it in action",
@@ -343,7 +343,7 @@ export default {
         },
         {
           title: "Akabanga.de",
-          thumbImage: "/demo/akabanga.jpg",
+          thumbImage: "/img/akabanga.jpg",
           links: [
             {
               text: "Visit Website",
@@ -356,7 +356,7 @@ export default {
         },
         {
           title: "Joachimgraf.com",
-          thumbImage: "/demo/joachimgraf.jpg",
+          thumbImage: "/img/joachimgraf.jpg",
           links: [
             {
               text: "Visit Website",
