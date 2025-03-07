@@ -15,7 +15,7 @@
         <div class="job__description">
           <div class="job__teaser">
             <ul>
-              <li v-for="note in job.company_notes" :key="job.description">
+              <li v-for="note in job.company_notes" :key="note">
                 <span id v-html="note"></span>
               </li>
             </ul>
@@ -61,11 +61,11 @@ $bubblemaxsize: 100px;
     break-inside: avoid;
     page-break-inside: avoid; /* For older browsers */
   }
-  page-break-inside: avoid;
   position: relative;
   transition: all $duration-noticeable ease;
   padding-left: 20%;
   padding-bottom: 20px;
+  padding-top:2rem;
   border-left: 3px solid $color-white;
   margin: 0;
   list-style-type: none;
@@ -235,7 +235,7 @@ export default {
           company_size_id: null,
           company_url: null,
           job_title:
-            "Medieninformatik-Student / freelancing Web-Developer und Designer",
+            "Medieninformatik-Student / Web-Developer und Designer",
           level_id: null,
           org_type_id: null,
           primary_job: false,

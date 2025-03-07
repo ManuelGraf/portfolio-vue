@@ -12,12 +12,23 @@
           <Portrait></Portrait>
         </div>-->
         <section id="info">
-          <div :class="'about__info about__info--'+i.label" v-for="i in info" :key="i.label">
-            <span :class="'about__info__icon fas fa-'+i.icon"></span>
-            <span :class="'about__info__content about__info__content--'+i.label" v-html="i.content"></span>
+          <div 
+            v-for="i in info" 
+            :key="i.label"
+            :class="[
+              'about__info',
+              'about__info--' + i.label,
+              { 'hide-in-web': i.hideinWeb }
+            ]"
+          >
+            <span :class="'about__info__icon fas fa-' + i.icon"></span>
+            <span 
+              :class="'about__info__content about__info__content--' + i.label" 
+              v-html="i.content"
+            ></span>
           </div>
         </section>
-      </div>
+     </div>
       <div class="divider"></div>
       <h2 class="view__headline">Curriculum Vitae</h2>
       <cv></cv>
@@ -58,14 +69,15 @@ export default {
           icon: "envelope",
           hideinWeb: true
         },
-        { label: "mail", content: "me\\ät\\manuelgraf.com", icon: "at" },
+        { label: "mail", content: "mail\\ät\\manuelgraf.com", icon: "at" },
         // { label: "phone", content: "+49 176 65 88 28 56", icon: "phone" },
         {
           label: "web",
           content: "<a href='https://manuelgraf.com'>manuelgraf.com</a>",
-          icon: "link"
+          icon: "link",
+          hideinWeb: true
         },
-        { label: "marital", content: "ledig", icon: "ring" },
+        { label: "marital", content: "ledig", icon: "ring" , hideinWeb:true },
         { label: "nationality", content: "deutsch", icon: "globe" }
       ]
     };
@@ -77,6 +89,8 @@ export default {
 $bg-about: $color-green;
 $color-about: $color-green-darkest;
 $color-spot: $color-black;
+
+
 
 .about__header {
   @include viewport-tablet {
@@ -124,6 +138,13 @@ $color-spot: $color-black;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+
+  &.hide-in-web{
+  @media print{
+    display:block;
+  }
+  display:none;
+}
 
   // &--name,
   // &--name &__content {
