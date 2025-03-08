@@ -124,7 +124,7 @@ $color-gallery: $color-petrol-lightest;
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
-      margin: 0 2rem 2rem 2rem;
+      margin: 5rem 2rem 8rem 2rem;
       .demo {
         @include viewport-tablet {
           flex-direction: row;
@@ -138,7 +138,7 @@ $color-gallery: $color-petrol-lightest;
           margin-right:2rem;
           margin-top: 0;
         }
-        margin-top: 1rem;
+        margin: 1rem 0 2rem 0;
         .list{
           list-style-type:circle;
           margin: 1rem 1.5rem;
@@ -149,12 +149,27 @@ $color-gallery: $color-petrol-lightest;
           cursor: pointer;
           color: rgba(255, 255, 255, 0.5);
         }
+        p{
+          padding-bottom:1rem;
+        }
+      }
+      .headline {
+        @include viewport-tablet {
+          font-size:$fontsize-l;
+          text-align:left
+        }
+        
+        margin: 1rem 0 2rem 0;
+        font-size:$fontsize-xl;
+        text-align:center
       }
       .demo__preview {
-        flex: 0 0 $gs-bp;
-        .headline {
-          margin: 1em;
-        }
+        @include viewport-tablet {
+          flex: 0 0 $gs-bp;
+          }
+        flex: 0;
+        margin: 1rem 0;
+
         img {
           width: 100%;
           max-width: 100%;
@@ -205,17 +220,17 @@ export default {
           links: [
             {
               text: "download for Windows",
-              href: "/0_dl/dep.pin-1.0.0.exe"
+              href: "/demo/dep.pin-1.0.0.exe"
             }
           ],
           description:
             `Cross Platform Native App to keep npm packages updated and fixed to specific versions, which allows for easier security checks and licensing reports. <br> It eliminates guesswork in what npm packages your app <br>actually</br> uses. <br>
              Features: 
              <ul class="list">
-              <li>select from all available versions for all dependencies</li>
-              <li>GUI for npm audit</li>
-              <li>GUI for npm-check-updates</li>
-              <li>Github Changelogs for each update</li>
+              <li>select and pin dependencies from a list of all available versions</li>
+              <li>npm audit GUI</li>
+              <li>npm-check-updates GUI</li>
+              <li>Github Changelogs for each possible update</li>
               </ul>
             `
         },
@@ -223,11 +238,11 @@ export default {
           title: "Virtual Reality",
           thumbImage: "/img/BPVR.jpg",
           description:
-            "Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments."
-        },
+          "Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments."
+          },
 
         {
-          title: "Cluster Data on Globe in Browser",
+          title: "3D Data Viz: Cluster Data on Globe",
           thumbImage: "/img/globe.jpg",
           yt: "qUQUSjc5jAA",
           playing: false,
@@ -255,12 +270,32 @@ export default {
             {
               text: "Project Files",
               href: "0_dl/BABFinclReverse.rar"
+            },
+            {
+              text: "ReFit Systems",
+              href: "https://www.refit-systems.com/de/gamo/"
             }
           ],
           yt: "4_fhHUCZjbk",
           playing: false,
           description:
-            '<p>A Multiplayer "Serious Game" or "ExerGame" that was controlled by riding an ergometer and leaning from left to right for rehabilitation purposes. It was created by Manuel Graf and Michael Prummer under the supervision of Dr. Alejandro Mendoza Garcia. It´s intended use was to offer a playful  and appealing motivator for children to pursue cardio training.</p><p>The topic of Manuel F. Graf´s Bachelor Thesis included developing an enticing multi player serious game (incl. game design, sport theory...) by using Dr. Mendoza Garcias MDC Connector for receiving Input from medical  and non medical periphery devices (ergometers, motion sensors, heart rate monitors...).The main topic for the thesis was ho to create an engaging and motivating experience by combining motivation theory (sdt,...) and comparing Multi- vs single player games effects on exhaustion and cardio training success. </p><p>The Game Design featured a game similar to popular battle racing games like Super Mario Kart that is controlled by the users body instead of input devices like gamepads.Acceleration was controlledd by cycling the ergometer and users were able to steer by physically leaning to the side. The closer the user got to their optimal heart rate (adjusted to fitness level, age, condition) the better upgrades, easier steering and higher maximum speed. A complete Game Design Document can be found at <a href="0_dl/BA_Manuel_Graf_final.pdf">Manuel Grafs Bachelor Thesis</a></p><p>For Information on the architecture of the Server-Client structure of the Game, please refer to <a href="https://www.xing.com/profile/Michael_Prummer" title="Michael Prummer auf Xing">Michael Prummer</a>  <p>'
+          `<p>
+              <strong>A Multiplayer "Serious Game" or "ExerGame"</strong> that was controlled by riding an ergometer and leaning from left to right for rehabilitation purposes.
+              It was created by Manuel Graf and Michael Prummer under the supervision of Dr. Alejandro Mendoza Garcia. 
+              It´s intended use was to offer a <strong>playful and appealing motivator for children to pursue cardio training</strong>.
+            </p>
+            <p>
+              The topic of Manuel F. Graf´s Bachelor Thesis included <strong>developing an enticing multi player serious game</strong> (incl. game design, sport theory...) by using Dr. Mendoza Garcias MDC Connector for receiving Input from medical and non <strong>medical periphery devices</strong> (ergometers, motion sensors, heart rate monitors...).
+              The main topic for the thesis was ho to create an engaging and motivating experience by combining motivation theory (sdt,...) and comparing Multi- vs single player games effects on exhaustion and cardio training success.
+            </p>
+            <p>
+              The Game Design featured a game similar to popular battle racing games like Super Mario Kart that is controlled by the users body instead of input devices like gamepads.Acceleration was controlledd by cycling the ergometer and users were able to steer by physically leaning to the side. 
+              The closer the user got to their optimal heart rate (adjusted to fitness level, age, condition) the better upgrades, easier steering and higher maximum speed. 
+              A complete Game Design Document can be found at <a href="0_dl/BA_Manuel_Graf_final.pdf">Manuel Grafs Bachelor Thesis</a>
+            </p>
+            <p>
+              For Information on the architecture of the Server-Client structure of the Game, please refer to <a href="https://www.xing.com/profile/Michael_Prummer" title="Michael Prummer auf Xing">Michael Prummer</a>  
+            </p>`
         },
         {
           title: "Video Game: Underlord",
@@ -268,17 +303,13 @@ export default {
           links: [
             {
               text: "watch trailer on youtube",
-              href: "https://www.youtube.com/watch?v=ZotusbvVtDs&t=48s"
-            },
-            {
-              text: "ReFit Systems",
-              href: "https://www.refit-systems.com/de/gamo/"
+              href: "https://www.youtube.com/watch?v=P9EKf6Z_g5Y"
             }
           ],
           yt: "P9EKf6Z_g5Y",
           playing: false,
           description:
-            '<p>The poor Goblins fell under the Spell of a giant Rainbow laze Care Bear. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p>Underlord is a game which concept is like "Lemmings". To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the Intel Realsense Camera for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
+            '<p>The <strong>poor Goblins</strong> fell under the Spell of a <strong>giant Rainbow-lazer Care Bear</strong>. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p><strong>Underlord is a game which concept is like "Lemmings"</strong>. To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the <strong>Intel Realsense Camera</strong> for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
         },
         {
           title: "Video Game: Rise",
@@ -306,7 +337,7 @@ export default {
           yt: "0vG63Cnq-Ro",
           playing: false,
           description:
-            "Android App build for University. This App calculates the users current step frequency and polls an online API to match local music bpm. Playlists are generated accordingly."
+            "<strong>Android App built for University.</strong> This App calculates the users current step frequency and polls an online API to match local music bpm. Playlists are generated accordingly."
         },
         {
           title: "Fat Ninja: iOS Sidescroller Game ",
@@ -327,11 +358,22 @@ export default {
             }
           ],
           description:
-            "iOs Sidescroller Game. I was responsible for Artwork, Animations, UI Design and Game Scripting."
+            "<strong>iOs Sidescroller Game</strong>. I was responsible for Artwork, Animations, UI Design and Game Scripting."
+        },
+        {
+          title: "Mindsumo",
+          thumbImage: "/img/mindsumo.jpg",
+          description:
+            `<p>A <strong>Browser based Puzzle Game</strong> I created in a Hackathon when I couldnt sleep one night. 
+            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night.<br>
+              </p><p>
+            your goal is to push items out of the arena, that dont satisfy the stage's requirement, 
+            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
+            </p>`
         },
         {
           title: "Simple Browser Paint",
-          thumbImage: "/img/paint/sample.png",
+          thumbImage: "/img/sample.png",
           links: [
             {
               text: "watch it in action",
@@ -352,7 +394,7 @@ export default {
           ],
           link: "https://akabanga.de",
           description:
-            "Wordpress based Web Shop for Akabanga, a spicy oil from Rwanda. The shop is maintained by my father Joachim Graf."
+            "Wordpress based Web Shop for Akabanga, a spicy oil from Rwanda."
         },
         {
           title: "Joachimgraf.com",
