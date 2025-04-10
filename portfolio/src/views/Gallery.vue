@@ -6,7 +6,8 @@
     <div class="view__content">
       <p>
         This section still has a lot of placeholders, I will gather whats left of my work and present it here soon!
-        <br>For now, please visit one of my web profiles, which contain some things I made like Logos, Videos, Sound Effects etc:
+        <br>For now, please visit one of my web profiles, which contain some things I made like Logos, Videos, Sound
+        Effects etc:
       </p>
       <ul class="profiles">
         <li class="profile-item fab fa-youtube">
@@ -31,19 +32,19 @@
     </div>
     <div class="view__content">
       <div class="demos">
-        <div class="gallery-entry" v-for="(item,index) in demos" :key="index">
+        <div class="gallery-entry" v-for="(item, index) in demos" :key="index">
           <h3 class="headline">{{ item.title }}</h3>
           <div class="demo">
             <div class="demo__preview">
-              <a :href="item.links ? item.links[0].href: ''" target="_blank">
+              <a :href="item.links ? item.links[0].href : ''" target="_blank">
                 <img :src="item.thumbImage" :alt="item.title">
               </a>
             </div>
             <div class="demo__description">
               <p v-html="item.description"></p>
               <ul class="description-links">
-                <li class="description-link" v-for="(link,i) in item.links" :key="i">
-                  <a target="_blank" :href="link.href">{{link.text}}</a>
+                <li class="description-link" v-for="(link, i) in item.links" :key="i">
+                  <a target="_blank" :href="link.href">{{ link.text }}</a>
                 </li>
               </ul>
             </div>
@@ -57,9 +58,8 @@
       </div>
     </div>
     <div class="view__content">
-      <p
-        class="empty"
-      >I also like all kinds of traditional art. And laser cutters. Pictures of this are scattered everywhere and I didnt find the time to collect everything yet.</p>
+      <p class="empty">I also like all kinds of traditional art. And laser cutters. Pictures of this are scattered
+        everywhere and I didnt find the time to collect everything yet.</p>
     </div>
   </div>
 </template>
@@ -67,13 +67,16 @@
 <style lang="scss">
 $bgcolor-gallery: $color-petrol;
 $color-gallery: $color-petrol-lightest;
+
 .description-links {
   list-style: none;
   margin-top: 1rem;
 }
+
 .description-link {
   margin-top: 0.3rem;
 }
+
 .description-link a,
 .button {
   display: block;
@@ -90,11 +93,13 @@ $color-gallery: $color-petrol-lightest;
   &:hover {
     background: lighten($color-gallery, 20%);
   }
+
   &:active,
   &:focus {
     background: darken($color-gallery, 20%);
   }
 }
+
 .empty {
   font-size: $fontsize-m;
   text-align: center;
@@ -102,6 +107,7 @@ $color-gallery: $color-petrol-lightest;
   color: $color-gallery;
   padding-bottom: 100px;
 }
+
 .view--gallery {
   @include curved-border($bgcolor-gallery, up);
   background: $bgcolor-gallery;
@@ -125,48 +131,58 @@ $color-gallery: $color-petrol-lightest;
       flex-direction: column;
       flex-wrap: nowrap;
       margin: 5rem 2rem 8rem 2rem;
+
       .demo {
         @include viewport-tablet {
           flex-direction: row;
         }
+
         flex-direction: column;
         display: flex;
       }
+
       .demo__description {
         @include viewport-tablet {
-          margin-left:2rem;
-          margin-right:2rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
           margin-top: 0;
         }
+
         margin: 1rem 0 2rem 0;
-        .list{
-          list-style-type:circle;
+
+        .list {
+          list-style-type: circle;
           margin: 1rem 1.5rem;
         }
+
         a {
           // margin-left: 1rem;
           text-decoration: underline;
           cursor: pointer;
           color: rgba(255, 255, 255, 0.5);
         }
-        p{
-          padding-bottom:1rem;
+
+        p {
+          padding-bottom: 1rem;
         }
       }
+
       .headline {
         @include viewport-tablet {
-          font-size:$fontsize-l;
-          text-align:left
+          font-size: $fontsize-l;
+          text-align: left
         }
-        
+
         margin: 1rem 0 2rem 0;
         font-size:$fontsize-xl;
         text-align:center
       }
+
       .demo__preview {
         @include viewport-tablet {
           flex: 0 0 $gs-bp;
-          }
+        }
+
         flex: 0;
         margin: 1rem 0;
 
@@ -176,6 +192,7 @@ $color-gallery: $color-petrol-lightest;
           height: auto;
         }
       }
+
       .demo {
         flex: 0 0 $gs-ap;
       }
@@ -191,9 +208,11 @@ $color-gallery: $color-petrol-lightest;
     font-size: $fontsize-l;
     margin: 2rem 5rem 5rem 5rem;
   }
+
   .profile-item {
     display: block;
     margin: 2em;
+
     a {
       font-family: $font-condensed;
       padding-left: 10px;
@@ -211,10 +230,10 @@ export default {
     DemoPlaceholder
     // GlobeScene
   },
-  data: function() {
+  data: function () {
     return {
       demos: [
-      {
+        {
           title: "DEP.PIN",
           thumbImage: "/img/dep.pin.jpg",
           links: [
@@ -224,7 +243,7 @@ export default {
             }
           ],
           description:
-            `Cross Platform Native App to keep npm packages updated and fixed to specific versions, which allows for easier security checks and licensing reports. <br> It eliminates guesswork in what npm packages your app <br>actually</br> uses. <br>
+            `Cross Platform Native App to keep npm packages updated and fixed to specific versions, which allows for easier security checks and licensing reports. <br> It eliminates guesswork in what npm packages your app <b>actually</b> uses. <br>
              Features: 
              <ul class="list">
               <li>select and pin dependencies from a list of all available versions</li>
@@ -238,15 +257,8 @@ export default {
           title: "Virtual Reality",
           thumbImage: "/img/BPVR.jpg",
           description:
-          "Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments."
-          },
-        {
-          title: "Simple HTML keyboard Visualizer",
-          thumbImage: "/img/keyboard.jpg",
-          description:
-          "A simple html file that can be used as a browser source in OBS to visualise the notes im playing on the MIDI keyboard."
-          },
-
+            "Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments."
+        },
         {
           title: "3D Data Viz: Cluster Data on Globe",
           thumbImage: "/img/globe.jpg",
@@ -261,6 +273,39 @@ export default {
             }
           ]
         },
+        {
+          title: "Simple HTML keyboard Visualizer",
+          thumbImage: "/img/keyboard.jpg",
+          links: [
+            {
+              text: "try with your keyboard",
+              href: "/demo/midi-keyboard.html"
+            }
+          ],
+          description:
+            "A simple HTML file that can be used as a browser source in OBS to visualise the notes im playing on the MIDI keyboard."
+        },
+        {
+          title: "Mindsumo",
+          thumbImage: "/img/mindsumo.jpg",
+          links: [
+            {
+              text: "play the game",
+              href: "/demo/mindsumo/index.html"
+            }
+          ],
+          description:
+            `<p>A <strong>Browser based Puzzle Game</strong> I created in a Hackathon when I couldnt sleep one night. 
+            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night.<br>
+              </p><p>
+            your goal is to push items out of the arena, that dont satisfy the stage's requirement, 
+            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
+            </p>`
+        },
+
+
+
+
         {
           title: "Video Exergame: MagiKart",
           thumbImage: "/img/magikart.png",
@@ -285,7 +330,7 @@ export default {
           yt: "4_fhHUCZjbk",
           playing: false,
           description:
-          `<p>
+            `<p>
               <strong>A Multiplayer "Serious Game" or "ExerGame"</strong> that was controlled by riding an ergometer and leaning from left to right for rehabilitation purposes.
               It was created by Manuel Graf and Michael Prummer under the supervision of Dr. Alejandro Mendoza Garcia. 
               It´s intended use was to offer a <strong>playful and appealing motivator for children to pursue cardio training</strong>.
@@ -346,6 +391,18 @@ export default {
             "<strong>Android App built for University.</strong> This App calculates the users current step frequency and polls an online API to match local music bpm. Playlists are generated accordingly."
         },
         {
+          title: "Simple Browser Paint",
+          thumbImage: "/img/sample.png",
+          links: [
+            {
+              text: "watch it in action",
+              href: "/demo/paint/index.html"
+            }
+          ],
+          description:
+            "A very basic painting app for browsers. It was build 2015 with jquery and html5 canvas"
+        },
+        {
           title: "Fat Ninja: iOS Sidescroller Game ",
           thumbImage: "/img/fatninja.png",
           links: [
@@ -365,29 +422,6 @@ export default {
           ],
           description:
             "<strong>iOs Sidescroller Game</strong>. I was responsible for Artwork, Animations, UI Design and Game Scripting."
-        },
-        {
-          title: "Mindsumo",
-          thumbImage: "/img/mindsumo.jpg",
-          description:
-            `<p>A <strong>Browser based Puzzle Game</strong> I created in a Hackathon when I couldnt sleep one night. 
-            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night.<br>
-              </p><p>
-            your goal is to push items out of the arena, that dont satisfy the stage's requirement, 
-            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
-            </p>`
-        },
-        {
-          title: "Simple Browser Paint",
-          thumbImage: "/img/sample.png",
-          links: [
-            {
-              text: "watch it in action",
-              href: "/demo/paint/index.html"
-            }
-          ],
-          description:
-            "A very basic painting app for browsers. It was build 2015 with jquery and html5 canvas"
         },
         {
           title: "Akabanga.de",
@@ -418,5 +452,3 @@ export default {
   }
 };
 </script>
-
-
