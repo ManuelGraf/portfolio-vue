@@ -240,6 +240,12 @@ export default {
           description:
           "Ever since last year of university, I research user interaction in virtual 3D (WebGL) environments. My Master thesis revolved around smartphone based Virtual Reality controls.<br/><br/> Currently, I am creating tools for facility managers and planners. And creating prototypes using new interaction concepts like gesture or speech input to enhance enhance control in those evironments."
           },
+        {
+          title: "Simple HTML keyboard Visualizer",
+          thumbImage: "/img/keyboard.jpg",
+          description:
+          "A simple html file that can be used as a browser source in OBS to visualise the notes im playing on the MIDI keyboard."
+          },
 
         {
           title: "3D Data Viz: Cluster Data on Globe",
