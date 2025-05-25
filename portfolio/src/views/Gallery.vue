@@ -4,11 +4,6 @@
       <h2 class="view__headline">What I do</h2>
     </div>
     <div class="view__content">
-      <p>
-        This section still has a lot of placeholders, I will gather whats left of my work and present it here soon!
-        <br>For now, please visit one of my web profiles, which contain some things I made like Logos, Videos, Sound
-        Effects etc:
-      </p>
       <ul class="profiles">
         <li class="profile-item fab fa-youtube">
           <a href="https://www.youtube.com/user/yumyumyummieee/" target="_blank" class>youtube</a>
@@ -36,7 +31,7 @@
           <h3 class="headline">{{ item.title }}</h3>
           <div class="demo">
             <div class="demo__preview">
-              <a :href="item.links ? item.links[0].href : ''" target="_blank">
+              <a class="tilt3d" :href="item.links ? item.links[0].href : ''" target="_blank">
                 <img :src="item.thumbImage" :alt="item.title">
               </a>
             </div>
@@ -108,6 +103,7 @@ $color-gallery: $color-petrol-lightest;
   padding-bottom: 100px;
 }
 
+
 .view--gallery {
   @include curved-border($bgcolor-gallery, up);
   background: $bgcolor-gallery;
@@ -115,6 +111,41 @@ $color-gallery: $color-petrol-lightest;
 
   .view__content {
     flex-direction: row;
+  }
+
+  .tilt3d {
+    display: inline-block;
+    position: relative;
+    perspective: 800px;
+
+    &::after {
+      @include viewport-tablet {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate3d(-50%, 50%, 0) rotateY(40deg);
+        width: 100%;
+        height: 15px;
+        background: radial-gradient(ellipse at center,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.3) 40%,
+            rgba(0, 0, 0, 0) 100%);
+        border-radius: 50%;
+        filter: blur(1px);
+        z-index: -1;
+      }
+    }
+  }
+
+  .tilt3d img {
+
+    @include viewport-tablet {
+      transform: rotateY(40deg);
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      display: block;
+    }
   }
 
   .demos {
@@ -169,8 +200,8 @@ $color-gallery: $color-petrol-lightest;
 
       .headline {
         @include viewport-tablet {
-          font-size: $fontsize-l;
-          text-align: left
+          margin: 3rem 0 5rem 0;
+
         }
 
         margin: 1rem 0 2rem 0;
@@ -286,27 +317,6 @@ export default {
             "A simple HTML file that can be used as a browser source in OBS to visualise the notes im playing on the MIDI keyboard."
         },
         {
-          title: "Mindsumo",
-          thumbImage: "/img/mindsumo.jpg",
-          links: [
-            {
-              text: "play the game",
-              href: "/demo/mindsumo/index.html"
-            }
-          ],
-          description:
-            `<p>A <strong>Browser based Puzzle Game</strong> I created in a Hackathon when I couldnt sleep one night. 
-            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night.<br>
-              </p><p>
-            your goal is to push items out of the arena, that dont satisfy the stage's requirement, 
-            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
-            </p>`
-        },
-
-
-
-
-        {
           title: "Video Exergame: MagiKart",
           thumbImage: "/img/magikart.png",
           links: [
@@ -361,6 +371,23 @@ export default {
           playing: false,
           description:
             '<p>The <strong>poor Goblins</strong> fell under the Spell of a <strong>giant Rainbow-lazer Care Bear</strong>. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p><strong>Underlord is a game which concept is like "Lemmings"</strong>. To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the <strong>Intel Realsense Camera</strong> for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
+        },
+        {
+          title: "Mindsumo",
+          thumbImage: "/img/mindsumo.jpg",
+          links: [
+            {
+              text: "play the game",
+              href: "/demo/mindsumo/index.html"
+            }
+          ],
+          description:
+            `<p>A <strong>Browser based Puzzle Game</strong> I created in a Hackathon when I couldnt sleep one night. 
+            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night.<br>
+              </p><p>
+            your goal is to push items out of the arena, that dont satisfy the stage's requirement, 
+            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
+            </p>`
         },
         {
           title: "Video Game: Rise",
