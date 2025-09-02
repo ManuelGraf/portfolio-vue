@@ -5,10 +5,28 @@
 .prinfo {
   display: none;
 }
-.show-in-print{
-  display:none
+.show-only-in-print {
+  display: none;
 }
+
+
 @media print {
+  body {
+    color: black;
+  }
+  .cv__jobs{
+    padding-right:2rem;
+  }
+  .job__teaser{
+    font-size: 10pt!important;
+  }
+  .show-only-in-print {
+    display: block;
+  }
+  
+  .hide-in-print {
+    display: none;
+  }
   .show-in-print{
     display:block
   }
@@ -44,13 +62,31 @@
   body {
     #app {
       color: black;
+      .about__portrait{
+
+        // width: 100%;
+        // float:none;
+        // // center portrait in sidebar in print
+        // display: flex;
+        // padding: 0 2rem;
+        // align-items: center;
+        // justify-content: center;
+        // box-sizing: border-box;
+    
+        // #portrait--print {
+        //   width: 100%;
+        //   // width: calc(100% - 4rem);
+        // }
+      }
       #portrait {
         display: none;
       }
       #portrait--print {
         display: block;
-        border-radius: 0;
-        width:100%;
+        padding:0;
+        // border-radius: 0;
+        width: 80%;
+        align-self: center;
       }
       // .about__header {
       //   display: flex;
@@ -70,15 +106,18 @@
         grid-template-columns: $gs-ap $gs-bp; // Left: CV + Headline, Right: About Header
         grid-template-rows: 3% ; // Left: CV + Headline, Right: About Header
         align-items: start; // Aligns content properly
-        gap: 2rem; // Adds spacing between columns
+        gap: 0; // Adds spacing between columns
         padding:0;
-        #portrait--print{
-          margin: 1rem;
-        }
 
         #info{
-          width:100%;
-          padding-left:1rem;
+          width: 30%!important;
+          display: inline-block;
+          position: fixed;
+          padding-left: 2rem;;
+          bottom: 2rem;
+          right: 2rem;
+          justify-content: flex-start;
+          align-items: flex-start;
         }
         .about__header {
           grid-column: 2; // Moves about info to the right
@@ -92,19 +131,22 @@
           justify-content: flex-start;
           padding-top:11rem;
         }
-        .about__info__icon{
-          display:none;
-        }
         .about__info{
-            width:100%;
-            // margin:0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
+          // // display:none;
+          font-size:60%;
+          line-height: 1.5em;
+          position:relative;
+          margin: .3rem 0 .5rem 0;
+          &:before{
+            position:absolute;
+            left: -1rem;
+            transform:translate3d(-50%,0,0)
+          }
         }
+
         .about__info__content{
-          // font-weight:normal
+          font-weight:normal;
+          font-size: .8rem;
         }
           .view__headline {
           grid-row: 1; // Moves about info to the right

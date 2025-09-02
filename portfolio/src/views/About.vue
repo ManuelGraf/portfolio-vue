@@ -2,33 +2,39 @@
   <div id="about" class="view view--about" v-scroll-spy>
     <div class="view__content">
       <div class="about__header">
-        <img
-          id="portrait--print"
-          class="about__portrait"
-          src="img/manuel-graf-foto.1024x1024.jpg"
-          alt="Manuel F. Graf. Code & Design München"
-        >
-        <!-- <div class="about__portrait">
-          <Portrait></Portrait>
-        </div>-->
-        <section id="info">
-          <div 
-            v-for="i in info" 
-            :key="i.label"
-            :class="[
-              'about__info',
-              'about__info--' + i.label,
-              { 'hide-in-web': i.hideinWeb }
-            ]"
-          >
-            <span :class="'about__info__icon fas fa-' + i.icon"></span>
-            <span 
-              :class="'about__info__content about__info__content--' + i.label" 
-              v-html="i.content"
-            ></span>
+        <img id="portrait--print" src="img/manuel-graf-foto.1024x1024.jpg"
+          alt="Manuel F. Graf. Code, Design & Musik München">
+        <section id="overview">
+          <ul class="skills">
+            <h3>Manuel Graf ({{ age() }})</h3>
+            <li>Web Software Engineer</li>
+            <li>3D & VR Developer</li>
+            <li>User Experience Experte</li>
+            <li>Grafik- und Mediendesigner</li>
+            <li>Team Player</li>
+          </ul>
+          <h4>Sprachen:</h4>
+          <ul class="languages">
+            <li>Deutsch (Muttersprache)</li>
+            <li>Englisch (fließend)</li>
+            <li>Französisch (Grundkenntnisse)</li>
+          </ul>
+        </section>
+        <section id="info" class="show-only-in-print">
+          <!-- <div class="about__info about__info--logo show-only-in-print">
+            <img src="img/bildmarke_rz_b.png" alt="Manuel F. Graf Logo">
+          </div> -->
+          <div v-for="i in info" :key="i.label" :class="[
+            'about__info',
+            'about__info--' + i.label, ,
+            'fas fa-' + i.icon,
+            { 'show-only-in-print': i.hideinWeb },
+            { 'about__info--divider': i.divider }
+          ]">
+            <span :class="'about__info__content about__info__content--' + i.label" v-html="i.content"></span>
           </div>
         </section>
-     </div>
+      </div>
       <div class="divider"></div>
       <h2 class="view__headline">Curriculum Vitae</h2>
       <cv></cv>
@@ -54,31 +60,30 @@ export default {
       return diff;
     }
   },
-  data: function() {
+  data: function () {
     return {
       info: [
         {
           label: "name",
-          content: "Manuel Graf (" + this.age() + ")",
+          content: "Manuel Graf",
           icon: "info"
         },
-        { label: "title", content: "M. Sc. Medieninformatik", icon: "school" },
+        { label: "title", content: "M. Sc. Medieninformatik", icon: "school", divider: true },
         {
           label: "address",
           content: "Forstenrieder Allee 63,<br> 81476 M&uuml;nchen",
           icon: "envelope",
-          hideinWeb: true
+          hideinWeb: true,
         },
-        { label: "mail", content: "mail\\ät\\manuelgraf.com", icon: "at" },
-        // { label: "phone", content: "+49 176 65 88 28 56", icon: "phone" },
+        { label: "mail", content: "mail\\ät\\manuelgraf.com", icon: "at", hideinWeb: true },
+        { label: "phone", content: "+49 176 65 88 28 56", icon: "phone", hideinWeb: true },
         {
           label: "web",
           content: "<a href='https://manuelgraf.com'>manuelgraf.com</a>",
           icon: "link",
           hideinWeb: true
         },
-        { label: "marital", content: "ledig", icon: "ring" , hideinWeb:true },
-        { label: "nationality", content: "deutsch", icon: "globe" }
+
       ]
     };
   }
@@ -90,6 +95,36 @@ $bg-about: $color-green;
 $color-about: $color-green-darkest;
 $color-spot: $color-black;
 
+#overview {
+  @media print {
+    width: 100%;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  text-align:center;
+
+  @include viewport-tablet {
+    text-align: left;
+    margin-left: 5rem;
+  }
+
+  h3 {
+    font-weight: normal
+  }
+
+}
+
+#overview ul {
+  list-style-type: none;
+
+  li {
+    margin-bottom: $gs-a*.1rem;
+    margin-top: $gs-b*.1rem;
+    font-size: 12px;
+  }
+}
+
 
 
 .about__header {
@@ -97,6 +132,8 @@ $color-spot: $color-black;
     flex-direction: row;
     width: 100%;
   }
+
+  padding-top:10rem;
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -105,15 +142,11 @@ $color-spot: $color-black;
 
 .about__portrait {
   margin-bottom: 1rem;
+
   img {
-    width: 100%;
-    height: auto;
+    width: auto;
   }
-  // @include viewport-tablet {
-  //   width: $gs-bp;
-  // }
-  // background: $color-white;
-  border-radius: 50%;
+
   width: $gs-bp;
   overflow: hidden;
   float: left;
@@ -122,6 +155,7 @@ $color-spot: $color-black;
     height: 100%;
     position: relative;
     transform: translate3D(0, 0, 0);
+
     img {
       width: 100%;
       height: auto;
@@ -129,48 +163,63 @@ $color-spot: $color-black;
   }
 }
 
+#info {}
+
+
 .about__info {
+
   width: $gs-ap;
-  margin: 1rem 1rem 1rem 10%;
-  flex: 0 1 $gs-ap;
 
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
 
-  &.hide-in-web{
-  @media print{
-    display:block;
-  }
-  display:none;
-}
-
   // &--name,
   // &--name &__content {
   //   font-size: $fontsize-l !important;
   //   margin: 1rem;
   // }
+  &--logo img {
+
+    width: 4rem;
+    align-self: center;
+  }
+
+  &--divider {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-green-darker
+  }
+
   &__content {
     font-weight: bold;
     font-family: $font-base;
     font-size: $fontsize-base;
     flex: 0 0 90%;
+
+    @media print {
+      font-size: 12px;
+
+    }
   }
+
   &__icon {
-    flex: 0 0 2rem;
-    text-align: center;
+    // flex: 0 0 2rem;
+    // text-align: center;
     // position: absolute;
     // left: 0px;
     // top: 5px;
     // transform: translate3d(-150%, 0, 0);
   }
 }
+
 .view--about {
   @include curved-border($bg-about, up);
+
   @include viewport-tablet {
     flex-direction: column;
   }
+
   background: $bg-about;
   color: $color-about;
 
