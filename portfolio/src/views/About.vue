@@ -1,23 +1,30 @@
 <template>
   <div id="about" class="view view--about" v-scroll-spy>
     <div class="view__content">
+
       <div class="about__header">
-        <img id="portrait--print" src="img/manuel-graf-foto.1024x1024.jpg"
-          alt="Manuel F. Graf. Code, Design & Musik München">
+        <!-- <img id="portrait--print" src="img/manuel-graf-foto.1024x1024.jpg"
+        alt="Manuel F. Graf. Code, Design & Musik München"> -->
+        <img id="cv__logo" class="show-only-in-print" src="img/bildmarke_rz_b.png"
+          alt="Manuel F. Graf. Code, Design & Music in Germany,Munich">
         <section id="overview">
           <ul class="skills">
-            <h3>Manuel Graf ({{ age() }})</h3>
+            <h3>Manuel F. Graf
+              <br />
+              <span class="title"> M.Sc. Media Informatics</span>
+            </h3>
+
             <li>Web Software Engineer</li>
             <li>3D & VR Developer</li>
-            <li>User Experience Experte</li>
-            <li>Grafik- und Mediendesigner</li>
+            <li>User Experience Expert</li>
+            <li>Graphics- and Media Designer</li>
             <li>Team Player</li>
           </ul>
-          <h4>Sprachen:</h4>
+          <h4>Languages:</h4>
           <ul class="languages">
-            <li>Deutsch (Muttersprache)</li>
-            <li>Englisch (fließend)</li>
-            <li>Französisch (Grundkenntnisse)</li>
+            <li>German (native)</li>
+            <li>English (fluent)</li>
+            <li>French (basics)</li>
           </ul>
         </section>
         <section id="info" class="show-only-in-print">
@@ -36,7 +43,11 @@
         </section>
       </div>
       <div class="divider"></div>
-      <h2 class="view__headline">Curriculum Vitae</h2>
+      <div class="headlines">
+        <h2 class="view__headline hide-in-print">Curriculum Vitae</h2>
+        <h2 class="view__headline show-only-in-print">Work Experience
+        </h2>
+      </div>
       <cv></cv>
     </div>
   </div>
@@ -66,13 +77,12 @@ export default {
         {
           label: "name",
           content: "Manuel Graf",
-          icon: "info"
+          icon: "envelope",
         },
-        { label: "title", content: "M. Sc. Medieninformatik", icon: "school", divider: true },
         {
           label: "address",
           content: "Forstenrieder Allee 63,<br> 81476 M&uuml;nchen",
-          icon: "envelope",
+          icon: null,
           hideinWeb: true,
         },
         { label: "mail", content: "mail\\ät\\manuelgraf.com", icon: "at", hideinWeb: true },
@@ -95,10 +105,12 @@ $bg-about: $color-green;
 $color-about: $color-green-darkest;
 $color-spot: $color-black;
 
+
+
 #overview {
   @media print {
     width: 100%;
-    padding: 0 2rem;
+    padding: 0;
     text-align: center;
   }
 
@@ -107,6 +119,13 @@ $color-spot: $color-black;
   @include viewport-tablet {
     text-align: left;
     margin-left: 5rem;
+  }
+
+  .title {
+    padding: 0 0 2em 0;
+    margin-top: 2em;
+    border-top: 1px solid $color-green-darker;
+    font-size: $fontsize-m;
   }
 
   h3 {

@@ -40,6 +40,17 @@
   font-weight:normal;
   padding: 1rem 0 1.3rem 1rem;
 }
+.view__subline {
+  @include viewport-tablet {
+    padding: 3rem 0 3rem 3rem;
+  }
+  font-family: $font-condensed;
+  font-size: $fontsize-l;
+  text-align: center;
+  line-height: 1em;
+  font-weight:normal;
+  padding: 1rem 0 1.3rem 1rem;
+}
 .nowrap {
   flex-wrap: nowrap;
 }
