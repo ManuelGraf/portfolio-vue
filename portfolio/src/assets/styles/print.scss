@@ -98,7 +98,7 @@
      }
      #info{
       flex:0 0 25%;
-      margin-left: 2rem;
+      margin-left: 1rem;
      }
       // .about__header {
       //   display: flex;
@@ -115,7 +115,7 @@
       }
       .view--about .view__content {
         display: grid;
-        grid-template-columns: $gs-ap $gs-bp; // Left: CV + Headline, Right: About Header
+        grid-template-columns:  $gs-bp $gs-ap; // Left: CV + Headline, Right: About Header
         grid-template-rows: 4% ; // Left: CV + Headline, Right: About Header
         align-items: start; // Aligns content properly
         gap: 0; // Adds spacing between columns
@@ -133,14 +133,14 @@
           // align-items: flex-start;
         }
         .about__header {
-          grid-column: 2; // Moves about info to the right
+          grid-column: 1; // Moves about info to the right
           grid-row: 1; // Moves about info to the right
           background:$color-green;
           color: desaturate(darken($color-green,20%),$gs-bp);
           font-weight: normal;
           height:100vh;
           box-sizing: border-box;
-          border-radius: 5rem 0 0 5rem;
+          border-radius: 0 5rem 5rem 0;
           justify-content: space-between;
           padding-top:11rem;
         }
@@ -163,8 +163,8 @@
         }
           .view__headline {
           grid-row: 1; // Moves about info to the right
-          grid-column: 1;
-          padding: 2rem 2.5rem;
+          grid-column: 2;
+          padding: 5rem 2.5rem;
           margin-top:0;
           color: $color-green-darkest;
           font-size:$fontsize-xl!important;
@@ -172,7 +172,7 @@
           
           .cv {
             grid-row: 2; // Moves about info to the right
-          grid-column: 1;
+          grid-column: 2;
         }
         .job__duration{
           background: transparent;

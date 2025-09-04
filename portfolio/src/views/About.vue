@@ -17,7 +17,8 @@
             <li>Web Software Engineer</li>
             <li>3D & VR Developer</li>
             <li>User Experience Expert</li>
-            <li>Graphics- and Media Designer</li>
+            <li>Graphic and Media Designer</li>
+            <li>Creative Mindset</li>
             <li>Team Player</li>
           </ul>
           <h4>Languages:</h4>
@@ -85,7 +86,7 @@ export default {
           icon: null,
           hideinWeb: true,
         },
-        { label: "mail", content: "mail\\ät\\manuelgraf.com", icon: "at", hideinWeb: true },
+        { label: "mail", content: "mail@manuelgraf.com", icon: "at", hideinWeb: true },
         { label: "phone", content: "+49 176 65 88 28 56", icon: "phone", hideinWeb: true },
         {
           label: "web",
