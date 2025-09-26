@@ -5,21 +5,19 @@
       <div class="about__header">
         <!-- <img id="portrait--print" src="img/manuel-graf-foto.1024x1024.jpg"
         alt="Manuel F. Graf. Code, Design & Musik München"> -->
-        <img id="cv__logo" class="show-only-in-print" src="img/bildmarke_rz_b.png"
-          alt="Manuel F. Graf. Code, Design & Music in Germany,Munich">
+        <img id="cv__logo" src="img/bildmarke_rz_b.png" alt="Manuel F. Graf. Code, Design & Music in Germany,Munich">
         <section id="overview">
           <ul class="skills">
             <h3>Manuel F. Graf
               <br />
               <span class="title"> M.Sc. Media Informatics</span>
             </h3>
-
-            <li>Web Software Engineer</li>
-            <li>3D & VR Developer</li>
-            <li>User Experience Expert</li>
-            <li>Graphic and Media Designer</li>
-            <li>Creative Mindset</li>
-            <li>Team Player</li>
+            <li>Web Frontend Engineer</li>
+            <li>Immersive 3D & XR Developer</li>
+            <li>Digital Media & Visual Design Specialist</li>
+            <li>Human Centered Design Expert</li>
+            <li>Explorative Creator</li>
+            <li>Collaborative Team Player</li>
           </ul>
           <h4>Languages:</h4>
           <ul class="languages">
@@ -106,6 +104,11 @@ $bg-about: $color-green;
 $color-about: $color-green-darkest;
 $color-spot: $color-black;
 
+#cv__logo {
+  @include viewport-tablet {}
+
+  width: 5rem;
+}
 
 
 #overview {
@@ -117,10 +120,6 @@ $color-spot: $color-black;
 
   text-align:center;
 
-  @include viewport-tablet {
-    text-align: left;
-    margin-left: 5rem;
-  }
 
   .title {
     padding: 0 0 2em 0;
@@ -149,7 +148,6 @@ $color-spot: $color-black;
 
 .about__header {
   @include viewport-tablet {
-    flex-direction: row;
     width: 100%;
   }
 

@@ -30,11 +30,7 @@
   .show-in-print{
     display:block
   }
-  .view__headline {
-    text-align: left !important;
-    font-family: $font-condensed !important;
-    font-weight:normal;
-  }
+
   .view {
     color: black;
   }
@@ -62,6 +58,7 @@
   body {
     #app {
       color: black;
+
       .about__portrait{
 
         // width: 100%;
@@ -164,11 +161,15 @@
           .view__headline {
           grid-row: 1; // Moves about info to the right
           grid-column: 2;
-          padding: 5rem 2.5rem;
+          padding: 5rem 2.5rem 2rem 2.5rem;
           margin-top:0;
           color: $color-green-darkest;
-          font-size:$fontsize-xl!important;
-          }
+          text-align: left !important;
+          font-family: $font-condensed !important;
+          font-size:$fontsize-l!important;
+          font-weight:normal;
+        }
+        
           
           .cv {
             grid-row: 2; // Moves about info to the right

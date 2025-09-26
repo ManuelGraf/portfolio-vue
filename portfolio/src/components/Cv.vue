@@ -217,7 +217,6 @@ $bubblemaxsize: 100px;
       color: $color-black-lightest;
     }
 
-
     .tech {
       margin-right: .5rem;
     }
@@ -303,13 +302,12 @@ export default {
           job_title: "M.Sc. Media Informatics",
           company_notes: {
             de: [
-              "Master of Science Medieninformatik",
-              "Abschlussnote: 1,7 (gut)",
+              "Abschlussnote: 1,5 (gut)",
               "<strong>Masterarbeit:</strong> <a href='/0_dl/ma_mfg_webvr.pdf'>User Interaction in Mobile WebVR</a> @ TU München (Deutsch)<br/>",
             ],
             en: [
               "Master of Science Media Informatics",
-              "Final grade: 1.7 (good)",
+              "Final grade: 1.5 (good)",
               "<strong>Master Thesis:</strong> <a href='/0_dl/ma_mfg_webvr.pdf'>User Interaction in Mobile WebVR</a> @ TU Munich (German)<br/>",
             ]
           },
@@ -437,9 +435,10 @@ export default {
               "Verantwortlich für die Entwicklung von Innovationsprojekten (VR sowie Industrie 4.0) für die Fabrikplanung eines namhaften deutschen Automobilherstellers."
             ],
             en: [
-              "Concept, design, implementation and technical management of individual projects.",
-              "Project management (JIRA), knowledge base (Confluence, Wiki) and code base (git flow).",
-              "Responsible for the development of innovation projects (VR as well as Industry 4.0) for the factory planning of a renowned German automobile manufacturer."
+              "Senior 3D & Frontend Developer.",
+              "Delivered VR and Industry 4.0 innovation projects for a major German automobile manufacturer, enhancing factory planning processes by developing immersive 3D experiences.",
+              "Increased team efficiency by managing projects with JIRA, Confluence, and git flow, ensuring streamlined collaboration and code quality",
+              "Designed and implemented front-end solutions using Angular and Three.js.",
             ]
           },
           company_size_id: 2,
@@ -479,9 +478,11 @@ export default {
               "Konzepte zur Gamification von Sales Prozessen."
             ],
             en: [
-              "Maintenance and extension of the website, e.g. the <a href='https://www.check24.de/baufinanzierung/zinsrechner'>interactive interest rate calculator</a>.",
-              "Concept, design and implementation of the in-house CRM.",
-              "Concepts for the gamification of sales processes."
+              "Improved customer engagement by developing interactive interest rate calculators and optimizing core website functionality",
+              "Increased sales team productivity by designing and implementing an in-house CRM system, from concept to deployment.",
+              "Enhanced sales performance through gamification concepts that motivated employees and improved overall engagement",
+              "Authored Master’s Thesis: “User Interaction in Mobile WebVR” (TU Munich, German).",
+
             ]
           },
           company_size_id: 6,
@@ -510,57 +511,6 @@ export default {
           ]
         },
         {
-          id: 12160790,
-          company_city: null,
-          company_country: null,
-          company_logo:
-            "https://www.xing.com/assets/companies/img/default_logo_131x32.png",
-          company_name: "Ludwig-Maximilians-Universität, Munich",
-          company_notes: {
-            de: [
-              "Freiberuflicher Webdesigner und Webentwickler.",
-              "<strong>Bachelor Thesis:</strong> <a href='/0_dl/BA_Manuel_Graf_final.pdf'>'Design of various controls and motivational factors for a biofeedback multiplayer game using Unity3D'</a> @ TU München (English).",
-              "<strong>Master Thesis:</strong> <a href='/0_dl/ma_mfg_webvr.pdf'>'User Interaction in Mobile WebVR'</a> @ TU München (German)<br/>"
-            ],
-            en: [
-              "Freelance web designer and web developer.",
-              "<strong>Bachelor Thesis:</strong> <a href='/0_dl/BA_Manuel_Graf_final.pdf'>'Design of various controls and motivational factors for a biofeedback multiplayer game using Unity3D'</a> @ TU Munich (English).",
-              "<strong>Master Thesis:</strong> <a href='/0_dl/ma_mfg_webvr.pdf'>'User Interaction in Mobile WebVR'</a> @ TU Munich (German)<br/>"
-            ]
-          },
-          company_size_id: null,
-          company_url: null,
-          job_title:
-            "Media Informatics Student /\n Web Developer und Designer",
-          level_id: null,
-          org_type_id: null,
-          primary_job: false,
-          status_id: 4,
-          industry_id: 170300,
-          begin_date_year: 2010,
-          begin_date_month: 10,
-          end_date_year: 2017,
-          end_date_month: 9,
-          current_company: false,
-          techstack: [
-            "unity",
-            "udk",
-            "maya",
-            "blender",
-            "adobe-photoshop",
-            "adobe-illustrator",
-            "adobe-premiere",
-            "ios",
-            "java",
-            "android",
-            "html5",
-            "js",
-            "node",
-            "express",
-            "mysql"
-          ]
-        },
-        {
           id: 12160791,
           company_city: null,
           company_country: null,
@@ -569,7 +519,7 @@ export default {
           company_name: "SnipClip GmbH",
           company_notes: {
             de: ["Web- und Flash-Freelancer."],
-            en: ["Web and Flash freelancer."]
+            en: ["Developed Facebook-based Flash games with engaging gameplay mechanics, increasing user interaction and retention."]
           },
           company_size_id: 3,
           company_url: "http://www.snipclip.com",
@@ -602,10 +552,9 @@ export default {
               "Print- und Webanzeigenerstellung."
             ],
             en: [
-              "IHK certified Web and Print Media Designer apprenticeship (2 years). ",
-              "Web developer of the platform iBusiness.de.",
-              "Responsible for technical and design optimization of the company’s platform.",
-              "Creation of print and web advertisements."
+              "Improved iBusiness.de’s usability and performance by optimizing front-end development and backend integration",
+              "Designed and produced print and web advertisements, boosting brand visibility across channels",
+              "Improved content management processes and Documentation, improving efficiency of recurring tasks."
             ]
           },
           company_size_id: 3,
