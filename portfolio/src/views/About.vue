@@ -44,8 +44,6 @@
       <div class="divider"></div>
       <div class="headlines">
         <h2 class="view__headline hide-in-print">Curriculum Vitae</h2>
-        <h2 class="view__headline show-only-in-print">Work Experience
-        </h2>
       </div>
       <cv></cv>
     </div>

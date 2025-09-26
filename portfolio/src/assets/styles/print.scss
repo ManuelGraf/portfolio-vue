@@ -11,14 +11,50 @@
 
 
 @media print {
+  @page:first{
+    padding:0;
+  }
+  @page{
+    padding: 1.5cm 0;
+  }
   body {
     color: black;
   }
-  .cv__jobs{
-    padding-right:2rem;
+  .job__duration{
+    display:none!important;
   }
-  .job__teaser{
-    font-size: 10pt!important;
+  .cv--condensed{
+    .cv__jobs{
+      padding-right:2rem;
+      padding-left:0!important;
+    }
+    .job{
+      padding: 0 2rem!important;
+    }
+    .job__title{
+      font-size:100%!important;
+      margin-bottom:.5rem;
+    }
+    .job__company{
+      font-size: $fontsize-m;
+      font-family:$font-base;
+      font-size: 9pt!important;
+    }
+
+    .job__description{
+      margin:0.5rem 0 0.8rem 0;
+    }
+    
+    .job__teaser{
+      ul{
+        list-style-type: none;
+      }
+      li{
+        margin-bottom: 0.3rem;
+        line-height: 1.2rem;
+      }
+      font-size: 9pt!important;
+    }
   }
   .show-only-in-print {
     display: block;
@@ -112,8 +148,8 @@
       }
       .view--about .view__content {
         display: grid;
-        grid-template-columns:  $gs-bp $gs-ap; // Left: CV + Headline, Right: About Header
-        grid-template-rows: 4% ; // Left: CV + Headline, Right: About Header
+        grid-template-columns:  30% 70%; // Left: CV + Headline, Right: About Header
+        grid-template-rows: 1% ; // Left: CV + Headline, Right: About Header
         align-items: start; // Aligns content properly
         gap: 0; // Adds spacing between columns
         padding:0;
@@ -139,7 +175,7 @@
           box-sizing: border-box;
           border-radius: 0 5rem 5rem 0;
           justify-content: space-between;
-          padding-top:11rem;
+          padding-top:5rem;
         }
         .about__info{
           // // display:none;
@@ -161,7 +197,7 @@
           .view__headline {
           grid-row: 1; // Moves about info to the right
           grid-column: 2;
-          padding: 5rem 2.5rem 2rem 2.5rem;
+          padding: 0 0 1rem 2rem;
           margin-top:0;
           color: $color-green-darkest;
           text-align: left !important;

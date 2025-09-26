@@ -1,5 +1,8 @@
 <template>
-  <div class="cv">
+  <div class="cv cv--condensed">
+    <strong class="view__headline show-only-in-print">Work Experience
+    </strong>
+
     <ul class="cv__jobs">
       <li class="job" v-for="(job, index) in jobs" :key="index">
         <div class="job__duration" :style="calcSize(job)">
