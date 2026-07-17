@@ -1,22 +1,22 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import './registerServiceWorker'
-
 import store from './store'
 
-import VueParticles from 'vue-particles';
-Vue.use(VueParticles);
+import Particles from '@tsparticles/vue3'
+import { loadSlim } from '@tsparticles/slim'
 
+import inViewport from './directives/in-viewport'
 
+const app = createApp(App)
 
-Vue.config.productionTip = false
-
-new Vue({
-  router,
-  store,  
-  render: h => h(App),
-  data:{
-    activeView:'home'
+app.use(router)
+app.use(store)
+app.use(Particles, {
+  init: async engine => {
+    await loadSlim(engine)
   }
-}).$mount('#app')
+})
+app.directive('in-viewport', inViewport)
+
+app.mount('#app')

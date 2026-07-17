@@ -1,39 +1,36 @@
-<template lang="de">
+<template>
   <div class="main-nav" v-bind:class="{'is-collapsed': isCollapsedOnMobile}">
-    <ul class="nav-items" 
-      v-scroll-spy-link 
-      v-scroll-spy-active="{class: 'nav-item--active'}"
-    >
-      <li class="nav-item">
+    <ul class="nav-items">
+      <li class="nav-item" :class="{'nav-item--active': activeSection === 0}" @click="scrollToSection(0)">
         <router-link to="/" class="nav-item-flex">
           <span  class="nav-item__icon fa fa-home"></span>
           <transition name="collapse">
-            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Home</span>
-          </transition>  
+            <span v-show="!isCollapsedOnMobile" class="nav-item__label">Home</span>
+          </transition>
         </router-link>
       </li>
-      <li class="nav-item">
-        <router-link to="/about" class="nav-item-flex">  
-         <span  class="nav-item__icon fa fa-info"></span> 
+      <li class="nav-item" :class="{'nav-item--active': activeSection === 1}" @click="scrollToSection(1)">
+        <router-link to="/about" class="nav-item-flex">
+         <span  class="nav-item__icon fa fa-info"></span>
           <transition name="collapse">
-            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">About</span>
-          </transition>  
+            <span v-show="!isCollapsedOnMobile" class="nav-item__label">About</span>
+          </transition>
         </router-link>
       </li>
-      <li class="nav-item">
-        <router-link to="/gallery" class="nav-item-flex">  
-          <span  class="nav-item__icon fa fa-briefcase"></span> 
+      <li class="nav-item" :class="{'nav-item--active': activeSection === 2}" @click="scrollToSection(2)">
+        <router-link to="/gallery" class="nav-item-flex">
+          <span  class="nav-item__icon fa fa-briefcase"></span>
           <transition name="collapse">
-            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Gallery</span>
-          </transition>  
+            <span v-show="!isCollapsedOnMobile" class="nav-item__label">Gallery</span>
+          </transition>
         </router-link>
       </li>
-      <li class="nav-item">
-        <router-link to="/contact" class="nav-item-flex">  
-          <span class="nav-item__icon fa fa-at"></span> 
+      <li class="nav-item" :class="{'nav-item--active': activeSection === 3}" @click="scrollToSection(3)">
+        <router-link to="/contact" class="nav-item-flex">
+          <span class="nav-item__icon fa fa-at"></span>
           <transition name="collapse">
-            <span v-show="!isCollapsedOnMobile" transition="collapse" class="nav-item__label">Contact</span>
-          </transition>  
+            <span v-show="!isCollapsedOnMobile" class="nav-item__label">Contact</span>
+          </transition>
         </router-link>
       </li>
     </ul>
@@ -43,13 +40,13 @@
 
 
 <style lang="scss">
-.collapse-enter,
+.collapse-enter-from,
 .collapse-leave-to {
   max-width: 0;
   display: none;
 }
 .collapse-enter-to,
-.collapse-leave {
+.collapse-leave-from {
   max-width: 200px;
 }
 .collapse-enter-active,
@@ -165,10 +162,13 @@
 </style>
 
 <script>
+// Scroll spy + animated section scrolling. Replaces vue2-scrollspy
+// (v-scroll-spy-link / v-scroll-spy-active), which is Vue 2 only.
 export default {
   data: function() {
     return {
-      scrollPosition: 0
+      scrollPosition: 0,
+      activeSection: 0
     };
   },
   components: {},
@@ -178,16 +178,38 @@ export default {
     }
   },
   methods: {
-    onScroll(ev) {
+    sections() {
+      return document.querySelectorAll("#view-container .view");
+    },
+    onScroll() {
       this.scrollPosition = window.scrollY;
+      let active = 0;
+      this.sections().forEach((section, index) => {
+        if (window.scrollY >= section.offsetTop) active = index;
+      });
+      this.activeSection = active;
+    },
+    scrollToSection(index) {
+      const target = this.sections()[index];
+      if (!target) return;
+      const start = window.scrollY;
+      const distance = target.offsetTop - start;
+      const duration = 500;
+      const startTime = performance.now();
+      const step = now => {
+        const t = Math.min((now - startTime) / duration, 1);
+        const eased = t * t * t; // Cubic.In, like the old vue2-scrollspy config
+        window.scrollTo(0, start + distance * eased);
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
     }
   },
   created: function() {
-    window.addEventListener("scroll", this.onScroll.bind(this), false);
+    window.addEventListener("scroll", this.onScroll, false);
   },
-  destroyed() {
-    window.removeEventListener("scroll", this.onScroll.bind(this), false);
+  unmounted() {
+    window.removeEventListener("scroll", this.onScroll, false);
   }
 };
 </script>
-

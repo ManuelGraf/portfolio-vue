@@ -1,27 +1,24 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default createStore({
   state: {
-    viewport:{
+    viewport: {
       breakpoint: String,
       height: Number,
-      orientation:{direction: String,version: String},
+      orientation: { direction: String, version: String },
       sections: Array,
       width: Number,
     },
-    currentSection:String
+    currentSection: String
   },
-  actions:{
+  actions: {
   },
   mutations: {
-    setViewport(state, viewport){
-      state = viewport;
+    setViewport(state, viewport) {
+      state.viewport = viewport;
     },
-    setCurrentView(state, sectionId){
-      state = sectionId;
+    setCurrentView(state, sectionId) {
+      state.currentSection = sectionId;
     }
   }
 })

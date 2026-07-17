@@ -269,7 +269,6 @@ export default {
       }
     }
   },
-  filters: {},
   computed: {
     totalWorkMonths: function () {
       let months = 0;

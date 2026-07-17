@@ -2,21 +2,8 @@
   <div class="view view--home" id="Home" v-in-viewport>
     <vue-particles
         v-show="height"
-        color="#dedede"
-        :particleOpacity="0.7"
-        :particlesNumber="80"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#dedede"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="2"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
+        id="particle-background"
+        :options="particlesOptions"
       >
       </vue-particles>
   </div>
@@ -30,8 +17,41 @@ export default {
   components: {
 
   },
+  data() {
+    return {
+      // same settings the old vue-particles component was fed, in
+      // tsparticles options format
+      particlesOptions: {
+        fullScreen: { enable: false },
+        particles: {
+          color: { value: '#dedede' },
+          number: { value: 80 },
+          opacity: { value: 0.7 },
+          shape: { type: 'circle' },
+          size: { value: 4 },
+          links: {
+            enable: true,
+            color: '#dedede',
+            distance: 150,
+            opacity: 0.4,
+            width: 1
+          },
+          move: { enable: true, speed: 2 }
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: 'grab' },
+            onClick: { enable: true, mode: 'push' }
+          }
+        }
+      }
+    }
+  },
   computed:{
     height(){
+      // NOTE: window.clientHeight does not exist, so this is always
+      // undefined and the particles stay hidden — same (buggy) behavior
+      // as the old Vue 2 site. Use window.innerHeight to re-enable them.
       return window.clientHeight;
     }
   }
@@ -67,6 +87,13 @@ $color-spot: $color-green;
       display:none;
     }
   }
+  #particle-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   #portrait{
     @include viewport-tablet{
         width:auto;
@@ -80,6 +107,5 @@ $color-spot: $color-green;
     }
   }
 }
-  
+
 </style>
-                    

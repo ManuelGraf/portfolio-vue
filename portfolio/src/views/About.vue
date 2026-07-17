@@ -1,11 +1,11 @@
 <template>
-  <div id="about" class="view view--about" v-scroll-spy>
+  <div id="about" class="view view--about">
     <div class="view__content">
 
       <div class="about__header">
         <!-- <img id="portrait--print" src="img/manuel-graf-foto.1024x1024.jpg"
         alt="Manuel F. Graf. Code, Design & Musik München"> -->
-        <img id="cv__logo" src="img/bildmarke_rz_b.png" alt="Manuel F. Graf. Code, Design & Music in Germany,Munich">
+        <img id="cv__logo" src="/img/bildmarke_rz_b.png" alt="Manuel F. Graf. Code, Design & Music in Germany,Munich">
         <section id="overview">
           <ul class="skills">
             <h3>Manuel F. Graf

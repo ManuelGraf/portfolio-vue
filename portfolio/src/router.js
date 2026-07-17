@@ -1,7 +1,4 @@
-import Vue from "vue";
-import Router from "vue-router";
-// https://www.npmjs.com/package/vue2-scrollspy
-import Scrollspy, { Easing } from "vue2-scrollspy";
+import { createRouter, createWebHistory } from "vue-router";
 
 import HomeScreen from "./views/Home.vue";
 import AboutScreen from "./views/About.vue";
@@ -9,13 +6,10 @@ import WorkScreen from "./views/Gallery.vue";
 import ContactScreen from "./views/Contact.vue";
 import CV from "./components/Cv.vue";
 
-Vue.use(Router);
-Vue.use(Scrollspy, {
-  easing: Easing.Cubic.In
-});
-
+// Note: the app renders no <router-view> — the site is a one-pager and the
+// routes only exist to give the sections stable URLs (history entries).
 const routes = [
-  { path: "/demo" },
+  { path: "/demo", component: { render: () => null } },
   {
     path: "/",
     name: "home",
@@ -24,7 +18,6 @@ const routes = [
   {
     path: "/about",
     name: "about",
-    hash: "#about",
     component: AboutScreen
   },
   {
@@ -44,51 +37,18 @@ const routes = [
   }
 ];
 
-const scrollBehavior = function(to, from, savedPosition) {
+// Same effective behavior as before: restore position on back/forward,
+// otherwise keep the current scroll position (nav scrolling is handled
+// by MainNav itself).
+const scrollBehavior = function (to, from, savedPosition) {
   if (savedPosition) {
-    // savedPosition is only available for popstate navigations.
     return savedPosition;
-  } else {
-    const position = {};
-
-    // scroll to anchor by returning the selector
-    if (to.matched) {
-      position.selector = "#" + to.matched[0].name;
-      let el = document.querySelector(position.selector);
-
-      // console.log(to.matched[0]);
-      if (el) {
-        // position.y = el.getClientBoundingRect().top;
-        // return position
-      }
-
-      // if the returned position is falsy or an empty object,
-      // will retain current scroll position.
-      return false;
-    }
-
-    return new Promise(resolve => {
-      // check if any matched route config has meta that requires scrolling to top
-      if (to.matched.some(m => m.meta.scrollToTop)) {
-        // coords will be used if no selector is provided,
-        // or if the selector didn't match any element.
-        position.x = 0;
-        position.y = 0;
-      }
-
-      // wait for the out transition to complete (if necessary)
-      this.app.$root.$once("triggerScroll", () => {
-        // if the resolved position is falsy or an empty object,
-        // will retain current scroll position.
-        resolve(position);
-      });
-    });
   }
+  return false;
 };
 
-export default new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
+export default createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes,
   scrollBehavior
 });
