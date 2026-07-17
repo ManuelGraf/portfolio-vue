@@ -1,71 +1,29 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "serve": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@tweenjs/tween.js": "^17.2.0",
+    "@tsparticles/slim": "^3.8.1",
+    "@tsparticles/vue3": "^3.0.1",
     "document-offset": "^1.0.4",
-    "get-size": "^2.0.3",
-    "moment": "^2.23.0",
-    "register-service-worker": "^1.5.2",
+    "moment": "^2.30.1",
     "screen-orientation": "^1.0.3",
-    "three": "^0.99.0",
-    "v-click-outside": "^2.1.5",
     "viewport-size": "0.0.1",
-    "vue": "^2.5.17",
-    "vue-dragscroll": "^1.8.1",
-    "vue-in-viewport-directive": "^1.2.1",
-    "vue-router": "^3.0.1",
-    "vue-youtube": "^1.4.0",
-    "vue2-scrollspy": "^2.3.1",
-    "vuex": "^3.0.1",
-    "webvr-ui": "^0.10.0",
-    "window-size": "^1.1.1"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-eslint": "^3.2.0",
-    "@vue/cli-plugin-pwa": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
-    "babel-eslint": "^10.0.1",
-    "css-loader": "^1.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
-    "image-webpack-loader": "^4.6.0",
+    "@vitejs/plugin-vue": "^5.2.1",
     "sass": "^1.85.1",
-    "sass-loader": "^7.1.0",
     "sharp": "^0.33.5",
-    "style-loader": "^0.23.1",
-    "vue-particles": "^1.0.9",
-    "vue-template-compiler": "^2.5.17"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "vite": "^6.2.0",
+    "vite-plugin-pwa": "^0.21.1"
+  }
 }

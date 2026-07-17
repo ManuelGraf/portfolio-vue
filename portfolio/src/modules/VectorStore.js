@@ -1,3 +1,4 @@
+// PARKED — not part of the build (see GlobeScene.vue). three is no longer installed.
 import * as THREE from 'three'
 
 const VectorStore = class{

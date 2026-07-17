@@ -1,9 +1,9 @@
 <template>
-    <div id='view-container' v-scroll-spy="{data: 'section'}">
+    <div id='view-container'>
         <Home></Home>
         <About></About>
         <Gallery></Gallery>
-        <Contact></Contact>    
+        <Contact></Contact>
     </div>
 </template>
 
@@ -24,19 +24,6 @@ import Contact from '@/views/Contact.vue'
             About,
             Gallery,
             Contact
-        },
-        render(){
-            vh = document.documentElement.clientHeight;
-            vw = document.documentElement.clientWidth;
-            this.$state.commit('updateViewPort',{height:vh,width:w})
-        },
-        computed:{
-            vh: function(){
-                return this.$state.viewport.height;
-            },
-            vw: function(){
-                return this.$state.viewport.width;
-            }
         }
     }
 </script>

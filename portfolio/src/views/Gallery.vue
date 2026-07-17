@@ -253,9 +253,7 @@ $color-gallery: $color-petrol-lightest;
 </style>
 
 <script>
-import DemoPlaceholder from "@/components/DemoPlaceholder";
-import Vue from "vue";
-// import GlobeScene from '@/components/GlobeScene'
+import DemoPlaceholder from "@/components/DemoPlaceholder.vue";
 export default {
   components: {
     DemoPlaceholder

@@ -1,3 +1,5 @@
+// PARKED — not part of the build (see GlobeScene.vue). Targets three.js r99;
+// three and @tweenjs/tween.js are no longer installed. Rewrite before use.
 import * as THREE from 'three';
 import vector from '@/modules/VectorStore.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';

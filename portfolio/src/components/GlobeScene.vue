@@ -1,3 +1,10 @@
+<!--
+  PARKED — not part of the build. Kept as reference for a future rewrite.
+  This component targets Vue 2 and three.js r99 (three/tween are no longer
+  in package.json, and several of the three APIs used here were removed
+  around r125+). Do not re-import it in Gallery.vue until it is rewritten
+  for Vue 3 and a current three release.
+-->
 <template>
   <div>
     <!-- Author: Manuel Graf -->

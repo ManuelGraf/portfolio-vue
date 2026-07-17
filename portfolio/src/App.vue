@@ -1,36 +1,21 @@
 <script>
 // @ is an alias to /src
-import Vue from 'vue'
 import ViewContainer from '@/views/ViewContainer.vue'
 
 import MainNav from '@/components/MainNav.vue'
 import Logo from '@/components/Logo.vue'
-import Orientation  from 'screen-orientation'
-import Offset  from 'document-offset'
-import ViewportSize  from 'viewport-size'
-
-import vClickOutside from 'v-click-outside'
- 
-Vue.use(vClickOutside)
-
-import VueYoutube from "vue-youtube";
-Vue.use(VueYoutube);
-
-
-
-
-import InViewPortDirective from 'vue-in-viewport-directive'
-Vue.directive('in-viewport', InViewPortDirective)
+import Orientation from 'screen-orientation'
+import Offset from 'document-offset'
+import ViewportSize from 'viewport-size'
 
 export default {
     name: 'app',
     components: {
       ViewContainer,
       MainNav,
-      InViewPortDirective,
       Logo
     },
-    data:function(){
+    data: function(){
       return{
 
       }
@@ -42,25 +27,22 @@ export default {
       let viewport = this.getViewport();
       this.$store.commit('setViewport', viewport)
     },
-    destroyed:function(){
-      window.removeEventListener('resize', this.onResize)
-      window.removeEventListener('scroll', this.onScroll)
-    },
-    render:function(){
-    },
-    render:function(){
+    unmounted: function(){
+      window.removeEventListener('resize', this.onResize, true)
+      window.removeEventListener('scroll', this.onScroll, true)
     },
     methods: {
-      onResize:function(ev){  
+      onResize:function(ev){
         let viewport = this.getViewport()
         this.$store.commit('setViewport', viewport)
       },
       onScroll(){
         let views = document.querySelectorAll('.view');
+        if (!views.length) return;
         let currentSection = views[0].id
         for (const view of views) {
           let offset = Offset(view);
-          if(window.scrollY > offset.top && window.scrollY < offset.top + view.clientHeight) currentSection = view.id; 
+          if(window.scrollY > offset.top && window.scrollY < offset.top + view.clientHeight) currentSection = view.id;
         }
         this.$store.commit('setCurrentView', currentSection)
       },
@@ -69,7 +51,7 @@ export default {
         viewport.width = ViewportSize.getWidth();
         viewport.height = ViewportSize.getHeight();
         viewport.breakpoint = window.matchMedia('(min-width: 1024px) and (min-height: 768px)') ? 'tablet' : 'mobile'
-        viewport.orientation = Orientation(); 
+        viewport.orientation = Orientation();
         viewport.sections=[];
         let views = document.querySelectorAll('.view');
         for (const view of views) {
@@ -77,7 +59,7 @@ export default {
           let o = {
             id:view.id,
             offset: offset
-          } 
+          }
           viewport.sections.push(o)
         }
         return viewport;
@@ -106,7 +88,6 @@ export default {
 
 
 <style lang="scss" >
-@import 'src/assets/styles/partials/view';
-@import 'src/assets/styles/partials/typo';
+@import '@/assets/styles/partials/View';
+@import '@/assets/styles/partials/typo';
 </style>
-

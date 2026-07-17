@@ -92,13 +92,13 @@ export default {
     max-height: 200px;
     overflow: hidden;
 
-    &.fade-enter,
+    &.fade-enter-from,
     &.fade-leave-to {
       background-color: rgba(0, 0, 0, 1);
       opacity: 0;
     }
     &.fade-enter-to,
-    &.fade-leave {
+    &.fade-leave-from {
       background-color: rgba(0, 0, 0, 0);
       opacity: 1;
     }
