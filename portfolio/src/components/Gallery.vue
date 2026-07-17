@@ -289,7 +289,7 @@ export default {
   },
   computed: {
     categories() {
-      return ["All", "Tools", "Games", "VR & 3D", "Web", "Mobile"];
+      return ["All", "Games", "VR & 3D", "Web", "Apps", "Tools"];
     },
     visibleDemos() {
       return this.demos
