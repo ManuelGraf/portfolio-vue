@@ -11,14 +11,6 @@
 }
 
 .view__content {
-  &--vertical {
-    flex-direction: row;
-  }
-  @include viewport-tablet {
-    width: $width-content-tablet;
-    max-width: $width-content-max;
-    flex-direction: row;
-  }
   flex-direction: column;
   flex-wrap: wrap;
   display: flex;
@@ -28,6 +20,14 @@
   position: relative;
   padding: 20px 0 20px 20px;
   margin: 0 auto;
+  &--vertical {
+    flex-direction: row;
+  }
+  @include viewport-tablet {
+    width: $width-content-tablet;
+    max-width: $width-content-max;
+    flex-direction: row;
+  }
 }
 .view__headline {
   @include viewport-tablet {
