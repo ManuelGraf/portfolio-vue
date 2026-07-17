@@ -225,7 +225,7 @@ export default {
         {
           title: "YARA: Yet Aother Running App ",
           thumbImage: "/img/yara.png",
-          cat: "Apps",
+          cat: "Mobile",
           teaser: "Android app that matches music BPM to your live step frequency and generates playlists accordingly.",
           links: [
             { text: "watch video on youtube", href: "https://www.youtube.com/watch?v=0vG63Cnq-Ro" }
@@ -238,7 +238,7 @@ export default {
         {
           title: "Simple Browser Paint",
           thumbImage: "/img/sample.png",
-          cat: "Web",
+          cat: "Tools",
           teaser: "A basic painting app for browsers, built 2015 with jQuery and HTML5 canvas.",
           links: [
             { text: "watch it in action", href: "/demo/paint/index.html" }
