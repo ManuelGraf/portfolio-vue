@@ -34,10 +34,10 @@
       </div>
     </div>
     <div class="view__content">
-      <div class="project-grid">
+      <div class="project-grid" ref="grid">
         <div v-for="item in visibleDemos" :key="item.idx" class="project-card"
-          :class="{ 'project-card--open': openIdx === item.idx }" :style="cardStyle(item)" @click="openCard(item.idx)"
-          @mousemove="onTilt(item.idx, $event)" @mouseleave="tilt = null">
+          :class="{ 'project-card--open': openIdx === item.idx }" :style="cardStyle(item)"
+          @click="openCard(item.idx, $event)" @mousemove="onTilt(item.idx, $event)" @mouseleave="tilt = null">
           <!-- expanded state -->
           <template v-if="openIdx === item.idx">
             <div class="project-card__expanded">
@@ -77,7 +77,7 @@
         </div>
       </div>
     </div>
-    <div class="view__content">
+    <!-- <div class="view__content">
       <div class="col-12">
         <h2 class="view__headline">Analog Stuff I made:</h2>
       </div>
@@ -85,7 +85,7 @@
     <div class="view__content">
       <p class="empty">I also like all kinds of traditional art. And laser cutters. Pictures of this are scattered
         everywhere and I didnt find the time to collect everything yet.</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -95,6 +95,7 @@ export default {
     return {
       activeFilter: "All",
       openIdx: -1,
+      cols: 3,
       tilt: null, // { i, rx, ry, gx, gy }
       demos: [
         {
@@ -287,6 +288,13 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.measureCols();
+    window.addEventListener("resize", this.measureCols);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.measureCols);
+  },
   computed: {
     categories() {
       return ["All", "Tools", "Games", "VR & 3D", "Web", "Mobile"];
@@ -298,6 +306,11 @@ export default {
     }
   },
   methods: {
+    measureCols() {
+      const grid = this.$refs.grid;
+      if (!grid) return;
+      this.cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+    },
     countFor(cat) {
       return cat === "All" ? this.demos.length : this.demos.filter(d => d.cat === cat).length;
     },
@@ -306,11 +319,20 @@ export default {
       this.openIdx = -1;
       this.tilt = null;
     },
-    openCard(idx) {
-      if (this.openIdx !== idx) {
-        this.openIdx = idx;
-        this.tilt = null;
-      }
+    openCard(idx, e) {
+      if (this.openIdx === idx) return;
+      this.openIdx = idx;
+      this.tilt = null;
+      const el = e && e.currentTarget;
+      this.$nextTick(() => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const navOffset = 80; // keep clear of fixed nav
+        // scroll only when the expanded card starts above the fold or too far down
+        if (rect.top < navOffset || rect.top > window.innerHeight * 0.4) {
+          window.scrollBy({ top: rect.top - navOffset, behavior: "smooth" });
+        }
+      });
     },
     isTilted(idx) {
       return this.tilt && this.tilt.i === idx && this.openIdx !== idx;
@@ -333,7 +355,7 @@ export default {
       if (isOpen) {
         // open card spans the full row; jump to the start of its own row
         const vi = this.visibleDemos.findIndex(d => d.idx === item.idx);
-        const rowStart = Math.floor(vi / 3) * 3;
+        const rowStart = Math.floor(vi / this.cols) * this.cols;
         return {
           gridColumn: "1 / -1",
           order: rowStart * 2,

@@ -1,11 +1,11 @@
 <template>
   <div class="view view--home" id="Home" v-in-viewport>
-    <vue-particles
+    <!-- <vue-particles
         v-show="height"
         id="particle-background"
         :options="particlesOptions"
       >
-      </vue-particles>
+      </vue-particles> -->
   </div>
 </template>
 
@@ -47,8 +47,8 @@ export default {
       }
     }
   },
-  computed:{
-    height(){
+  computed: {
+    height() {
       // NOTE: window.clientHeight does not exist, so this is always
       // undefined and the particles stay hidden — same (buggy) behavior
       // as the old Vue 2 site. Use window.innerHeight to re-enable them.
@@ -59,53 +59,59 @@ export default {
 </script>
 
 <style lang="scss">
-
 $bgcolor: $color-white;
 $color: $color-black-lighter;
 $color-spot: $color-green;
-.view--home{
-  @include curved-border($bgcolor,up);
+
+.view--home {
+  @include curved-border($bgcolor, up);
   background: $bgcolor;
   color: $color-green-darkest;
 
-  a, a:visited, a:hover{
+  a,
+  a:visited,
+  a:hover {
     color: $color-spot;
   }
 }
 
-.view--home{
-  transition:all $duration-complex eaase;
-  background:white;
-  min-height:38vh;
+.view--home {
+  transition: all $duration-complex eaase;
+  background: white;
+  min-height: 38vh;
   height: 100vh;
-  &.above-viewport{
+
+  &.above-viewport {
     height: 38vh;
   }
 
-  @include viewport-print{
-    #particle-background{
-      display:none;
+  @include viewport-print {
+    #particle-background {
+      display: none;
     }
   }
-  #particle-background{
+
+  #particle-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
-  #portrait{
-    @include viewport-tablet{
-        width:auto;
-        height:$gs-bp;
+
+  #portrait {
+    @include viewport-tablet {
+      width: auto;
+      height: $gs-bp;
     }
+
     width: $gs-ap;
     position:absolute;
     bottom:0;
-    .logo-color-1{
+
+    .logo-color-1 {
       fill: $color-spot
     }
   }
 }
-
 </style>

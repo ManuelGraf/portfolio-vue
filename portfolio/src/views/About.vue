@@ -103,6 +103,8 @@ $color-about: $color-green-darkest;
 $color-spot: $color-black;
 
 #cv__logo {
+  display: none;
+
   @include viewport-tablet {}
 
   width: 5rem;
