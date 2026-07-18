@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeScreen from "./views/Home.vue";
 import AboutScreen from "./views/About.vue";
 import WorkScreen from "./views/Gallery.vue";
+import ProfilesScreen from "./views/Profiles.vue";
 import ContactScreen from "./views/Contact.vue";
 import CV from "./components/Cv.vue";
 
@@ -24,6 +25,11 @@ const routes = [
     path: "/gallery",
     name: "gallery",
     component: WorkScreen
+  },
+  {
+    path: "/profiles",
+    name: "profiles",
+    component: ProfilesScreen
   },
   {
     path: "/contact",

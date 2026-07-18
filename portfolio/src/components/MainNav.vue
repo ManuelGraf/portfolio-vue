@@ -26,6 +26,14 @@
         </router-link>
       </li>
       <li class="nav-item" :class="{'nav-item--active': activeSection === 3}" @click="scrollToSection(3)">
+        <router-link to="/profiles" class="nav-item-flex">
+          <span class="nav-item__icon fa fa-play"></span>
+          <transition name="collapse">
+            <span v-show="!isCollapsedOnMobile" class="nav-item__label">Channels</span>
+          </transition>
+        </router-link>
+      </li>
+      <li class="nav-item" :class="{'nav-item--active': activeSection === 4}" @click="scrollToSection(4)">
         <router-link to="/contact" class="nav-item-flex">
           <span class="nav-item__icon fa fa-at"></span>
           <transition name="collapse">

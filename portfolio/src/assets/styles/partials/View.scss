@@ -29,16 +29,20 @@
     flex-direction: row;
   }
 }
+// one shared headline treatment for all sections (size/spacing from the
+// profiles section; print.scss overrides this for the CV)
 .view__headline {
-  @include viewport-tablet {
-    padding: 3rem 0 1.5rem 3rem;
-  }
   font-family: $font-condensed;
-  font-size: $fontsize-xl * 1.15;   // ~50px, down from $fontsize-xxl
+  font-size: $fontsize-xxl;
   font-weight: 500;
   text-align: center;
-  line-height: 1.05;
-  padding: 1rem 0 1.3rem 1rem;
+  line-height: 1em;
+  margin: 6rem 0 0 0;
+  padding: 1rem 0 1.3rem;
+
+  @include viewport-mobile {
+    font-size: $fontsize-xl;
+  }
 }
 .view__subline {
   @include viewport-tablet {

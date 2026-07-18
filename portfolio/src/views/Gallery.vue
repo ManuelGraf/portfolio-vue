@@ -4,28 +4,6 @@
       <h2 class="view__headline">What I do</h2>
     </div>
     <div class="view__content">
-      <ul class="profiles">
-        <li class="profile-item fab fa-youtube">
-          <a href="https://www.youtube.com/user/yumyumyummieee/" target="_blank" class>youtube</a>
-        </li>
-        <li class="profile-item fab fa-twitch">
-          <a href="https://twitch.tv/yumyumyummieee/" target="_blank" class>Twitch</a>
-        </li>
-        <li class="profile-item fas fa-music">
-          <a href="https://freesound.org/people/yummie/" target="_blank" class>freesound</a>
-        </li>
-        <li class="profile-item fab fa-deviantart">
-          <a href="https://www.deviantart.com/yummieee" target="_blank" class>Deviantart</a>
-        </li>
-        <li class="profile-item fas fa-pencil-alt">
-          <a href="https://logopond.com/yummie/profile/17039" target="_blank" class>Logopond</a>
-        </li>
-      </ul>
-    </div>
-    <div class="view__content">
-      <h2 class="view__headline">Digital Stuff I made:</h2>
-    </div>
-    <div class="view__content">
       <div class="gallery-filters">
         <button v-for="cat in categories" :key="cat" class="gallery-filter"
           :class="{ 'gallery-filter--active': cat === activeFilter }" @click="setFilter(cat)">
@@ -435,22 +413,6 @@ $color-gallery: $color-petrol-lightest;
 
   a {
     color: $color-gallery;
-  }
-
-  .profiles {
-    list-style-type: none;
-    font-size: $fontsize-l;
-    margin: 2rem 5rem 5rem 5rem;
-  }
-
-  .profile-item {
-    display: block;
-    margin: 2em;
-
-    a {
-      font-family: $font-condensed;
-      padding-left: 10px;
-    }
   }
 
   // ---- filter chips ----
