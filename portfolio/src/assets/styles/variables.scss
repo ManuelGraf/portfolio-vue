@@ -58,6 +58,16 @@ $color-green-dark: darken(saturate($color-green, 10%), 10%);
 $color-green-darker: darken(saturate($color-green, 15%), 15%);
 $color-green-darkest: darken(saturate($color-green, 20%), 20%);
 
+// profiles section ("Channels & Code", 2a)
+$color-magenta-text: #f2cdda;         // body text on magenta
+$color-magenta-text-bright: #f6e3ea;  // heading on magenta
+$color-magenta-tint: #fdf4f8;         // row hover bg on white cards
+$color-card-heading: #2f3a3f;         // card titles (near black-light)
+$color-card-text: #4a565c;            // card body text
+$color-card-muted: #9aa5aa;           // captions/meta
+$color-card-divider: #eef1f2;         // row separators
+$shadow-card: 0 4px 14px rgba(0, 0, 0, 0.25);
+
 $scrollbar-crop: 35px;
 
 $font-base: "Open Sans";
@@ -78,6 +88,18 @@ $fontsize-xs: $fontsize-s * 0.618;
 $fontsize-l: $fontsize-m * 1.618;
 $fontsize-xl: $fontsize-l * 1.618;
 $fontsize-xxl: $fontsize-xl * 1.618;
+
+// px steps between the golden-ratio sizes for dense card/label text
+// (the ratio scale jumps ~10px → 16px → ~26px)
+$fontsize-caption: 11px;     // monospace captions & meta rows
+$fontsize-handle: 11.5px;    // inline @handles
+$fontsize-small: 13px;       // buttons, compact body text
+$fontsize-copy-s: 13.5px;    // card body copy
+$fontsize-label: 14px;       // uppercase labels under icons
+$fontsize-title-s: 19px;     // entry names inside cards
+$fontsize-title: 20px;       // card headers
+$fontsize-icon-s: 23px;      // circular link icons
+$fontsize-icon: 24px;        // card header icons
 
 // DIMENSIONS
 $min-tap: 44px;

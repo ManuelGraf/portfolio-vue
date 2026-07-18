@@ -3,6 +3,7 @@
         <Home></Home>
         <About></About>
         <Gallery></Gallery>
+        <Profiles></Profiles>
         <Contact></Contact>
     </div>
 </template>
@@ -11,6 +12,7 @@
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import Gallery from '@/views/Gallery.vue'
+import Profiles from '@/views/Profiles.vue'
 import Contact from '@/views/Contact.vue'
 
     export default {
@@ -23,6 +25,7 @@ import Contact from '@/views/Contact.vue'
             Home,
             About,
             Gallery,
+            Profiles,
             Contact
         }
     }
