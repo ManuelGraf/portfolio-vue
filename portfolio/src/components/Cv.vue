@@ -125,9 +125,30 @@ $bubblemaxsize: 100px;
   padding-left: 20%;
   padding-bottom: 20px;
   padding-top: 2rem;
-  border-left: 3px solid $color-white;
   margin: 0;
   list-style-type: none;
+
+  // Timeline connector: runs from this entry's bubble center down to the
+  // next entry's bubble center (3rem into the next li), so bubbles of any
+  // size sit exactly on the line's endpoints and nothing pokes out above.
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 3rem;
+    height: 100%;
+    width: 3px;
+    transform: translateX(-50%);
+    background: $color-white;
+
+    @media print {
+      display: none;
+    }
+  }
+
+  &:last-child::before {
+    display: none;
+  }
 
   &__description {
     margin: 0.5em 0 1.5em 0;
