@@ -102,7 +102,7 @@ $color-about: $color-green-darkest;
 $color-spot: $color-black;
 
 #cv__logo {
-  display: block;
+  display: none;
   width: 4rem;
 }
 
@@ -131,17 +131,17 @@ $color-spot: $color-black;
     }
 
     h4::after {
-      content: ":";               // colon lives in CSS now, print text unchanged
+      content: ":"; // colon lives in CSS now, print text unchanged
     }
   }
 
   @media screen {
     h3 {
       font-family: $font-condensed;
-      font-size: 2.625rem;                // 42px
+      font-size: 2.625rem; // 42px
       font-weight: 600;
       line-height: 1.1;
-      color: $ink-green-strong;           // deep olive, not black
+      color: $ink-green-strong; // deep olive, not black
       margin: 0 0 1rem;
     }
 
@@ -179,16 +179,21 @@ $color-spot: $color-black;
       }
     }
 
-    h3 { flex: 0 0 100%; }              // title spans above the chip row
+    h3 {
+      flex: 0 0 100%;
+    }
 
-    h4 {                                 // "Languages" label
-      display: inline-block;             // inline can't take the top margin
+    // title spans above the chip row
+
+    h4 {
+      // "Languages" label
+      display: inline-block; // inline can't take the top margin
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: $ink-green-label;
-      margin: 2.25rem 12px 0 0;          // air between chips and languages
+      margin: 2.25rem 12px 0 0; // air between chips and languages
     }
 
     ul.languages {
@@ -201,7 +206,11 @@ $color-spot: $color-black;
         display: inline;
         margin: 0;
         font-size: 14px;
-        &:not(:last-child)::after { content: " · "; opacity: 0.6; }
+
+        &:not(:last-child)::after {
+          content: " · ";
+          opacity: 0.6;
+        }
       }
     }
   }
@@ -224,7 +233,7 @@ $color-spot: $color-black;
     width: 100%;
   }
 
-  padding-top: 6rem;   // was 10rem
+  padding-top: 6rem; // was 10rem
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -313,7 +322,7 @@ $color-spot: $color-black;
 
   @media screen {
     .divider {
-      display: none;                     // design has no line before the CV headline
+      display: none; // design has no line before the CV headline
     }
   }
 
