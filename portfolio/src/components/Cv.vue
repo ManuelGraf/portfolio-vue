@@ -145,7 +145,7 @@ $bubblemaxsize: 100px;
     top: 3rem;
     transform: translate3D(-50%, -50%, 0);
     color: $color-green-darkest;
-    font-family: $font-serif;
+    font-family: $font-cursive;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -155,7 +155,7 @@ $bubblemaxsize: 100px;
     &-months {
       display: inline-block;
       font-size: $fontsize-l;
-      font-family: $font-serif;
+      font-family: $font-cursive;
       line-height: .7em;
       padding: 0;
     }
@@ -164,7 +164,7 @@ $bubblemaxsize: 100px;
       line-height: 0.5em;
       display: inline-block;
       font-size: $fontsize-m;
-      font-family: $font-serif;
+      font-family: $font-cursive;
     }
   }
 

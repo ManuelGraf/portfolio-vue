@@ -185,13 +185,13 @@ $color-spot: $color-black;
     h3 { flex: 0 0 100%; }              // title spans above the chip row
 
     h4 {                                 // "Languages" label
-      display: inline;
+      display: inline-block;             // inline can't take the top margin
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: $ink-green-label;
-      margin-right: 12px;
+      margin: 1.75rem 12px 0 0;          // air between chips and languages
     }
 
     ul.languages {
