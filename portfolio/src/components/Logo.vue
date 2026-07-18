@@ -14,6 +14,13 @@
                   s12.833,3.742,12.833,3.742c5.2,2.8,9.399,6.5,12,9.2L101.684,75.499c-2.2,2.301-9.038,7.601-9.038,7.601
                   s-3.583,4.42-14.958,4.42S61.184,83.9,61.184,83.9z" />
               </clipPath>
+              <!-- full eye silhouette (outer boundary of the outline, corner tip closed
+                   with z); the moving lid is confined to this so the descending lash
+                   never slides out of the eye -->
+              <clipPath id="eye-outline-clip">
+                <path d="M101.884,68.899c-3.9-5.801-13.101-17-25.7-17c-17,0-36.8,19.3-36.8,19.3s19.8,19.3,36.8,19.3
+                  c12.4,0,21.4-9.7,25.5-15z" />
+              </clipPath>
             </defs>
             <g clip-path="url(#eye-socket-clip)">
               <g ref="iris" class="iris">
@@ -25,10 +32,23 @@
                   c3.955-1.544,8.599-0.804,11.898,2.222l5.416-5.393C87.078,56.339,83.086,54.626,78.991,54.224z" />
               </g>
             </g>
-            <path class="eye" d="M61.184,83.9c-8.2-4.801-13.7-11.7-13.7-11.7s7.601-9.5,18.2-13.9c0,0,6.418-2.343,11.367-2.343
-              s12.833,3.742,12.833,3.742c5.2,2.8,9.399,6.5,12,9.2c-3.9-5.801-13.101-17-25.7-17c-17,0-36.8,19.3-36.8,19.3
-              s19.8,19.3,36.8,19.3c12.4,0,21.4-9.7,25.5-15c-2.2,2.301-9.038,7.601-9.038,7.601s-3.583,4.42-14.958,4.42
-              S61.184,83.9,61.184,83.9z" />
+            <!-- upper lid unit: white skin with the designer's upper-lid vector riding
+                 its lower edge; a blink translates + squashes the inner group down over
+                 the eye. The outer group's static clip keeps it inside the silhouette. -->
+            <g clip-path="url(#eye-outline-clip)">
+              <g ref="lid">
+                <path class="lid-skin" d="M47.491,72.191c0.076-0.096,7.647-9.514,18.193-13.892c0,0,6.418-2.343,11.367-2.343
+                  s12.833,3.742,12.833,3.742c5.2,2.8,9.399,6.5,12,9.2L101.884,15L47.491,15z" />
+                <path class="eye" d="M47.491,72.191c0.076-0.096,7.647-9.514,18.193-13.892c0,0,6.418-2.343,11.367-2.343
+                  s12.833,3.742,12.833,3.742c5.2,2.8,9.399,6.5,12,9.2c-3.9-5.801-13.101-17-25.7-17c-17,0-36.8,19.3-36.8,19.3
+                  s0.013,0.013,0.017,0.016L47.491,72.191z" />
+              </g>
+            </g>
+            <!-- lower lid + eye corners: static, drawn above the moving lid so the
+                 closed eye rests on the lower lid line -->
+            <path class="eye" d="M92.646,83.1c0,0-3.583,4.42-14.958,4.42S61.184,83.9,61.184,83.9c-8.2-4.801-13.7-11.7-13.7-11.7
+              s0.007-0.008,0.007-0.009l-8.09-0.977c0.348,0.338,19.935,19.284,36.783,19.284c12.4,0,21.4-9.7,25.5-15
+              C99.483,77.8,92.646,83.1,92.646,83.1z" />
           </svg>
         </div>
       </router-link>
@@ -121,6 +141,13 @@
     fill: $color-black-light;
     transition: fill $duration-noticeable ease;
   }
+
+  .lid-skin {
+    // skin of the upper lid: pure white to match the Home background and the
+    // white header curve; it erases the iris and the static upper lash line
+    // as the lid comes down (at rest it is white-on-white, invisible)
+    fill: white;
+  }
 }
 
 .logo.above-viewport {
@@ -179,6 +206,18 @@ const IRIS_SATURATE_PX = 260;
 // per-frame lerp factor — lower = more Live2D-like lag
 const IRIS_EASE = 0.12;
 
+// blink pause: 2.5s minimum plus up to 4.5s of randomness
+const BLINK_MIN_DELAY = 2500;
+const BLINK_MAX_EXTRA = 4500;
+const BLINK_DURATION = 260;
+const DOUBLE_BLINK_CHANCE = 0.15;
+// closed-lid transform: SVG groups scale about the user-space origin (y=0),
+// so a point lands at LID_SQUASH * y + LID_TRAVEL. With 0.8 / 43 the upper
+// lash arc (rest y ≈ 52-56) flattens and settles on the lower lash line
+// (y ≈ 87.5) while the skin still covers the whole eye opening.
+const LID_SQUASH = 0.8;
+const LID_TRAVEL = 43;
+
 export default {
   name: "logo",
   components: {},
@@ -190,13 +229,41 @@ export default {
     this.irisTarget = { x: 0, y: 0 };
     this.irisCurrent = { x: 0, y: 0 };
     this.rafId = null;
+    this.blinkTimer = null;
     window.addEventListener("mousemove", this.onMouseMove, { passive: true });
+    this.scheduleBlink();
   },
   beforeUnmount() {
     window.removeEventListener("mousemove", this.onMouseMove);
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+    if (this.blinkTimer !== null) clearTimeout(this.blinkTimer);
   },
   methods: {
+    scheduleBlink() {
+      this.blinkTimer = setTimeout(() => {
+        this.blink(Math.random() < DOUBLE_BLINK_CHANCE ? 2 : 1);
+        this.scheduleBlink();
+      }, BLINK_MIN_DELAY + Math.random() * BLINK_MAX_EXTRA);
+    },
+    blink(times) {
+      const lid = this.$refs.lid;
+      if (!lid || !lid.animate || this.reduceMotion.matches) return;
+      // close fast (ease-in), hold a beat, reopen slower — real-blink cadence
+      // (px inside the svg resolve to viewBox units, so this scales with size)
+      const closed = `translateY(${LID_TRAVEL}px) scaleY(${LID_SQUASH})`;
+      const anim = lid.animate(
+        [
+          { transform: "translateY(0px) scaleY(1)", easing: "ease-in" },
+          { transform: closed, offset: 0.35 },
+          { transform: closed, offset: 0.5, easing: "ease-out" },
+          { transform: "translateY(0px) scaleY(1)" }
+        ],
+        { duration: BLINK_DURATION }
+      );
+      if (times > 1) {
+        anim.onfinish = () => this.blink(times - 1);
+      }
+    },
     onMouseMove(e) {
       if (!this.$refs.iris || this.reduceMotion.matches) return;
       const rect = this.$refs.eyeSvg.getBoundingClientRect();
