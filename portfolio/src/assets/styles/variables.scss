@@ -62,7 +62,13 @@ $scrollbar-crop: 35px;
 
 $font-base: "Open Sans";
 $font-condensed: "Oswald";
-$font-serif: "Cookie";
+$font-serif: "Bitter";
+
+// toned ink colors (2a)
+$ink-green-strong: #3d4a00;  // name — deep olive instead of black
+$ink-green-label:  #566600;  // small uppercase labels
+$ink-green-body:   #4c5a00;  // body, chips, headline
+$ink-yellow:       #8a6600;  // contact section ink
 
 $fontsize-base: 1rem;
 $fontsize-m: $fontsize-base;

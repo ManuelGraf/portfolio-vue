@@ -9,8 +9,7 @@
         <section id="overview">
           <ul class="skills">
             <h3>Manuel F. Graf
-              <br />
-              <span class="title"> M.Sc. Media Informatics</span>
+              <span class="title">M.Sc. Media Informatics</span>
             </h3>
             <li>Web Frontend Engineer</li>
             <li>Immersive 3D & XR Developer</li>
@@ -19,7 +18,7 @@
             <li>Explorative Creator</li>
             <li>Collaborative Team Player</li>
           </ul>
-          <h4>Languages:</h4>
+          <h4>Languages</h4>
           <ul class="languages">
             <li>German (native)</li>
             <li>English (fluent)</li>
@@ -112,26 +111,103 @@ $color-spot: $color-black;
 
 
 #overview {
+  text-align: center;
+
+  // print keeps the develop look — the redesign below is screen-only
   @media print {
     width: 100%;
     padding: 0;
     text-align: center;
+
+    h3 {
+      font-weight: normal;
+    }
+
+    .title {
+      // stands in for the removed <br>: own line, overline above the text
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 0;
+      border-top: 1px solid $color-green-darker;
+      font-size: $fontsize-m;
+    }
+
+    h4::after {
+      content: ":";               // colon lives in CSS now, print text unchanged
+    }
   }
 
-  text-align:center;
+  @media screen {
+    h3 {
+      font-family: $font-condensed;
+      font-size: 2.625rem;                // 42px
+      font-weight: 600;
+      line-height: 1.1;
+      color: $ink-green-strong;           // deep olive, not black
+      margin: 1.5rem 0 0;
+    }
 
+    .title {
+      display: block;
+      margin-top: 0.75rem;
+      padding: 0;
+      border: 0;
+      font-family: $font-base;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: $ink-green-label;
+    }
 
-  .title {
-    padding: 0 0 2em 0;
-    margin-top: 2em;
-    border-top: 1px solid $color-green-darker;
-    font-size: $fontsize-m;
+    // skills as chips (screen only — print keeps the plain list)
+    ul.skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 640px;
+      margin: 2.25rem auto 0;
+      padding: 0;
+
+      li {
+        margin: 0;
+        border: 1.5px solid $color-green-darker;
+        border-radius: 99px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        color: $ink-green-body;
+      }
+    }
+
+    h3 { flex: 0 0 100%; }              // title spans above the chip row
+
+    h4 {                                 // "Languages" label
+      display: inline;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: $ink-green-label;
+      margin-right: 12px;
+    }
+
+    ul.languages {
+      display: inline;
+      padding: 0;
+      font-size: 14px;
+      color: $ink-green-body;
+
+      li {
+        display: inline;
+        margin: 0;
+        font-size: 14px;
+        &:not(:last-child)::after { content: " · "; opacity: 0.6; }
+      }
+    }
   }
-
-  h3 {
-    font-weight: normal
-  }
-
 }
 
 #overview ul {
@@ -151,7 +227,7 @@ $color-spot: $color-black;
     width: 100%;
   }
 
-  padding-top:10rem;
+  padding-top: 6rem;   // was 10rem
   flex-direction: column;
   display: flex;
   align-items: center;

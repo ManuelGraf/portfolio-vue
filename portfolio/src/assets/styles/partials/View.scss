@@ -31,13 +31,13 @@
 }
 .view__headline {
   @include viewport-tablet {
-    padding: 3rem 0 3rem 3rem;
+    padding: 3rem 0 1.5rem 3rem;
   }
   font-family: $font-serif;
-  font-size: $fontsize-xxl;
+  font-size: $fontsize-xl * 1.15;   // ~50px, down from $fontsize-xxl
+  font-weight: 500;
   text-align: center;
-  line-height: 1em;
-  font-weight:normal;
+  line-height: 1.05;
   padding: 1rem 0 1.3rem 1rem;
 }
 .view__subline {
