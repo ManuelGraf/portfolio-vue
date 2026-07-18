@@ -63,7 +63,10 @@ $color-contact: $ink-yellow;   // #8a6600, warmer than before
   padding-top: 12%;
   text-align: center;
 
-  .view__content { align-items: center; }
+  .view__content {
+    flex-direction: column;   // headline above the icon row, also on tablet+
+    align-items: center;
+  }
   .view__headline { color: $color-contact; }
   a { color: $color-contact; }
 }

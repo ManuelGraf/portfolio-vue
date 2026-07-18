@@ -102,11 +102,8 @@ $color-about: $color-green-darkest;
 $color-spot: $color-black;
 
 #cv__logo {
-  display: none;
-
-  @include viewport-tablet {}
-
-  width: 5rem;
+  display: block;
+  width: 4rem;
 }
 
 
@@ -145,12 +142,12 @@ $color-spot: $color-black;
       font-weight: 600;
       line-height: 1.1;
       color: $ink-green-strong;           // deep olive, not black
-      margin: 1.5rem 0 0;
+      margin: 0 0 1rem;
     }
 
     .title {
       display: block;
-      margin-top: 0.75rem;
+      margin-top: 1rem;
       padding: 0;
       border: 0;
       font-family: $font-base;
@@ -191,7 +188,7 @@ $color-spot: $color-black;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: $ink-green-label;
-      margin: 1.75rem 12px 0 0;          // air between chips and languages
+      margin: 2.25rem 12px 0 0;          // air between chips and languages
     }
 
     ul.languages {
@@ -312,6 +309,12 @@ $color-spot: $color-black;
 
   @include viewport-tablet {
     flex-direction: column;
+  }
+
+  @media screen {
+    .divider {
+      display: none;                     // design has no line before the CV headline
+    }
   }
 
   background: $bg-about;
