@@ -91,7 +91,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
     // white curve of the docked header, faded in with the shrink

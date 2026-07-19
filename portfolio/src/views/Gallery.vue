@@ -77,6 +77,82 @@ export default {
       tilt: null, // { i, rx, ry, gx, gy }
       demos: [
         {
+          title: "ImageKeyer",
+          thumbImage: "/img/imagekeyer.jpg",
+          cat: "Tools",
+          teaser: "Client-side web tool that removes background colors from images while preserving fine detail — nothing ever leaves your browser.",
+          links: [
+            { text: "Try it live", href: "https://manuelgraf.github.io/ImageKeyer/" },
+            { text: "View on GitHub", href: "https://github.com/ManuelGraf/ImageKeyer" }
+          ],
+          description:
+            `<p><strong>A fully client-side image keying tool</strong> for removing specific colors from images while keeping subject details intact. All processing happens in the browser — no uploads, no network requests (enforced by a strict Content Security Policy).</p>
+             Features:
+             <ul class="list">
+              <li>pick colors to remove — and optionally colors to keep</li>
+              <li>magic brush for erasing backgrounds, inspired by onOne Mask Pro</li>
+              <li>decontamination of semi-transparent pixels to preserve glass, hair and smoke</li>
+              <li>eraser, restore and pan brush modes with undo/redo</li>
+              <li>touch support with two-finger zoom &amp; pan</li>
+              <li>export as PNG or WebP with transparency, EXIF/GPS metadata stripped</li>
+             </ul>
+             <p>Built with React, TypeScript and Vite.</p>`
+        },
+        {
+          title: "Coloroids",
+          thumbImage: "/img/coloroids.jpg",
+          cat: "Games",
+          teaser: "A cosmic browser painting game: color grey asteroids with particle streams before the 3-minute timer runs out.",
+          links: [
+            { text: "Play the game", href: "https://manuelgraf.github.io/Coloroids/" },
+            { text: "View on GitHub", href: "https://github.com/ManuelGraf/Coloroids" }
+          ],
+          description:
+            `<p><strong>A browser-based cosmic painting game.</strong> Move your mouse (or finger) to direct a stream of color particles onto grey asteroids — once an asteroid is fully colored, it detonates and scores points. Small asteroids give 1 point, medium 2 and large 5.</p>
+             <p>Grab <strong>Radius and Intensity Boost</strong> power-ups drifting through space, and watch out for <strong>black holes</strong> that swallow your particles and slow down time. High scores are saved locally in the browser — no backend needed.</p>
+             <p>Remixed from Google AI Studio's "Cosmic Flow" mini-app and reengineered into a self-contained single-player experience. Built with TypeScript, three.js and Vite as a fully static site.</p>`
+        },
+        {
+          title: "Teyvat Sports Day",
+          thumbImage: "/img/teyvat-sports-day.jpg",
+          cat: "Games",
+          teaser: "A UGC sports competition for Genshin Impact's Miliastra Wonderland — who runs fastest, jumps highest and leaps furthest?",
+          links: [
+            { text: "View on miliastra.games", href: "https://miliastra.games/games/teyvat-sports-day-24784325698-en" }
+          ],
+          description:
+            `<p><strong>A UGC game built with Genshin Impact's Miliastra Wonderland editor.</strong></p>
+             <p>Put your favorite Teyvat characters to the test! Who can run the fastest, jumps the highest and leaps the furthest? Compare your own characters or compete against friends in a series of athletic challenges.</p>
+             <p>Rated 10/10 by players on miliastra.games.</p>`
+        },
+        {
+          title: "Creature Colosseum",
+          thumbImage: "/img/creature-colosseum.jpg",
+          cat: "Games",
+          teaser: "Bet your Mora on monster battles in this Miliastra Wonderland party game — double your stake if your side wins.",
+          links: [
+            { text: "View on miliastra.games", href: "https://miliastra.games/games/creature-colosseum-7604456514-en" }
+          ],
+          description:
+            `<p><strong>A UGC party game built with Genshin Impact's Miliastra Wonderland editor.</strong></p>
+             <p>Creations battle each other in the Colosseum. You are granted some starting Mora and can bet on one of the sides — the bold are rewarded greatly: if your side wins, you <strong>double your stake</strong>. Win against the other betters by owning the most Mora after 5 rounds.</p>
+             <p>For once, enjoy watching enemies smashing other enemies instead of yourself. Lean back and enjoy the show — while earning (or losing…) some Mora!</p>
+             <p>90.91% player approval on miliastra.games.</p>`
+        },
+        {
+          title: "Ice Bridging: Boar Rush",
+          thumbImage: "/img/boar-rush.jpg",
+          cat: "Games",
+          teaser: "Cryo only! Freeze the river and guide boars home in this co-op Miliastra Wonderland game.",
+          links: [
+            { text: "View on miliastra.games", href: "https://miliastra.games/games/ice-bridging-boar-rush-11899423810-en" }
+          ],
+          description:
+            `<p><strong>A UGC co-op game built with Genshin Impact's Miliastra Wonderland editor.</strong></p>
+             <p>Cryo only! Freeze the river to build ice bridges and guide the boars safely home. A collaborative third-person challenge for you and your friends.</p>
+             <p>Rated 9/10 by players on miliastra.games.</p>`
+        },
+        {
           title: "DEP.PIN",
           thumbImage: "/img/dep.pin.jpg",
           cat: "Tools",
