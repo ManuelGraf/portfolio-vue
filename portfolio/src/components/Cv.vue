@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="cv cv--condensed">
     <strong class="view__headline show-only-in-print">Work Experience
     </strong>
@@ -454,10 +454,10 @@ export default {
               "Erstellung offizieller Pixelart-Sprites für das Fanprojekt Pokémon Infinite Fusion in Zusammenarbeit mit dem Art-Team und unter Einhaltung der Projekt-Richtlinien.",
             ],
             en: [
+              "Designing and implementing contest winning stages and training material for video game 'Genshin Impact's Game Authoring Tool 'Miliastra Sandbox' as a contracted content creator",
+              "Producing gaming guides and livestreams, including video editing, branding, and community engagement.",
               "Working as a self-employed freelancer web frontend developer and graphic designer.",
               "Producing graphic design and web frontends for local businesses.",
-              "Designing and implementing award winning stages for video game 'Genshin Impact's UGC 'Miliastra Wonderland' (Top 100)",
-              "Producing gaming guides and livestreams for the YouTube channel @yummieplays, including video editing, branding, and community engagement.",
               "Composing and publishing original game-style music on Music for Games by Manuel F. Graf (@manuelgrafmusic), developing skills in digital audio production and soundtrack creation.",
               "Contributing official pixel art as a spriter for the fan game Pokémon Infinite Fusion, collaborating with the community and following established art guidelines.",
             ]

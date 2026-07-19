@@ -76,14 +76,11 @@ $color-spot: $color-green;
 }
 
 .view--home {
-  transition: all $duration-complex eaase;
+  // NOTE: no height change on scroll here — collapsing the section while it
+  // is above the viewport shifts the whole document and makes the page jump
   background: white;
   min-height: 38vh;
   height: 100vh;
-
-  &.above-viewport {
-    height: 38vh;
-  }
 
   @include viewport-print {
     #particle-background {

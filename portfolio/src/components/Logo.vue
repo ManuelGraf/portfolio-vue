@@ -1,6 +1,6 @@
 <template>
-  <div class="logo" v-in-viewport="-500">
-    <div class="logo-flex">
+  <div class="logo">
+    <div class="logo-flex" ref="flex">
       <router-link to="/">
         <div class="logo-icon">
           <svg ref="eyeSvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -52,14 +52,16 @@
           </svg>
         </div>
       </router-link>
-      <h1 class="logo-name">
-        <span class="first-name">manuel.</span>
-        <span class="last-name">graf</span>
-      </h1>
-      <h2 class="subline">
-        Code &amp;
-        <span class="subline-graf">Graf</span>ik aus München.
-      </h2>
+      <div class="logo-text" ref="text">
+        <h1 class="logo-name">
+          <span class="first-name">manuel.</span>
+          <span class="last-name">graf</span>
+        </h1>
+        <h2 class="subline">
+          Code &amp;
+          <span class="subline-graf">Graf</span>ik aus München.
+        </h2>
+      </div>
     </div>
   </div>
 </template>
@@ -71,25 +73,61 @@
   margin: 0;
 
   .logo-flex {
-    position: absolute;
+    // scroll progress of the shrink: 0 = full hero logo, 1 = docked header.
+    // Written per scroll frame by onShrinkScroll, so the morph is
+    // scroll-linked and reversible instead of a class toggle that jumps.
+    --logo-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 49;
     text-align: center;
-    padding-top: 30%;
     width: 100%;
-    height: 38.2%;
-    padding: 0;
+    box-sizing: border-box;
+    // hero block (38.2vh) morphs into the 93px docked header
+    height: calc(38.2vh + (93px - 38.2vh) * var(--logo-shrink));
+    // bottom padding lifts the docked icon into the white curve
+    padding: 0 0 calc(50px * var(--logo-shrink)) 0;
     margin: 0;
-    background-color: rgba($color-black-light, 0);
-    transition: all $duration-noticeable ease;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+
+    // white curve of the docked header, faded in with the shrink
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF'  d='M0 0 Q 50 100 100 0 L 0 0z'/%3E%3Cpath stroke='none' fill='%23ffffff' d='M0 0 Q 50 100 100 0'/%3E%3C/svg%3E") no-repeat;
+      background-size: 100% 100%;
+      opacity: var(--logo-shrink);
+      pointer-events: none;
+    }
+  }
+
+  .logo-text {
+    // the text block collapses with the shrink, which is what lets the eye
+    // (the flex item above it) glide down into the docked header; its
+    // natural height is measured by onShrinkScroll, the fallback only
+    // matters for the instant before the first frame
+    height: calc(var(--logo-text-h, 10rem) * (1 - var(--logo-shrink)));
+    overflow: hidden;
+    // fade out early in the shrink, before the clipping becomes noticeable
+    opacity: calc(1 - var(--logo-shrink) * 2.5);
   }
 
   .logo-name {
     text-align: center;
     font-size: $fontsize-xl;
+    // the global line-height is set in em and inherits as a fixed ~24px,
+    // which the big name overflows — a unitless value scales with the font
+    line-height: 1.1;
+    margin: 0;
     padding-top: 1rem;
 
     @include viewport-tablet {
@@ -98,7 +136,9 @@
   }
 
   .subline {
-    padding-top: 2rem;
+    line-height: 1.3;
+    margin: 0;
+    padding-top: 0.5rem;
     color: $color-black-light;
     font-size: $fontsize-s;
 
@@ -108,7 +148,7 @@
   }
 
   .subline-graf {
-    color: $color-green;
+    color: $color-black-lighter;
   }
 
   .first-name {
@@ -121,14 +161,10 @@
   }
 
   .logo-icon {
-    order: 1;
-
-    // transition: all $duration-complex ease;
     svg {
-      height: 60px;
-      transition: all $duration-noticeable ease;
-
-      // transition: all $duration-complex ease;
+      // 60px in the hero, 20px when docked; no transition — the size is
+      // driven directly by the scroll position, a transition would lag it
+      height: calc(60px - 40px * var(--logo-shrink));
     }
   }
 
@@ -147,53 +183,6 @@
     // white header curve; it erases the iris and the static upper lash line
     // as the lid comes down (at rest it is white-on-white, invisible)
     fill: white;
-  }
-}
-
-.logo.above-viewport {
-  .logo-flex {
-    position: fixed;
-    z-index: 49;
-    top: 0;
-    height: 60px;
-    // padding:10px;
-    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF'  d='M0 0 Q 50 100 100 0 L 0 0z'/%3E%3Cpath stroke='none' fill='%23ffffff' d='M0 0 Q 50 100 100 0'/%3E%3C/svg%3E");
-    // height: 30px;
-    flex-direction: row;
-    justify-content: center;
-    padding-bottom: 30px;
-    padding-top: 3px;
-  }
-
-  .subline {
-    display: none;
-  }
-
-  .subline {
-    display: none;
-  }
-
-  .logo-name {
-    display: none;
-    font-size: $fontsize-s;
-    padding: 2px 0 0 0;
-    margin: 0;
-
-    .first-name,
-    .last-name {
-      // font-weight:300;
-      color: $color-white-darkest;
-    }
-  }
-
-  .logo-icon {
-    width: 45px;
-
-    svg {
-      height: 20px;
-      padding: 0;
-      margin: 0;
-    }
   }
 }
 </style>
@@ -218,6 +207,10 @@ const DOUBLE_BLINK_CHANCE = 0.15;
 const LID_SQUASH = 0.8;
 const LID_TRAVEL = 43;
 
+// the hero-to-header shrink completes once the hero block (38.2vh, see
+// .logo-flex height in the styles) has been scrolled past
+const SHRINK_RANGE_VH = 0.382;
+
 export default {
   name: "logo",
   components: {},
@@ -230,15 +223,39 @@ export default {
     this.irisCurrent = { x: 0, y: 0 };
     this.rafId = null;
     this.blinkTimer = null;
+    this.shrinkRafId = null;
     window.addEventListener("mousemove", this.onMouseMove, { passive: true });
+    window.addEventListener("scroll", this.onShrinkScroll, { passive: true });
+    window.addEventListener("resize", this.onShrinkScroll, { passive: true });
+    this.onShrinkScroll();
     this.scheduleBlink();
   },
   beforeUnmount() {
     window.removeEventListener("mousemove", this.onMouseMove);
+    window.removeEventListener("scroll", this.onShrinkScroll);
+    window.removeEventListener("resize", this.onShrinkScroll);
     if (this.rafId !== null) cancelAnimationFrame(this.rafId);
+    if (this.shrinkRafId !== null) cancelAnimationFrame(this.shrinkRafId);
     if (this.blinkTimer !== null) clearTimeout(this.blinkTimer);
   },
   methods: {
+    onShrinkScroll() {
+      if (this.shrinkRafId !== null) return;
+      this.shrinkRafId = requestAnimationFrame(() => {
+        this.shrinkRafId = null;
+        const flex = this.$refs.flex;
+        const text = this.$refs.text;
+        if (!flex || !text) return;
+        // natural height of the (possibly clipped) text block: sum of its
+        // children, since the wrapper's own height is scroll-driven
+        let textHeight = 0;
+        for (const child of text.children) textHeight += child.offsetHeight;
+        const range = window.innerHeight * SHRINK_RANGE_VH;
+        const p = Math.min(1, Math.max(0, window.scrollY / range));
+        flex.style.setProperty("--logo-text-h", `${textHeight}px`);
+        flex.style.setProperty("--logo-shrink", p.toFixed(4));
+      });
+    },
     scheduleBlink() {
       this.blinkTimer = setTimeout(() => {
         this.blink(Math.random() < DOUBLE_BLINK_CHANCE ? 2 : 1);
