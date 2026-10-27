@@ -1,7 +1,7 @@
 <template>
   <div id="gallery" class="view view--gallery">
     <div class="view__content">
-      <h2 class="view__headline">What I do</h2>
+      <h2 class="view__headline">What I build</h2>
     </div>
     <div class="view__content">
       <div class="gallery-filters">
@@ -97,6 +97,22 @@ export default {
               <li>export as PNG or WebP with transparency, EXIF/GPS metadata stripped</li>
              </ul>
              <p>Built with React, TypeScript and Vite.</p>`
+        },
+        {
+          title: "Mindsumo",
+          thumbImage: "/img/mindsumo.jpg",
+          cat: "Games",
+          teaser: "A browser puzzle game built in one sleepless hackathon night — a little Sumo pushes unwanted thoughts out of your mind.",
+          links: [
+            { text: "play the game", href: "/demo/mindsumo/index.html" }
+          ],
+          description:
+            `<p>A <strong>meditative Browser based Puzzle Game</strong> I created for the ARD Game Jam 2026.
+            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night. A Game for all the insomniacs out there<br>
+              </p><p>
+            your goal is to push items out of the arena, that dont satisfy the stage's requirement,
+            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
+            </p>`
         },
         {
           title: "Coloroids",
@@ -247,22 +263,6 @@ export default {
           playing: false,
           description:
             '<p>The <strong>poor Goblins</strong> fell under the Spell of a <strong>giant Rainbow-lazer Care Bear</strong>. Be a good Master and guide your minions back to the underworld with your unholy powers.</p> <p><strong>Underlord is a game which concept is like "Lemmings"</strong>. To surpass obstacles, you need to carry then over gaps or lift objects out of the way so they can pass freely. This game requires a motion sensor. We used the <strong>Intel Realsense Camera</strong> for development.</p> <p>This game is now part of the Gamo Rehabilitation Gaming System by ReFit Systems.</p>'
-        },
-        {
-          title: "Mindsumo",
-          thumbImage: "/img/mindsumo.jpg",
-          cat: "Games",
-          teaser: "A browser puzzle game built in one sleepless hackathon night — a little Sumo pushes unwanted thoughts out of your mind.",
-          links: [
-            { text: "play the game", href: "/demo/mindsumo/index.html" }
-          ],
-          description:
-            `<p>A <strong>Browser based Puzzle Game</strong> I created in a Hackathon when I couldnt sleep one night.
-            It is inspired by the idea, that a little Sumo protects your mind from unwanted thoughts at night.<br>
-              </p><p>
-            your goal is to push items out of the arena, that dont satisfy the stage's requirement,
-            e.g. if the stage says 'multiples of 10', you have to push out all numbers that are NOT multiples of 10.
-            </p>`
         },
         {
           title: "Video Game: Rise",

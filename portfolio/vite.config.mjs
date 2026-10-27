@@ -10,7 +10,22 @@ export default defineConfig({
       // keep the hand-written manifest in public/manifest.json (linked in index.html)
       manifest: false,
       registerType: "autoUpdate",
-      injectRegister: "auto"
+      injectRegister: "auto",
+      workbox: {
+        // The SPA navigation fallback must NOT swallow requests for real files
+        // that live on the webspace but not in this build (standalone demos,
+        // downloads, archived versions). Without this the service worker
+        // answers e.g. /demo/paint/index.html with the cached index.html.
+        navigateFallbackDenylist: [
+          /^\/demo\//,
+          /^\/0_dl\//,
+          /^\/0_old\//,
+          /^\/1_old\//,
+          /^\/backup-2025\//,
+          // catch-all: a real SPA route never ends in a file extension
+          /\.[a-z0-9]+$/i
+        ]
+      }
     })
   ],
   resolve: {

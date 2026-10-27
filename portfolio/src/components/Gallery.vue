@@ -1,7 +1,7 @@
 <template>
   <div id="gallery" class="view view--gallery">
     <div class="view__content">
-      <h2 class="view__headline">What I do</h2>
+      <h2 class="view__headline">What I build</h2>
     </div>
     <div class="view__content">
       <ul class="profiles">
