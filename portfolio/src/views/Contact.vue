@@ -61,7 +61,7 @@
 // for address/email scrapers.
 const IMPRINT = {
   address: ["Rm9yc3RlbnJpZWRlciBBbGxlZSA2Mw==", "ODE0NzYgTcO8bmNoZW4="],
-  mail: "bWdAYXBmZWxrdWguZGU="
+  mail: "bWFpbEBtYW51ZWxncmFmLmNvbQ=="
 };
 
 function decode(b64) {
