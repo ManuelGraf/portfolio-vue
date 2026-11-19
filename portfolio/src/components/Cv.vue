@@ -313,6 +313,42 @@ export default {
       education: [
         {
           id: 0,
+          begin_date_year: 2026,
+          begin_date_month: 4,
+          end_date_year: 2026,
+          end_date_month: 10,
+          company_name: "App Akademie GmbH",
+          job_title: "Ai Full-Stack Developer & UX Mastermind",
+          company_notes: {
+            de: [
+              "",
+
+            ],
+            en: [
+              "Agentic AI automation in every part of the Development Process. From Competition and User Research to actual implementation, testing and Data Analysis.",
+            ]
+          },
+          company_url: "https://www.lmu.de/de/studium/studienangebot/alle-studienfaecher-und-studiengaenge/medieninformatik-bachelor-hauptfach-2942.html",
+          techstack: [
+            "unity",
+            "udk",
+            "maya",
+            "blender",
+            "adobe-photoshop",
+            "adobe-illustrator",
+            "adobe-premiere",
+            "ios",
+            "java",
+            "android",
+            "html5",
+            "js",
+            "node",
+            "express",
+            "mysql"
+          ]
+        },
+        {
+          id: 0,
           begin_date_year: 2014,
           begin_date_month: 10,
           end_date_year: 2017,
