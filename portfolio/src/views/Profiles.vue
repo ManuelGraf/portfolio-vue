@@ -1,7 +1,7 @@
 <template>
   <div id="profiles" class="view view--profiles">
-    <h2 class="view__headline profiles__headline">Where I publish</h2>
-    <p class="profiles__intro">Beyond client work, I publish things — videos, SFX, music and open source.</p>
+    <h2 class="view__headline">Where I publish</h2>
+    <p class="view__subline">Beyond client work, I publish things — videos, SFX, music and open source.</p>
     <div class="profiles-grid">
       <div class="profile-card profile-card--youtube">
         <div class="profile-card__header">
@@ -250,17 +250,9 @@ $background-profiles: $color-magenta;
   }
 }
 
-.profiles__headline {
-  color: $color-magenta-text-bright;
-}
-
-.profiles__intro {
-  font-size: $fontsize-m;
-  line-height: 1.6em;
-  text-align: center;
-  color: $color-magenta-text;
-  max-width: 560px;
-  margin: 0 auto 3rem;
+.view--profiles {
+  .view__headline { color: $color-magenta-text-bright; }
+  .view__subline { color: $color-magenta-text; }
 }
 
 .profiles-grid {

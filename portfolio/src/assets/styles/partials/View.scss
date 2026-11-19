@@ -44,16 +44,13 @@
     font-size: $fontsize-xl;
   }
 }
+// one-line intro under .view__headline (same pattern in every section)
 .view__subline {
-  @include viewport-tablet {
-    padding: 3rem 0 3rem 3rem;
-  }
-  font-family: $font-condensed;
-  font-size: $fontsize-l;
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  font-size: $fontsize-m;
+  line-height: 1.6em;
   text-align: center;
-  line-height: 1em;
-  font-weight:normal;
-  padding: 1rem 0 1.3rem 1rem;
 }
 .nowrap {
   flex-wrap: nowrap;
